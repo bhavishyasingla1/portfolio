@@ -248,13 +248,12 @@ export class PortalController {
         snapPadding = targetLine - baseLeft;
       }
 
-      // Brand sits on primary grid line; hero content is shifted 1 grid block to the right
+      // Brand and hero content sit flush on the exact same primary grid line for clean architectural symmetry
       if (this.siteHeader) {
         this.siteHeader.style.paddingLeft = `${snapPadding.toFixed(2)}px`;
       }
       if (this.heroContent) {
-        const heroPadding = snapPadding + gridSize;
-        this.heroContent.style.paddingLeft = `${heroPadding.toFixed(2)}px`;
+        this.heroContent.style.paddingLeft = `${snapPadding.toFixed(2)}px`;
       }
 
       // Align right edge of socials anchored to the video right edge with comfortable ~14px inset

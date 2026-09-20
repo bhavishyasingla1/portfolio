@@ -175,6 +175,8 @@ export default class Controls
             const dpad = document.getElementById('mobile-dpad')
             if(!dpad) return
 
+            dpad.style.display = 'flex'
+
             const buttons = dpad.querySelectorAll('.dpad-btn')
             buttons.forEach((btn) =>
             {
@@ -210,6 +212,26 @@ export default class Controls
                 btn.addEventListener('touchcancel', stopMove, { passive: false })
                 btn.addEventListener('contextmenu', (e) => e.preventDefault())
             })
+
+            const releaseAll = () =>
+            {
+                buttons.forEach((btn) =>
+                {
+                    const dir = btn.dataset.direction
+                    if (dir && this.keys.down[dir])
+                    {
+                        this.keys.down[dir] = false
+                        this.events.emit('keyUp', dir)
+                        this.events.emit(`${dir}Up`)
+                        btn.classList.remove('is-active')
+                    }
+                })
+            }
+
+            window.addEventListener('pointerup', releaseAll)
+            window.addEventListener('touchend', releaseAll)
+            window.addEventListener('touchcancel', releaseAll)
+            window.addEventListener('blur', releaseAll)
         }
 
         if (document.readyState === 'loading')

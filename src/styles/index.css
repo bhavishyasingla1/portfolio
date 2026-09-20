@@ -210,7 +210,7 @@ body.mode-selector .grid-background {
 /* Responsive Rules for Mobile Devices & Portrait Viewports */
 @media (max-width: 1024px), (orientation: portrait) {
   .site-container {
-    padding: max(18px, env(safe-area-inset-top)) 24px max(14px, env(safe-area-inset-bottom)) 24px;
+    padding: max(20px, env(safe-area-inset-top)) 24px max(20px, env(safe-area-inset-bottom)) 24px;
     height: 100dvh;
     min-height: 100dvh;
     display: flex;
