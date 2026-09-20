@@ -16,6 +16,7 @@ export default [
             { name: 'elgatoLightModel', source: './assets/elgatoLightModel.glb', type: 'model' },
             
             { name: 'threejsJourneyLogoTexture', source: './assets/threejsJourneyLogo.png', type: 'texture' },
+            { name: 'aiThisWeekTexture', source: './assets/aiThisWeek.jpg', type: 'texture' },
             
             { name: 'pcScreenModel', source: './assets/pcScreenModel.glb', type: 'model' },
             

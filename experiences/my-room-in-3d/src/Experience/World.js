@@ -4,6 +4,8 @@ import Baked from './Baked.js'
 import GoogleLeds from './GoogleLeds.js'
 import TopChair from './TopChair.js'
 import ElgatoLight from './ElgatoLight.js'
+import AiThisWeek from './AiThisWeek.js'
+import LaptopSlideshow from './LaptopSlideshow.js'
 
 export default class World
 {
@@ -22,6 +24,8 @@ export default class World
                 this.setGoogleLeds()
                 this.setTopChair()
                 this.setElgatoLight()
+                this.setAiThisWeek()
+                this.setLaptopSlideshow()
             }
         })
     }
@@ -46,6 +50,16 @@ export default class World
         this.elgatoLight = new ElgatoLight()
     }
 
+    setAiThisWeek()
+    {
+        this.aiThisWeek = new AiThisWeek()
+    }
+
+    setLaptopSlideshow()
+    {
+        this.laptopSlideshow = new LaptopSlideshow()
+    }
+
     resize()
     {
     }
@@ -57,6 +71,12 @@ export default class World
 
         if(this.topChair)
             this.topChair.update()
+
+        if(this.aiThisWeek)
+            this.aiThisWeek.update()
+
+        if(this.laptopSlideshow)
+            this.laptopSlideshow.update()
     }
 
     destroy()
