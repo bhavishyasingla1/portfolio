@@ -30,3 +30,4 @@ yarn-error.log*
 *.mov
 *.mp4
 !experiences/my-room-in-3d/static/assets/*.mp4
+!public/room/assets/*.mp4

@@ -6,6 +6,7 @@ import TopChair from './TopChair.js'
 import ElgatoLight from './ElgatoLight.js'
 import AiThisWeek from './AiThisWeek.js'
 import LaptopSlideshow from './LaptopSlideshow.js'
+import Screen from './Screen.js'
 
 export default class World
 {
@@ -26,6 +27,7 @@ export default class World
                 this.setElgatoLight()
                 this.setAiThisWeek()
                 this.setLaptopSlideshow()
+                this.setPcScreen()
             }
         })
     }
@@ -58,6 +60,17 @@ export default class World
     setLaptopSlideshow()
     {
         this.laptopSlideshow = new LaptopSlideshow()
+    }
+
+    setPcScreen()
+    {
+        if (this.resources.items.pcScreenModel)
+        {
+            this.pcScreen = new Screen(
+                this.resources.items.pcScreenModel.scene.children[0],
+                './assets/videoShorts.mp4'
+            )
+        }
     }
 
     resize()

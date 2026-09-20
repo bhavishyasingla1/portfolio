@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-
 import Experience from './Experience.js'
 
 export default class Screen
@@ -8,9 +7,7 @@ export default class Screen
     {
         this.experience = new Experience()
         this.resources = this.experience.resources
-        this.debug = this.experience.debug
         this.scene = this.experience.scene
-        this.world = this.experience.world
 
         this.mesh = _mesh
         this.sourcePath = _sourcePath
@@ -22,23 +19,38 @@ export default class Screen
     {
         this.model = {}
 
-        // Element
+        // Video Element
         this.model.element = document.createElement('video')
         this.model.element.muted = true
         this.model.element.loop = true
-        this.model.element.controls = true
         this.model.element.playsInline = true
         this.model.element.autoplay = true
+        this.model.element.crossOrigin = 'anonymous'
         this.model.element.src = this.sourcePath
-        this.model.element.play()
+        this.model.element.play().catch(() => {})
 
-        // Texture
+        // Ensure playback starts upon first user interaction if browser initially blocked autoplay
+        const resumePlayback = () =>
+        {
+            if (this.model.element && this.model.element.paused)
+            {
+                this.model.element.play().catch(() => {})
+            }
+        }
+        window.addEventListener('pointerdown', resumePlayback, { once: true })
+        window.addEventListener('keydown', resumePlayback, { once: true })
+
+        // Three.js Video Texture
         this.model.texture = new THREE.VideoTexture(this.model.element)
         this.model.texture.encoding = THREE.sRGBEncoding
+        this.model.texture.generateMipmaps = false
+        this.model.texture.minFilter = THREE.LinearFilter
+        this.model.texture.magFilter = THREE.LinearFilter
 
-        // Material
+        // Material with tuned ambient brightness to blend with the warm baked room lighting
         this.model.material = new THREE.MeshBasicMaterial({
-            map: this.model.texture
+            map: this.model.texture,
+            color: new THREE.Color(0.80, 0.78, 0.76)
         })
 
         // Mesh
@@ -49,6 +61,18 @@ export default class Screen
 
     update()
     {
-        // this.model.group.rotation.y = Math.sin(this.time.elapsed * 0.0005) * 0.5
+    }
+
+    destroy()
+    {
+        if (this.model.element)
+        {
+            this.model.element.pause()
+            this.model.element.src = ''
+        }
+        if (this.model.texture)
+        {
+            this.model.texture.dispose()
+        }
     }
 }
