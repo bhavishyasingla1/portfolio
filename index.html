@@ -44,7 +44,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="theme-color" content="#f2f2f4" />
 
   <!-- 7. Typography Fonts & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,7 +74,7 @@
       display: flex;
     }
     body {
-      background-color: #f5f5f7;
+      background-color: #f2f2f4;
     }
   </style>
 
@@ -203,17 +203,33 @@
       
       <!-- VIEW 1: Minimal Landing Page -->
       <section class="view-panel view-landing is-active" id="view-landing" aria-label="Hero Introduction">
-        <div class="hero-content">
-          <h1 class="hero-headline">
-            <span class="headline-line">FIGURING</span>
-            <span class="headline-line">THINGS OUT.</span>
-          </h1>
-          <p class="hero-subtitle">AI &middot; TECHNOLOGY &middot; CREATIVITY</p>
-          <div class="cta-wrapper">
-            <a href="#explore" class="btn-explore" id="btn-explore" role="button" aria-label="Explore 3D Experiences">
-              <span class="btn-text">EXPLORE WORLD</span>
-              <span class="btn-arrow" aria-hidden="true">&rarr;</span>
-            </a>
+        <div class="hero-layout">
+          <div class="hero-content">
+            <h1 class="hero-headline">
+              <span class="headline-line">FIGURING</span>
+              <span class="headline-line">THINGS OUT.</span>
+            </h1>
+            <p class="hero-subtitle">AI &middot; TECHNOLOGY &middot; CREATIVITY</p>
+            <div class="cta-wrapper">
+              <a href="#explore" class="btn-explore" id="btn-explore" role="button" aria-label="Explore 3D Experiences">
+                <span class="btn-text">EXPLORE WORLD</span>
+                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <video
+              class="hero-video"
+              id="hero-video"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="auto"
+              poster="/hero-poster.png"
+            >
+              <source src="/hero-image.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </section>

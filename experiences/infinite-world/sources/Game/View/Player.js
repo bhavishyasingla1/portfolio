@@ -6,7 +6,6 @@ import View from '@/View/View.js'
 import Debug from '@/Debug/Debug.js'
 import State from '@/State/State.js'
 import PlayerMaterial from './Materials/PlayerMaterial.js'
-import PlayerSpeech from './PlayerSpeech.js'
 
 export default class Player
 {
@@ -23,13 +22,7 @@ export default class Player
         this.setLights()
         this.setHelper()
         this.setModel()
-        this.setSpeech()
         this.setDebug()
-    }
-
-    setSpeech()
-    {
-        this.speech = new PlayerSpeech(this)
     }
 
     setGroup()
@@ -240,12 +233,6 @@ export default class Player
                     this.currentAction = this.actions.Idle
                 }
             }
-        }
-
-        // Update speech bubble position and state
-        if(this.speech)
-        {
-            this.speech.update(delta)
         }
     }
 }

@@ -94,8 +94,59 @@ body.mode-selector .grid-background {
   transform: translateY(-40px);
 }
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  gap: 52px;
+}
+
 .hero-content {
-  max-width: 1200px;
+  flex: 1 1 540px;
+  max-width: 620px;
+  z-index: 3;
+}
+
+.hero-visual {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-height: 75vh;
+  position: relative;
+  z-index: 3;
+}
+
+/* Soft ambient backing that gently fades out background grid behind the video */
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: -40px -60px;
+  background: radial-gradient(ellipse at center, #f2f2f4 50%, rgba(242, 242, 244, 0.8) 70%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-video {
+  height: 68vh;
+  max-height: 68vh;
+  width: auto;
+  max-width: 390px;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 2;
+  mask-image: linear-gradient(to right, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%),
+              linear-gradient(to bottom, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 28px, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-composite: source-in;
 }
 
 /* Selector View */

@@ -11,6 +11,7 @@ export class PortalController {
     this.body = document.body;
     this.landingPanel = document.getElementById('view-landing');
     this.selectorPanel = document.getElementById('view-selector');
+    this.heroVideo = document.getElementById('hero-video');
 
     this.stage = new ExperienceStage({
       stage: document.getElementById('experience-stage'),
@@ -109,6 +110,10 @@ export class PortalController {
     this.landingPanel.classList.add('is-active');
     this.landingPanel.setAttribute('aria-hidden', 'false');
 
+    if (this.heroVideo) {
+      this.heroVideo.play().catch(() => {});
+    }
+
     if (updateHistory) {
       this.router.navigateToLanding();
     }
@@ -117,6 +122,10 @@ export class PortalController {
   showSelector(updateHistory = true) {
     this.stage.close();
     this.body.classList.add('mode-selector');
+
+    if (this.heroVideo) {
+      this.heroVideo.pause();
+    }
 
     this.landingPanel.classList.add('is-exiting');
     this.landingPanel.classList.remove('is-active');
@@ -133,6 +142,9 @@ export class PortalController {
   }
 
   openExperience(expId, updateHistory = true) {
+    if (this.heroVideo) {
+      this.heroVideo.pause();
+    }
     this.stage.loadExperience(expId);
     if (updateHistory) {
       this.router.navigateToExperience(expId);
