@@ -57,31 +57,6 @@ export default class AiThisWeek
 
         this.model.mesh = new THREE.Mesh(this.model.geometry, this.model.material)
         this.model.group.add(this.model.mesh)
-
-        // 3D text label directly below the artwork on the TV screen
-        const labelCanvas = document.createElement('canvas')
-        labelCanvas.width = 512
-        labelCanvas.height = 128
-        const lctx = labelCanvas.getContext('2d')
-        lctx.fillStyle = '#ffffff'
-        lctx.font = 'bold 44px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-        lctx.textAlign = 'center'
-        lctx.textBaseline = 'middle'
-        lctx.fillText('AI THIS WEEK ↗', 256, 64)
-
-        const labelTexture = new THREE.CanvasTexture(labelCanvas)
-        labelTexture.encoding = THREE.sRGBEncoding
-        const labelGeo = new THREE.PlaneGeometry(0.85, 0.22)
-        labelGeo.rotateY(- Math.PI * 0.5)
-        const labelMat = new THREE.MeshBasicMaterial({
-            map: labelTexture,
-            transparent: true,
-            color: new THREE.Color(0.85, 0.85, 0.85),
-            side: THREE.DoubleSide
-        })
-        this.model.labelMesh = new THREE.Mesh(labelGeo, labelMat)
-        this.model.labelMesh.position.y = - 0.58
-        this.model.group.add(this.model.labelMesh)
     }
 
     setRaycaster()
@@ -108,9 +83,9 @@ export default class AiThisWeek
 
         this.onClick = () =>
         {
-            const interactables = [this.model.mesh, this.model.labelMesh].filter(Boolean)
+            if (!this.model.mesh) return
             this.raycaster.setFromCamera(this.mouse, this.camera.instance)
-            const intersects = this.raycaster.intersectObjects(interactables)
+            const intersects = this.raycaster.intersectObject(this.model.mesh)
             if (intersects.length > 0)
             {
                 // ONLY open after user clicks!
@@ -124,11 +99,10 @@ export default class AiThisWeek
 
     checkIntersection()
     {
-        const interactables = [this.model.mesh, this.model.labelMesh].filter(Boolean)
-        if (interactables.length === 0) return
+        if (!this.model.mesh) return
 
         this.raycaster.setFromCamera(this.mouse, this.camera.instance)
-        const intersects = this.raycaster.intersectObjects(interactables)
+        const intersects = this.raycaster.intersectObject(this.model.mesh)
         const hovered = intersects.length > 0
 
         if (hovered && !this.isHovered)
@@ -137,9 +111,9 @@ export default class AiThisWeek
             this.targetElement.style.cursor = 'pointer'
 
             gsap.to(this.model.mesh.scale, {
-                x: 1.08,
-                y: 1.08,
-                z: 1.08,
+                x: 1.06,
+                y: 1.06,
+                z: 1.06,
                 duration: 0.3,
                 ease: 'power2.out'
             })
@@ -154,18 +128,7 @@ export default class AiThisWeek
                 })
             }
 
-            if (this.model.labelMesh && this.model.labelMesh.material && this.model.labelMesh.material.color)
-            {
-                gsap.to(this.model.labelMesh.material.color, {
-                    r: 1.0,
-                    g: 1.0,
-                    b: 1.0,
-                    duration: 0.3
-                })
-            }
-
             this.showTooltip()
-            // NOTE: Do NOT open link on hover! Only open when clicked.
         }
         else if (!hovered && this.isHovered)
         {
@@ -183,16 +146,6 @@ export default class AiThisWeek
             if (this.model.material && this.model.material.color)
             {
                 gsap.to(this.model.material.color, {
-                    r: 0.85,
-                    g: 0.85,
-                    b: 0.85,
-                    duration: 0.3
-                })
-            }
-
-            if (this.model.labelMesh && this.model.labelMesh.material && this.model.labelMesh.material.color)
-            {
-                gsap.to(this.model.labelMesh.material.color, {
                     r: 0.85,
                     g: 0.85,
                     b: 0.85,
@@ -220,11 +173,7 @@ export default class AiThisWeek
     {
         this.tooltip = document.createElement('div')
         this.tooltip.className = 'tv-newsletter-tooltip'
-        this.tooltip.innerHTML = `
-            <span class="tooltip-badge">NEWSLETTER</span>
-            <span class="tooltip-title">AI THIS WEEK &nearr;</span>
-            <span class="tooltip-sub">(Click to open)</span>
-        `
+        this.tooltip.textContent = '(newsletter: click to open)'
         document.body.appendChild(this.tooltip)
 
         const style = document.createElement('style')
@@ -233,46 +182,25 @@ export default class AiThisWeek
                 position: fixed;
                 top: 0;
                 left: 0;
-                background: rgba(10, 10, 14, 0.94);
-                border: 1px solid rgba(255, 30, 66, 0.7);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 30, 66, 0.35);
                 color: #ffffff;
-                padding: 6px 12px;
+                background: rgba(0, 0, 0, 0.65);
+                padding: 4px 10px;
                 border-radius: 4px;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 font-size: 11px;
-                letter-spacing: 0.08em;
-                display: flex;
-                align-items: center;
-                gap: 8px;
+                font-weight: 500;
+                letter-spacing: 0.04em;
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.15s ease;
                 z-index: 9999;
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(4px);
                 white-space: nowrap;
                 will-change: transform;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             }
             .tv-newsletter-tooltip.is-visible {
                 opacity: 1;
-            }
-            .tooltip-badge {
-                background: #ff1e42;
-                color: #000;
-                font-size: 9px;
-                font-weight: 800;
-                padding: 2px 6px;
-                border-radius: 2px;
-                letter-spacing: 0.12em;
-            }
-            .tooltip-title {
-                font-weight: 700;
-                color: #fff;
-            }
-            .tooltip-sub {
-                font-size: 10px;
-                color: rgba(255, 255, 255, 0.65);
-                font-weight: 400;
             }
         `
         document.head.appendChild(style)
