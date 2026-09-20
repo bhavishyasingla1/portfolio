@@ -208,27 +208,31 @@
 /* Exit Stage Control */
 .btn-exit-stage {
   pointer-events: auto;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-family: var(--font-headline);
-  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #000000;
+  color: #000000;
+  font-family: var(--font-body);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 4px 0;
+  padding: 10px 18px;
+  border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
   transition: 
-    color var(--transition-fast),
-    opacity var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
     transform var(--transition-fast);
 }
 
 .btn-exit-stage:hover {
-  color: var(--color-neon-green);
-  opacity: 0.85;
+  background-color: var(--color-neon-green);
+  border-color: var(--color-neon-green);
+  color: #000000;
+  box-shadow: 0 0 20px var(--color-neon-glow);
   transform: translateY(-1px);
 }
 
