@@ -50,6 +50,8 @@ body.mode-selector .grid-background {
   align-items: center;
   width: 100%;
   z-index: 10;
+  padding-left: var(--hero-content-padding-left, 39.5px);
+  transition: padding-left var(--transition-smooth);
 }
 
 /* Main Viewport Panels */
@@ -105,9 +107,10 @@ body.mode-selector .grid-background {
 }
 
 .hero-content {
-  flex: 1 1 58%;
-  max-width: 820px;
+  flex: 0 0 600px;
+  max-width: 600px;
   padding-left: var(--hero-content-padding-left, 39.5px);
+  transform: translateY(-15px);
   z-index: 2;
 }
 
@@ -212,6 +215,7 @@ body.mode-selector .grid-background {
 
   .site-header {
     margin-bottom: 24px;
+    padding-left: 0;
   }
 
   .hero-layout {
@@ -223,6 +227,7 @@ body.mode-selector .grid-background {
   .hero-content {
     padding-left: 0;
     max-width: 100%;
+    transform: none;
   }
 
   .hero-visual {

@@ -4,7 +4,7 @@
 
 .brand {
   font-family: var(--font-headline);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -20,14 +20,14 @@
 
 .hero-headline {
   font-family: var(--font-headline);
-  font-size: clamp(2.8rem, 7vw, 7.2rem);
+  font-size: clamp(3.5rem, 6.4vw, 92px);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
   color: var(--color-text-primary);
   text-transform: uppercase;
-  margin-bottom: 28px;
-  margin-left: -0.07em; /* Optically aligns stem of F with button and subheading */
+  margin-bottom: 45px;
+  margin-left: 0; /* Aligns flush with vertical grid line without overhang */
 }
 
 .headline-line {
@@ -36,12 +36,12 @@
 
 .hero-subtitle {
   font-family: var(--font-body);
-  font-size: clamp(0.75rem, 1.4vw, 1.1rem);
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
   color: var(--color-text-muted);
   text-transform: uppercase;
-  margin-bottom: 36px;
+  margin-bottom: 35px;
   padding-left: 0; /* Aligns flush with button border */
 }
 

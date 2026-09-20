@@ -13,6 +13,7 @@ export class PortalController {
     this.selectorPanel = document.getElementById('view-selector');
     this.heroVideo = document.getElementById('hero-video');
     this.heroContent = document.querySelector('.hero-content');
+    this.siteHeader = document.querySelector('.site-header');
     this.gridBackground = document.getElementById('grid-background');
 
     this.alignGrid = this.alignGrid.bind(this);
@@ -160,6 +161,10 @@ export class PortalController {
     if (this.heroContent) {
       this.heroContent.style.removeProperty('padding-left');
     }
+    if (this.siteHeader) {
+      this.siteHeader.style.removeProperty('padding-left');
+    }
+    document.documentElement.style.removeProperty('--social-edge-right');
 
     this.landingPanel.classList.add('is-exiting');
     this.landingPanel.classList.remove('is-active');
@@ -222,9 +227,10 @@ export class PortalController {
     this.gridBackground.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
     this.gridBackground.style.setProperty('--grid-offset-x', `${offsetX.toFixed(3)}px`);
     this.gridBackground.style.setProperty('--grid-offset-y', `${offsetY.toFixed(3)}px`);
+    document.documentElement.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
 
-    // Lock hero text flush to the adjacent vertical grid line for architectural symmetry
-    if (this.heroContent && window.innerWidth > 900) {
+    // Lock brand and hero text flush to the grid lines for architectural symmetry
+    if (window.innerWidth > 900) {
       const container = document.querySelector('.site-container');
       const baseLeft = container
         ? container.getBoundingClientRect().left + parseFloat(window.getComputedStyle(container).paddingLeft || 0)
@@ -239,9 +245,49 @@ export class PortalController {
         snapPadding = targetLine - baseLeft;
       }
 
-      this.heroContent.style.paddingLeft = `${snapPadding.toFixed(2)}px`;
-    } else if (this.heroContent) {
-      this.heroContent.style.removeProperty('padding-left');
+      // Brand sits on primary grid line; hero content is shifted 1 grid block to the right
+      if (this.siteHeader) {
+        this.siteHeader.style.paddingLeft = `${snapPadding.toFixed(2)}px`;
+      }
+      if (this.heroContent) {
+        const heroPadding = snapPadding + gridSize;
+        this.heroContent.style.paddingLeft = `${heroPadding.toFixed(2)}px`;
+      }
+
+      // Align right edge of socials anchored to the video right edge with comfortable ~14px inset
+      const rightOffset = Math.max(24, window.innerWidth - rect.right) + 14;
+      document.documentElement.style.setProperty('--social-edge-right', `${rightOffset.toFixed(2)}px`);
+
+      // Snap socials baseline/bottom directly to the horizontal grid line below
+      const socials = document.querySelector('.social-edge');
+      const socialLink = document.querySelector('.social-link');
+      if (socials && socialLink) {
+        const targetLineY = offsetY + Math.round((window.innerHeight - 50 - offsetY) / gridSize) * gridSize;
+        const lRect = socialLink.getBoundingClientRect();
+        const curBottom = parseFloat(window.getComputedStyle(socials).bottom || 57);
+        const diff = targetLineY - lRect.bottom;
+        const snappedBottom = curBottom - diff;
+        document.documentElement.style.setProperty('--social-edge-bottom', `${snappedBottom.toFixed(2)}px`);
+      }
+
+      // Vertical grid alignment: snap button top border to a horizontal grid line
+      const btn = document.getElementById('btn-explore');
+      if (this.heroContent && btn) {
+        const currentBtnTop = btn.getBoundingClientRect().top;
+        const rawBtnTop = currentBtnTop - (this.heroShiftY || 0);
+        const targetBtnTop = offsetY + Math.round((rawBtnTop - offsetY) / gridSize) * gridSize;
+        this.heroShiftY = targetBtnTop - rawBtnTop;
+        this.heroContent.style.transform = `translateY(${this.heroShiftY.toFixed(2)}px)`;
+      }
+    } else {
+      if (this.heroContent) {
+        this.heroContent.style.removeProperty('padding-left');
+        this.heroContent.style.removeProperty('transform');
+      }
+      if (this.siteHeader) this.siteHeader.style.removeProperty('padding-left');
+      document.documentElement.style.removeProperty('--social-edge-right');
+      document.documentElement.style.removeProperty('--social-edge-bottom');
+      this.heroShiftY = 0;
     }
   }
 }
