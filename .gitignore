@@ -1,0 +1,27 @@
+# Node Dependencies
+node_modules/
+**/node_modules/
+
+# Build Outputs
+dist/
+experiences/*/dist/
+
+# OS Metadata
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Logs & Diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor & Local Config
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

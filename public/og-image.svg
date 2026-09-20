@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E3FDFD"/>
+      <stop offset="50%" stop-color="#CBF1F5"/>
+      <stop offset="100%" stop-color="#E3FDFD"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F4FCFD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle Blueprint Grid -->
+  <g stroke="#71C9CE" stroke-width="1" opacity="0.15">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Inner Card -->
+  <rect x="80" y="80" width="1040" height="470" rx="24" fill="url(#cardGrad)" stroke="#71C9CE" stroke-width="2"/>
+
+  <!-- Header Eyebrow -->
+  <text x="140" y="170" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="20" font-weight="700" letter-spacing="4" fill="#71C9CE">BHAVISHYA SINGLA</text>
+
+  <!-- Main Headline -->
+  <text x="140" y="250" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="52" font-weight="800" fill="#111827">I build, create &amp;</text>
+  <text x="140" y="315" font-family="'Space Grotesk', -apple-system, sans-serif" font-size="52" font-weight="800" fill="#111827">experiment with AI.</text>
+
+  <!-- Formula Subheading -->
+  <text x="140" y="385" font-family="'Nunito', -apple-system, sans-serif" font-size="26" font-weight="700" fill="#71C9CE">AI × Technology × Marketing × Content</text>
+
+  <!-- Pill Stats -->
+  <g transform="translate(140, 430)">
+    <rect width="180" height="52" rx="26" fill="#CBF1F5" stroke="#71C9CE" stroke-width="1.5"/>
+    <text x="90" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#111827" text-anchor="middle">18K+ LinkedIn</text>
+  </g>
+  <g transform="translate(340, 430)">
+    <rect width="220" height="52" rx="26" fill="#CBF1F5" stroke="#71C9CE" stroke-width="1.5"/>
+    <text x="110" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#111827" text-anchor="middle">6.5K+ AI This Week</text>
+  </g>
+  <g transform="translate(580, 430)">
+    <rect width="210" height="52" rx="26" fill="#CBF1F5" stroke="#71C9CE" stroke-width="1.5"/>
+    <text x="105" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#111827" text-anchor="middle">Thapar University</text>
+  </g>
+
+  <!-- Right Visual Monogram -->
+  <g transform="translate(900, 290)">
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#71C9CE" stroke-width="2" stroke-dasharray="10 8" opacity="0.7"/>
+    <circle cx="0" cy="0" r="85" fill="#E3FDFD" stroke="#A6E3E9" stroke-width="2"/>
+    <text x="0" y="24" font-family="'Space Grotesk', sans-serif" font-size="72" font-weight="900" fill="#111827" text-anchor="middle">B</text>
+    <circle cx="45" cy="-45" r="10" fill="#71C9CE"/>
+  </g>
+</svg>

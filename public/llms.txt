@@ -1,0 +1,13 @@
+# Bhavishya Singla — Figuring Things Out
+
+> Bhavishya Singla is a builder working across Artificial Intelligence, Technology, and Creative Engineering. The portfolio website serves as a minimalist portal and doorway into interactive 3D WebGL worlds and experiences.
+
+## Core Experiences
+- [My Room in 3D](https://bhavishyasingla.com/room): Interactive isometric 3D room experience built with Three.js.
+- [Infinite World](https://bhavishyasingla.com/world): Procedural infinite 3D terrain exploration in WebGL.
+- [Folio](https://bhavishyasingla.com/folio): Interactive 3D physics playground featuring an interactive car and creative portfolio landscape.
+
+## Communities & Socials
+- LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/
+- YouTube: https://www.youtube.com/@bhavishyasingla1
+- Instagram: https://www.instagram.com/bhavishyasingla1/

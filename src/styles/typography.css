@@ -1,0 +1,66 @@
+/**
+ * Typography System — Swiss Editorial Style
+ */
+
+.brand {
+  font-family: var(--font-headline);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.header-status {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+}
+
+.hero-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 9.5vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.headline-line {
+  display: block;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.4vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.selector-index-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.selector-footer {
+  margin-top: 36px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+}

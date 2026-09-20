@@ -1,0 +1,33 @@
+/**
+ * Design Tokens & Variables
+ * Swiss minimalist aesthetic with high contrast and neon green accent
+ */
+
+:root {
+  /* Colors */
+  --color-bg: #f5f5f7;
+  --color-bg-subtle: #eaeaea;
+  --color-text-primary: #000000;
+  --color-text-muted: #555555;
+  --color-text-light: #888888;
+  --color-border: #d4d4d8;
+  --color-border-dark: #000000;
+
+  /* Accent Colors */
+  --color-neon-green: #00ff66;
+  --color-neon-glow: rgba(0, 255, 102, 0.45);
+  --color-neon-glow-soft: rgba(0, 255, 102, 0.2);
+
+  /* Grid System Metrics */
+  --grid-size: 48px;
+  --grid-color: rgba(0, 0, 0, 0.055);
+  --grid-color-active: rgba(0, 0, 0, 0.08);
+
+  /* Typography Stacks */
+  --font-headline: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Animation Timings */
+  --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}

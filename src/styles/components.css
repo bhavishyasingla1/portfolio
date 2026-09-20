@@ -1,0 +1,305 @@
+/**
+ * Components & Interactive Elements
+ */
+
+/* Social Links — Secondary edge text */
+.social-edge {
+  position: fixed;
+  bottom: 32px;
+  right: 48px;
+  z-index: 10;
+}
+
+.social-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.social-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.social-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text-primary);
+  transition: width var(--transition-fast);
+}
+
+.social-link:hover {
+  color: var(--color-text-primary);
+}
+
+.social-link:hover::after {
+  width: 100%;
+}
+
+/* Explore CTA Button */
+.cta-wrapper {
+  display: inline-block;
+}
+
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1.5px solid var(--color-text-primary);
+  padding: 16px 28px;
+  font-family: var(--font-headline);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn-explore .btn-arrow {
+  display: inline-block;
+  font-size: 16px;
+  transition: transform var(--transition-fast);
+}
+
+/* Neon Green Hover Interaction */
+.btn-explore:hover {
+  background-color: var(--color-neon-green);
+  border-color: var(--color-neon-green);
+  color: #000000;
+  box-shadow: 0 0 24px var(--color-neon-glow);
+  transform: scale(1.02);
+}
+
+.btn-explore:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+.btn-explore:active {
+  transform: scale(0.99);
+}
+
+/* Back Button in Selector */
+.btn-back {
+  background: transparent;
+  border: 1px solid var(--color-border-dark);
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-back:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Experience Navigation List & Crawlable Anchor Buttons */
+.experiences-nav {
+  width: 100%;
+}
+
+.experiences-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.experience-item {
+  width: 100%;
+}
+
+.experience-link {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60px 30px 1fr auto 40px;
+  align-items: baseline;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 24px 8px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-family: var(--font-headline);
+  text-decoration: none;
+  transition: 
+    border-color var(--transition-fast),
+    padding-left var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.exp-num {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--color-text-light);
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.exp-dash {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: var(--color-text-light);
+}
+
+.exp-title {
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.exp-tag {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-right: 24px;
+  transition: color var(--transition-fast);
+}
+
+.exp-arrow {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-text-light);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.experience-link:hover {
+  border-color: var(--color-text-primary);
+  padding-left: 16px;
+}
+
+.experience-link:hover .exp-num,
+.experience-link:hover .exp-title,
+.experience-link:hover .exp-arrow {
+  color: var(--color-text-primary);
+}
+
+.experience-link:hover .exp-tag {
+  color: #000000;
+  background-color: var(--color-neon-green);
+  padding: 4px 8px;
+  box-shadow: 0 0 12px var(--color-neon-glow);
+}
+
+.experience-link:hover .exp-arrow {
+  transform: translateX(8px);
+}
+
+/* Exit Stage Control */
+.btn-exit-stage {
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #000000;
+  color: #000000;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn-exit-stage:hover {
+  background-color: var(--color-neon-green);
+  border-color: var(--color-neon-green);
+  box-shadow: 0 0 20px var(--color-neon-glow);
+  transform: translateY(-1px);
+}
+
+.stage-meta {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.stage-title {
+  font-family: var(--font-headline);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.stage-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #f5f5f7;
+  z-index: 10;
+  transition: opacity 300ms ease;
+}
+
+.stage-loading.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #e0e0e0;
+  border-top-color: #000000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}

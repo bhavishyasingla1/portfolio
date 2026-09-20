@@ -1,0 +1,220 @@
+/**
+ * Master Stylesheet (index.css)
+ * Aggregates modular stylesheets and provides master layout logic
+ */
+
+@import './variables.css';
+@import './reset.css';
+@import './typography.css';
+@import './components.css';
+
+/* Ambient Viewport Grid */
+.grid-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background-size: var(--grid-size) var(--grid-size);
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+body.mode-selector .grid-background {
+  background-image: 
+    linear-gradient(to right, var(--grid-color-active) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color-active) 1px, transparent 1px);
+  transform: scale(1.02);
+}
+
+/* Site Framing */
+.site-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 48px;
+  z-index: 2;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Main Viewport Panels */
+.main-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility 0ms 500ms;
+}
+
+.view-panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility 0ms 0ms;
+}
+
+/* Landing View */
+.view-landing {
+  transform: translateY(0);
+}
+
+.view-landing.is-exiting {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.hero-content {
+  max-width: 1200px;
+}
+
+/* Selector View */
+.view-selector {
+  transform: translateY(40px);
+}
+
+.view-selector.is-active {
+  transform: translateY(0);
+}
+
+.selector-content {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+/* Experience Stage (Full Viewport Iframe Container) */
+.experience-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #000000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth), visibility 0ms 500ms;
+}
+
+.experience-stage.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--transition-smooth), visibility 0ms 0ms;
+}
+
+.stage-controls {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.iframe-container {
+  width: 100%;
+  height: 100%;
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .site-container {
+    padding: 24px 20px;
+  }
+
+  .site-header {
+    margin-bottom: 24px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.4rem, 11vw, 4.2rem);
+    margin-bottom: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 36px;
+  }
+
+  .social-edge {
+    position: static;
+    margin-top: 24px;
+  }
+
+  .social-list {
+    gap: 16px;
+  }
+
+  .experience-link {
+    grid-template-columns: 36px 20px 1fr 24px;
+    padding: 18px 4px;
+  }
+
+  .exp-tag {
+    display: none;
+  }
+
+  .exp-title {
+    font-size: 1.5rem;
+  }
+
+  .selector-header {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stage-controls {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+  }
+}

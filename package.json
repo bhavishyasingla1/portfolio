@@ -1,0 +1,17 @@
+{
+  "name": "bhavishya-singla-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:experiences": "node scripts/build-experiences.js",
+    "build:all": "node scripts/build-experiences.js && vite build",
+    "audit:seo": "./scripts/verify-seo.sh",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

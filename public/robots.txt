@@ -1,0 +1,51 @@
+# /robots.txt
+# Standard Compliance: RFC 9309
+# Target: https://bhavishyasingla.com
+
+# -------------------------------------------------------------
+# 1. Googlebot Primary (Search Indexing)
+# -------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+Allow: /room
+Allow: /world
+Allow: /folio
+Allow: /room/
+Allow: /world/
+Allow: /folio/
+Disallow: /api/private/
+
+# -------------------------------------------------------------
+# 2. AI Search Engines & LLM Web Retrieval Crawlers
+# -------------------------------------------------------------
+# Google AI Overviews & Gemini In Search
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI Search & ChatGPT Web Browsing
+User-agent: GPTBot
+Allow: /
+
+# Anthropic Claude Search & Browsing
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity AI Search Engine
+User-agent: PerplexityBot
+Allow: /
+
+# Apple Intelligence & Siri Search
+User-agent: Applebot
+Allow: /
+
+# -------------------------------------------------------------
+# 3. Global Fallback for All Other Compliant Crawlers
+# -------------------------------------------------------------
+User-agent: *
+Allow: /
+Disallow: /api/private/
+
+# -------------------------------------------------------------
+# 4. XML Sitemap Index Declaration
+# -------------------------------------------------------------
+Sitemap: https://bhavishyasingla.com/sitemap.xml

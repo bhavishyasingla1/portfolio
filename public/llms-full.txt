@@ -1,0 +1,40 @@
+# Bhavishya Singla — Architecture & Knowledge Base (`llms-full.txt`)
+
+> Comprehensive overview of Bhavishya Singla's interactive portal, technical stack, integrated 3D experiences, and online presence.
+
+## Identity & Mission
+- **Name**: Bhavishya Singla
+- **Focus**: Artificial Intelligence, Creative Engineering, and 3D Web Computing
+- **Website**: https://bhavishyasingla.com
+- **Philosophy**: "FIGURING THINGS OUT." An editorial, high-contrast, minimalist doorway into digital environments and interactive 3D WebGL experiences.
+
+## Core Integrated 3D Experiences
+All three experiences are actual open-source projects created by creative developer Bruno Simon, locally cloned, optimized, and integrated as independent 3D worlds.
+
+### 1. My Room in 3D
+- **URL**: https://bhavishyasingla.com/room
+- **Source**: https://github.com/brunosimon/my-room-in-3d
+- **Technology**: Three.js, Webpack 5, GSAP, GLSL shaders.
+- **Description**: An isometric 3D bedroom scene rendered in WebGL featuring interactive camera controls, baked ambient lighting textures, dynamic computer screens playing video streams, and responsive 3D objects.
+
+### 2. Infinite World
+- **URL**: https://bhavishyasingla.com/world
+- **Source**: https://github.com/brunosimon/infinite-world
+- **Technology**: Three.js, Vite, Simplex noise algorithms.
+- **Description**: A procedurally generated infinite terrain explorer where users navigate a limitless mathematical landscape in real-time with pointer lock and view mode controls.
+
+### 3. Folio 2019
+- **URL**: https://bhavishyasingla.com/folio
+- **Source**: https://github.com/brunosimon/folio-2019 (MIT License)
+- **Technology**: Three.js, Vite, Cannon.js physics engine, Howler audio.
+- **Description**: An interactive 3D physics playground where visitors drive a physics-based toy car through a virtual portfolio landscape, bumping into objects, triggering interactive projects, and experiencing spatial sound.
+
+## Technical Architecture
+- **Framework**: Minimalist Vanilla HTML5/CSS3/JavaScript with Vite tooling.
+- **Performance**: Zero Three.js libraries are initialized on homepage load. 3D environments are mounted dynamically on-demand inside an isolated full-viewport stage and unmounted upon exit to release GPU memory and audio resources.
+- **SEO & Search Standards**: Compliant with Google Search Essentials, RFC 9309 robots.txt, Schema.org JSON-LD structured data, and Core Web Vitals targets.
+
+## Social & Community Channels
+- LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/
+- YouTube: https://www.youtube.com/@bhavishyasingla1
+- Instagram: https://www.instagram.com/bhavishyasingla1/
