@@ -35,22 +35,7 @@
 
 .ui .mobile-warning
 {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-}
-
-@media (orientation: portrait)
-{
-    .ui .mobile-warning
-    {
-        display: flex;
-    }
+    display: none !important;
 }
 
 .ui .controls

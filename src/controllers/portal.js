@@ -224,13 +224,15 @@ export class PortalController {
     if (offsetX < 0) offsetX += gridSize;
     if (offsetY < 0) offsetY += gridSize;
 
+    // Apply pixel-snapped grid to background across all screens (desktop, tablet, mobile)
     this.gridBackground.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
     this.gridBackground.style.setProperty('--grid-offset-x', `${offsetX.toFixed(3)}px`);
     this.gridBackground.style.setProperty('--grid-offset-y', `${offsetY.toFixed(3)}px`);
-    document.documentElement.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
 
     // Lock brand and hero text flush to the grid lines for architectural symmetry
     if (window.innerWidth > 900) {
+      document.documentElement.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
+
       const container = document.querySelector('.site-container');
       const baseLeft = container
         ? container.getBoundingClientRect().left + parseFloat(window.getComputedStyle(container).paddingLeft || 0)
@@ -280,6 +282,9 @@ export class PortalController {
         this.heroContent.style.transform = `translateY(${this.heroShiftY.toFixed(2)}px)`;
       }
     } else {
+      // Mobile screen cleanup: clear desktop-specific padding snaps
+      document.documentElement.style.removeProperty('--grid-size');
+
       if (this.heroContent) {
         this.heroContent.style.removeProperty('padding-left');
         this.heroContent.style.removeProperty('transform');

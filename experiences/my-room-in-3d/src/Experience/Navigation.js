@@ -19,13 +19,16 @@ export default class Navigation
     {
         this.view = {}
 
+        const isPortrait = this.config.width < this.config.height
+        const initialRadius = isPortrait ? 30 * Math.max(1, (this.config.height / this.config.width) * 0.72) : 30
+
         this.view.spherical = {}
-        this.view.spherical.value = new THREE.Spherical(30, Math.PI * 0.35, - Math.PI * 0.25)
+        this.view.spherical.value = new THREE.Spherical(initialRadius, Math.PI * 0.35, - Math.PI * 0.25)
         // this.view.spherical.value.radius = 5
         this.view.spherical.smoothed = this.view.spherical.value.clone()
         this.view.spherical.smoothing = 0.005
         this.view.spherical.limits = {}
-        this.view.spherical.limits.radius = { min: 10, max: 50 }
+        this.view.spherical.limits.radius = { min: 10, max: isPortrait ? 85 : 50 }
         this.view.spherical.limits.phi = { min: 0.01, max: Math.PI * 0.5 }
         this.view.spherical.limits.theta = { min: - Math.PI * 0.5, max: 0 }
 
@@ -118,13 +121,29 @@ export default class Navigation
         /**
          * Touch events
          */
+        this.view.touch = {
+            distance: 0,
+            startRadius: 0
+        }
+
         this.view.onTouchStart = (_event) =>
         {
             _event.preventDefault()
 
-            this.view.drag.alternative = _event.touches.length > 1
-
-            this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
+            if(_event.touches.length === 1)
+            {
+                this.view.drag.alternative = false
+                this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
+            }
+            else if(_event.touches.length === 2)
+            {
+                this.view.drag.alternative = true
+                this.view.touch.distance = Math.hypot(
+                    _event.touches[0].clientX - _event.touches[1].clientX,
+                    _event.touches[0].clientY - _event.touches[1].clientY
+                )
+                this.view.touch.startRadius = this.view.spherical.value.radius
+            }
 
             window.addEventListener('touchend', this.view.onTouchEnd)
             window.addEventListener('touchmove', this.view.onTouchMove)
@@ -134,7 +153,26 @@ export default class Navigation
         {
             _event.preventDefault()
             
-            this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
+            if(_event.touches.length === 1)
+            {
+                this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
+            }
+            else if(_event.touches.length === 2)
+            {
+                const distance = Math.hypot(
+                    _event.touches[0].clientX - _event.touches[1].clientX,
+                    _event.touches[0].clientY - _event.touches[1].clientY
+                )
+                if (this.view.touch.distance > 0)
+                {
+                    const ratio = distance / this.view.touch.distance
+                    this.view.spherical.value.radius = this.view.touch.startRadius / ratio
+                    this.view.spherical.value.radius = Math.min(
+                        Math.max(this.view.spherical.value.radius, this.view.spherical.limits.radius.min),
+                        this.view.spherical.limits.radius.max
+                    )
+                }
+            }
         }
 
         this.view.onTouchEnd = (_event) =>
@@ -143,8 +181,15 @@ export default class Navigation
             
             this.view.up()
 
-            window.removeEventListener('touchend', this.view.onTouchEnd)
-            window.removeEventListener('touchmove', this.view.onTouchMove)
+            if(_event.touches.length === 0)
+            {
+                window.removeEventListener('touchend', this.view.onTouchEnd)
+                window.removeEventListener('touchmove', this.view.onTouchMove)
+            }
+            else if(_event.touches.length === 1)
+            {
+                this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
+            }
         }
 
         window.addEventListener('touchstart', this.view.onTouchStart)

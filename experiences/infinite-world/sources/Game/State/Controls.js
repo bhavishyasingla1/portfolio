@@ -124,16 +124,31 @@ export default class Controls
         this.pointer.down = false
         this.pointer.deltaTemp = { x: 0, y: 0 }
         this.pointer.delta = { x: 0, y: 0 }
+        this.pointer.previous = { x: 0, y: 0 }
 
         window.addEventListener('pointerdown', (event) =>
         {
             this.pointer.down = true
+            this.pointer.previous.x = event.clientX
+            this.pointer.previous.y = event.clientY
         })
 
         window.addEventListener('pointermove', (event) =>
         {
-            this.pointer.deltaTemp.x += event.movementX
-            this.pointer.deltaTemp.y += event.movementY
+            if(!this.pointer.down) return
+
+            const movementX = typeof event.movementX === 'number' && event.movementX !== 0 
+                ? event.movementX 
+                : (event.clientX - this.pointer.previous.x)
+            const movementY = typeof event.movementY === 'number' && event.movementY !== 0 
+                ? event.movementY 
+                : (event.clientY - this.pointer.previous.y)
+
+            this.pointer.previous.x = event.clientX
+            this.pointer.previous.y = event.clientY
+
+            this.pointer.deltaTemp.x += movementX
+            this.pointer.deltaTemp.y += movementY
         })
 
         window.addEventListener('pointerup', () =>

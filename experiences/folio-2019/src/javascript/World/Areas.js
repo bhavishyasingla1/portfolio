@@ -60,6 +60,26 @@ export default class Areas
             this.mouse.needsUpdate = true
         })
 
+        this.renderer.domElement.addEventListener('touchend', (_event) =>
+        {
+            if(this.mouse.needsUpdate)
+            {
+                this.mouse.needsUpdate = false
+                this.mouse.raycaster.setFromCamera(this.mouse.coordinates, this.camera.instance)
+                const objects = this.items.map((_area) => _area.mouseMesh)
+                const intersects = this.mouse.raycaster.intersectObjects(objects)
+                if(intersects.length)
+                {
+                    this.mouse.currentArea = this.items.find((_area) => _area.mouseMesh === intersects[0].object)
+                }
+            }
+
+            if(this.mouse.currentArea)
+            {
+                this.mouse.currentArea.interact(false)
+            }
+        })
+
         // Time tick event
         this.time.on('tick', () =>
         {

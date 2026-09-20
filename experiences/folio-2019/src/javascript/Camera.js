@@ -135,7 +135,7 @@ export default class Camera
         {
             if(_event.touches.length === 2)
             {
-                this.zoom.touch.startDistance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientX - _event.touches[1].clientX)
+                this.zoom.touch.startDistance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientY - _event.touches[1].clientY)
                 this.zoom.touch.startValue = this.zoom.targetValue
             }
         })
@@ -146,7 +146,7 @@ export default class Camera
             {
                 _event.preventDefault()
 
-                const distance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientX - _event.touches[1].clientX)
+                const distance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientY - _event.touches[1].clientY)
                 const ratio = distance / this.zoom.touch.startDistance
 
                 this.zoom.targetValue = this.zoom.touch.startValue - (ratio - 1)
@@ -158,7 +158,9 @@ export default class Camera
         this.time.on('tick', () =>
         {
             this.zoom.value += (this.zoom.targetValue - this.zoom.value) * this.zoom.easing
-            this.zoom.distance = this.zoom.minDistance + this.zoom.amplitude * this.zoom.value
+            const aspect = this.sizes.viewport.width / this.sizes.viewport.height
+            const portraitScale = aspect < 1 ? Math.max(1, (1 / aspect) * 0.65) : 1
+            this.zoom.distance = (this.zoom.minDistance + this.zoom.amplitude * this.zoom.value) * portraitScale
         })
     }
 

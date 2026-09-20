@@ -50,14 +50,20 @@
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
-.social-link:hover {
-  color: var(--color-text-primary);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .social-link:hover {
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+  }
+
+  .social-link:hover::after {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
 }
 
-.social-link:hover::after {
-  opacity: 0.85;
-  transform: scaleX(1);
+.social-link:active {
+  opacity: 0.6;
 }
 
 /* Explore CTA Button — Designed Interface Element */
@@ -71,6 +77,7 @@
   justify-content: space-between;
   width: 210px;
   height: var(--grid-size, 56px);
+  min-height: 52px;
   box-sizing: border-box;
   margin-left: 0;
   padding: 0 20px;
@@ -105,23 +112,25 @@
 }
 
 /* Refined Editorial Micro-Interactions */
-.btn-explore:hover {
-  border-color: rgba(0, 0, 0, 0.85);
-  background-color: transparent;
-  color: var(--color-text-primary);
-  box-shadow: none;
-}
+@media (hover: hover) {
+  .btn-explore:hover {
+    border-color: rgba(0, 0, 0, 0.85);
+    background-color: transparent;
+    color: var(--color-text-primary);
+    box-shadow: none;
+  }
 
-.btn-explore:hover .btn-text {
-  transform: translateX(1px);
-}
+  .btn-explore:hover .btn-text {
+    transform: translateX(1px);
+  }
 
-.btn-explore:hover .btn-arrow {
-  transform: translateX(4px);
+  .btn-explore:hover .btn-arrow {
+    transform: translateX(4px);
+  }
 }
 
 .btn-explore:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
 }
 
 /* Back Button in Selector */
@@ -147,9 +156,17 @@
   transition: all var(--transition-fast);
 }
 
-.btn-back:hover {
+@media (hover: hover) {
+  .btn-back:hover {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+.btn-back:active {
   background-color: #000000;
   color: #ffffff;
+  transform: scale(0.97);
 }
 
 /* Experience Navigation List & Crawlable Anchor Buttons */
@@ -235,26 +252,32 @@
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-.experience-link:hover {
-  border-color: rgba(0, 0, 0, 0.35);
-  padding-left: 16px;
+@media (hover: hover) {
+  .experience-link:hover {
+    border-color: rgba(0, 0, 0, 0.35);
+    padding-left: 16px;
+  }
+
+  .experience-link:hover .exp-num,
+  .experience-link:hover .exp-title,
+  .experience-link:hover .exp-arrow {
+    color: var(--color-text-primary);
+  }
+
+  .experience-link:hover .exp-tag {
+    color: #000000;
+    background-color: var(--color-neon-green);
+    padding: 4px 8px;
+    box-shadow: 0 0 12px var(--color-neon-glow);
+  }
+
+  .experience-link:hover .exp-arrow {
+    transform: translateX(6px);
+  }
 }
 
-.experience-link:hover .exp-num,
-.experience-link:hover .exp-title,
-.experience-link:hover .exp-arrow {
-  color: var(--color-text-primary);
-}
-
-.experience-link:hover .exp-tag {
-  color: #000000;
-  background-color: var(--color-neon-green);
-  padding: 4px 8px;
-  box-shadow: 0 0 12px var(--color-neon-glow);
-}
-
-.experience-link:hover .exp-arrow {
-  transform: translateX(6px);
+.experience-link:active {
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 /* Exit Stage Control */
@@ -280,12 +303,19 @@
     transform var(--transition-fast);
 }
 
-.btn-exit-stage:hover {
+@media (hover: hover) {
+  .btn-exit-stage:hover {
+    background-color: var(--color-neon-green);
+    border-color: var(--color-neon-green);
+    color: #000000;
+    box-shadow: 0 0 20px var(--color-neon-glow);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-exit-stage:active {
+  transform: scale(0.96);
   background-color: var(--color-neon-green);
-  border-color: var(--color-neon-green);
-  color: #000000;
-  box-shadow: 0 0 20px var(--color-neon-glow);
-  transform: translateY(-1px);
 }
 
 .stage-meta {
