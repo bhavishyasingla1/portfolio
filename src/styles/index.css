@@ -210,31 +210,38 @@ body.mode-selector .grid-background {
 /* Responsive Rules for Mobile Devices & Portrait Viewports */
 @media (max-width: 1024px), (orientation: portrait) {
   .site-container {
-    padding: max(16px, env(safe-area-inset-top)) 20px max(14px, env(safe-area-inset-bottom)) 20px;
+    padding: max(18px, env(safe-area-inset-top)) 24px max(16px, env(safe-area-inset-bottom)) 24px;
     height: 100dvh;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   .site-header {
     order: 1;
-    margin-bottom: 0;
+    margin-bottom: 8px;
     padding-left: 0;
     flex-shrink: 0;
   }
 
+  .brand {
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+  }
+
   .main-viewport {
     order: 2;
-    flex: 1;
+    flex: 1 1 auto;
     width: 100%;
     height: 100%;
     min-height: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: stretch;
     overflow: hidden;
     position: relative;
   }
@@ -242,24 +249,27 @@ body.mode-selector .grid-background {
   .view-panel {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 8px 0;
+    justify-content: space-between;
+    padding: 0;
   }
 
-  /* Landing View on Mobile */
+  /* Landing View on Mobile: Top-to-Bottom Editorial Narrative */
   .hero-layout {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
     width: 100%;
-    margin: auto 0;
+    margin: 0;
+    gap: 0;
     flex-shrink: 0;
   }
 
@@ -271,18 +281,58 @@ body.mode-selector .grid-background {
     width: 100%;
     transform: none;
     z-index: 2;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.3rem, 10.5vw, 3.2rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-headline .headline-line {
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(10px, 2.7vw, 11px);
+    letter-spacing: 0.22em;
+    margin-bottom: 16px;
+    opacity: 0.65;
+  }
+
+  .cta-wrapper {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .btn-explore {
+    width: 100%;
+    max-width: 220px;
+    height: 48px;
+    min-height: 48px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .hero-visual {
-    margin-right: 0;
-    max-height: 38vh;
-    height: clamp(220px, 34vh, 380px);
+    flex: 1 1 0;
+    min-height: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     pointer-events: none;
-    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .hero-video {
@@ -291,37 +341,12 @@ body.mode-selector .grid-background {
     width: auto;
     aspect-ratio: 9 / 16;
     object-fit: contain;
+    object-position: bottom center;
     display: block;
     margin: 0 auto;
   }
 
-  .hero-headline {
-    font-size: clamp(2rem, 8.8vw, 3rem);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-    margin-bottom: 10px;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(10px, 2.7vw, 11.5px);
-    letter-spacing: 0.2em;
-    margin-bottom: 22px;
-  }
-
-  .cta-wrapper {
-    width: 100%;
-  }
-
-  .btn-explore {
-    width: 100%;
-    max-width: 220px;
-    height: 52px;
-    min-height: 52px;
-    font-size: 11.5px;
-    padding: 0 18px;
-  }
-
-  /* Social Links placed cleanly at the bottom */
+  /* Social Links placed cleanly across the bottom */
   .social-edge {
     order: 3;
     position: relative;
@@ -332,15 +357,22 @@ body.mode-selector .grid-background {
     padding-bottom: max(4px, env(safe-area-inset-bottom));
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-shrink: 0;
     z-index: 10;
   }
 
   .social-list {
-    gap: 16px;
-    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
+    gap: 12px;
+  }
+
+  .social-link {
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
   }
 
   .social-list li:last-child {
