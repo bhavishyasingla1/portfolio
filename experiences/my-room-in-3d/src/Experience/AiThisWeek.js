@@ -14,8 +14,9 @@ export default class AiThisWeek
         this.targetElement = this.experience.targetElement
 
         this.newsletterUrl = 'https://www.linkedin.com/newsletters/ai-this-week-7353859555715436544/'
-        this.lastHoverOpen = 0
         this.isHovered = false
+        this.cursorX = 0
+        this.cursorY = 0
 
         this.setModel()
         this.setRaycaster()
@@ -42,7 +43,7 @@ export default class AiThisWeek
             this.model.texture.minFilter = THREE.LinearMipmapLinearFilter
         }
 
-        // Geometry: square artwork card on TV (smaller, perfectly proportioned)
+        // Geometry: square artwork card on TV (proportional to TV bezels)
         this.model.geometry = new THREE.PlaneGeometry(0.95, 0.95)
         this.model.geometry.rotateY(- Math.PI * 0.5)
 
@@ -56,6 +57,31 @@ export default class AiThisWeek
 
         this.model.mesh = new THREE.Mesh(this.model.geometry, this.model.material)
         this.model.group.add(this.model.mesh)
+
+        // 3D text label directly below the artwork on the TV screen
+        const labelCanvas = document.createElement('canvas')
+        labelCanvas.width = 512
+        labelCanvas.height = 128
+        const lctx = labelCanvas.getContext('2d')
+        lctx.fillStyle = '#ffffff'
+        lctx.font = 'bold 44px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        lctx.textAlign = 'center'
+        lctx.textBaseline = 'middle'
+        lctx.fillText('AI THIS WEEK ↗', 256, 64)
+
+        const labelTexture = new THREE.CanvasTexture(labelCanvas)
+        labelTexture.encoding = THREE.sRGBEncoding
+        const labelGeo = new THREE.PlaneGeometry(0.85, 0.22)
+        labelGeo.rotateY(- Math.PI * 0.5)
+        const labelMat = new THREE.MeshBasicMaterial({
+            map: labelTexture,
+            transparent: true,
+            color: new THREE.Color(0.85, 0.85, 0.85),
+            side: THREE.DoubleSide
+        })
+        this.model.labelMesh = new THREE.Mesh(labelGeo, labelMat)
+        this.model.labelMesh.position.y = - 0.58
+        this.model.group.add(this.model.labelMesh)
     }
 
     setRaycaster()
@@ -65,19 +91,29 @@ export default class AiThisWeek
 
         this.onPointerMove = (_event) =>
         {
+            this.cursorX = _event.clientX
+            this.cursorY = _event.clientY
+
             const rect = this.targetElement.getBoundingClientRect()
             this.mouse.x = ((_event.clientX - rect.left) / rect.width) * 2 - 1
             this.mouse.y = - ((_event.clientY - rect.top) / rect.height) * 2 + 1
+
+            if (this.tooltip && this.isHovered)
+            {
+                this.updateTooltipPosition()
+            }
+
             this.checkIntersection()
         }
 
         this.onClick = () =>
         {
-            if (!this.model.mesh) return
+            const interactables = [this.model.mesh, this.model.labelMesh].filter(Boolean)
             this.raycaster.setFromCamera(this.mouse, this.camera.instance)
-            const intersects = this.raycaster.intersectObject(this.model.mesh)
+            const intersects = this.raycaster.intersectObjects(interactables)
             if (intersects.length > 0)
             {
+                // ONLY open after user clicks!
                 this.openNewsletter()
             }
         }
@@ -88,10 +124,11 @@ export default class AiThisWeek
 
     checkIntersection()
     {
-        if (!this.model.mesh) return
+        const interactables = [this.model.mesh, this.model.labelMesh].filter(Boolean)
+        if (interactables.length === 0) return
 
         this.raycaster.setFromCamera(this.mouse, this.camera.instance)
-        const intersects = this.raycaster.intersectObject(this.model.mesh)
+        const intersects = this.raycaster.intersectObjects(interactables)
         const hovered = intersects.length > 0
 
         if (hovered && !this.isHovered)
@@ -117,7 +154,18 @@ export default class AiThisWeek
                 })
             }
 
+            if (this.model.labelMesh && this.model.labelMesh.material && this.model.labelMesh.material.color)
+            {
+                gsap.to(this.model.labelMesh.material.color, {
+                    r: 1.0,
+                    g: 1.0,
+                    b: 1.0,
+                    duration: 0.3
+                })
+            }
+
             this.showTooltip()
+            // NOTE: Do NOT open link on hover! Only open when clicked.
         }
         else if (!hovered && this.isHovered)
         {
@@ -135,6 +183,16 @@ export default class AiThisWeek
             if (this.model.material && this.model.material.color)
             {
                 gsap.to(this.model.material.color, {
+                    r: 0.85,
+                    g: 0.85,
+                    b: 0.85,
+                    duration: 0.3
+                })
+            }
+
+            if (this.model.labelMesh && this.model.labelMesh.material && this.model.labelMesh.material.color)
+            {
+                gsap.to(this.model.labelMesh.material.color, {
                     r: 0.85,
                     g: 0.85,
                     b: 0.85,
@@ -164,7 +222,8 @@ export default class AiThisWeek
         this.tooltip.className = 'tv-newsletter-tooltip'
         this.tooltip.innerHTML = `
             <span class="tooltip-badge">NEWSLETTER</span>
-            <span class="tooltip-title">AI THIS WEEK &nearr; (Click to open)</span>
+            <span class="tooltip-title">AI THIS WEEK &nearr;</span>
+            <span class="tooltip-sub">(Click to open)</span>
         `
         document.body.appendChild(this.tooltip)
 
@@ -174,29 +233,28 @@ export default class AiThisWeek
                 position: fixed;
                 top: 0;
                 left: 0;
-                transform: translate(-50%, 0) scale(0.9);
-                background: rgba(0, 0, 0, 0.88);
+                background: rgba(10, 10, 14, 0.94);
                 border: 1px solid rgba(255, 30, 66, 0.7);
-                box-shadow: 0 0 18px rgba(255, 30, 66, 0.4);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 30, 66, 0.35);
                 color: #ffffff;
-                padding: 6px 14px;
+                padding: 6px 12px;
                 border-radius: 4px;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 font-size: 11px;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.08em;
                 display: flex;
                 align-items: center;
                 gap: 8px;
                 opacity: 0;
                 pointer-events: none;
-                transition: opacity 0.2s ease, transform 0.2s ease;
+                transition: opacity 0.15s ease;
                 z-index: 9999;
                 backdrop-filter: blur(8px);
                 white-space: nowrap;
+                will-change: transform;
             }
             .tv-newsletter-tooltip.is-visible {
                 opacity: 1;
-                transform: translate(-50%, 0) scale(1);
             }
             .tooltip-badge {
                 background: #ff1e42;
@@ -205,14 +263,36 @@ export default class AiThisWeek
                 font-weight: 800;
                 padding: 2px 6px;
                 border-radius: 2px;
-                letter-spacing: 0.15em;
+                letter-spacing: 0.12em;
             }
             .tooltip-title {
-                font-weight: 600;
+                font-weight: 700;
                 color: #fff;
+            }
+            .tooltip-sub {
+                font-size: 10px;
+                color: rgba(255, 255, 255, 0.65);
+                font-weight: 400;
             }
         `
         document.head.appendChild(style)
+    }
+
+    updateTooltipPosition()
+    {
+        if (!this.tooltip) return
+        const padding = 16
+        let x = this.cursorX + padding
+        let y = this.cursorY + padding
+        if (x + 220 > window.innerWidth)
+        {
+            x = this.cursorX - 220
+        }
+        if (y + 40 > window.innerHeight)
+        {
+            y = this.cursorY - 40
+        }
+        this.tooltip.style.transform = `translate3d(${x}px, ${y}px, 0)`
     }
 
     showTooltip()
@@ -232,26 +312,6 @@ export default class AiThisWeek
         }
     }
 
-    updateTooltipPosition()
-    {
-        if (!this.tooltip || !this.camera || !this.camera.instance) return
-
-        const worldPos = new THREE.Vector3(
-            this.model.group.position.x,
-            this.model.group.position.y + this.model.mesh.position.y - 0.55,
-            this.model.group.position.z + this.model.mesh.position.z
-        )
-        worldPos.project(this.camera.instance)
-
-        const width = window.innerWidth
-        const height = window.innerHeight
-        const x = (worldPos.x * 0.5 + 0.5) * width
-        const y = (- worldPos.y * 0.5 + 0.5) * height
-
-        this.tooltip.style.left = `${x}px`
-        this.tooltip.style.top = `${y}px`
-    }
-
     update()
     {
         if (!this.model.mesh) return
@@ -260,11 +320,6 @@ export default class AiThisWeek
         const time = this.time.elapsed * 0.001
         this.model.mesh.position.y = Math.sin(time * 1.4) * 0.04
         this.model.mesh.position.z = Math.cos(time * 1.1) * 0.05
-
-        if (this.isHovered)
-        {
-            this.updateTooltipPosition()
-        }
     }
 
     destroy()

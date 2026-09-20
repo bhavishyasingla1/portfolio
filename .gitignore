@@ -25,3 +25,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Local Screen Recordings & Temp Media
+*.mov
+*.mp4
+!experiences/my-room-in-3d/static/assets/*.mp4
