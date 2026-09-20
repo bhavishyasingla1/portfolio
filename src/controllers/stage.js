@@ -34,7 +34,9 @@ export class ExperienceStage {
 
     // Create fresh iframe
     const iframe = document.createElement('iframe');
-    iframe.src = config.path;
+    const relativePath = config.path.replace(/^\//, '');
+    const currentBase = window.location.href.split('#')[0].replace(/\/[^/]*$/, '/');
+    iframe.src = new URL(relativePath, currentBase).href;
     iframe.title = config.title;
     iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen');
     iframe.setAttribute('allowfullscreen', 'true');
