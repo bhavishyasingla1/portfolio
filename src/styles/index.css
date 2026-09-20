@@ -273,16 +273,17 @@ body.mode-selector .grid-background {
     width: 100%;
     padding-left: 0;
     transform: none;
-    margin-top: 4px;
-    margin-bottom: 12px;
+    margin-top: 2px;
+    margin-bottom: 8px;
     z-index: 2;
   }
 
   .hero-headline {
-    font-size: clamp(2.3rem, 9.8vw, 3rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    margin-bottom: 10px;
+    font-size: clamp(3.2rem, 13.5vw, 4.4rem);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    font-weight: 800;
+    margin-bottom: 8px;
     display: flex;
     flex-direction: column;
   }
@@ -292,9 +293,10 @@ body.mode-selector .grid-background {
   }
 
   .hero-subtitle {
-    font-size: 11.5px;
+    font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.22em;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     opacity: 0.7;
   }
 
@@ -304,10 +306,11 @@ body.mode-selector .grid-background {
 
   .btn-explore {
     width: 100%;
-    max-width: 230px;
+    max-width: 235px;
     height: 48px;
     min-height: 48px;
     font-size: 11.5px;
+    font-weight: 700;
     letter-spacing: 0.16em;
     padding: 0 20px;
     display: inline-flex;
@@ -321,19 +324,20 @@ body.mode-selector .grid-background {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     margin: 0;
     padding: 0;
     position: relative;
+    overflow: hidden;
   }
 
   .hero-video {
-    height: clamp(380px, 58vh, 600px);
+    height: 100%;
     max-height: 100%;
     width: auto;
     aspect-ratio: 9 / 16;
     object-fit: contain;
-    object-position: bottom center;
+    object-position: center;
     display: block;
     margin: 0 auto;
     filter: brightness(0.995);

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <title>Infinite World</title>
         <link rel="stylesheet" href="./sources/style.css">
 
@@ -68,15 +68,21 @@
             .mobile-dpad {
                 display: flex !important;
                 position: fixed;
-                bottom: max(28px, env(safe-area-inset-bottom, 28px));
-                left: max(24px, env(safe-area-inset-left, 24px));
-                z-index: 1000;
+                bottom: max(72px, calc(env(safe-area-inset-bottom, 0px) + 56px));
+                left: max(20px, calc(env(safe-area-inset-left, 0px) + 16px));
+                z-index: 99999;
                 pointer-events: auto;
                 user-select: none;
                 touch-action: none;
                 flex-direction: column;
                 align-items: center;
                 gap: 8px;
+            }
+            @media (min-width: 901px) and (hover: hover) {
+                .mobile-dpad {
+                    bottom: 32px;
+                    left: 32px;
+                }
             }
             .mobile-dpad .dpad-middle-row {
                 display: flex;

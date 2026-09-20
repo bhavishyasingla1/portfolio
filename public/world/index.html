@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <title>Infinite World</title>
         
 
@@ -26,8 +26,8 @@
         <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADh0lEQVR4nF1TbUxbZRR+3ntvbyml0Eq1TPly7VghKmOdwAQ3hI0JQtQo/t/I/KFmmqiJMzqGZpMZNQvxD/ixuOlIyKhkczhBZ3DGQUUpxmZksMJGiyPtKu1GP+97jyk6sniSk3Nyznmek5wPhv+kn0h8jjGOjg5h4K2DTTLUxmRKsUk6GXpgloCRn4GhTsbUtVoA7E5wXyxVlytLXVoBVRKADADBcBi+P9xgsoxMq90lmU1vPMvYj2sk/URimuRMQtkzSkSTRNQ55eGjKUX5+MtjvLG6gtvMRmVzYR5/pqmBesZddCxB7bcbs1UnSrUGiV/wXV9SA+EwpTRasXD+Eo6270YCDCkmYjmWRGw5xB+t3sL2Dp0XItlZ2/YwdkFwTExozDp0Xw4EMTAxSVMLfrHUYsbkyDCe3FSAvr31eGeHHa9UFcJekCde8kzT3PffIRPofr6nRyPtf8CxM6aoFTcCQdVhs4k2UzbC0TjKNxSgJMsOX0xBfWUZ7EshmIwGdJ12iZFAQDUCmzY0P90oaUU0J1Mpys3JoV0mDeKyHjNxwlZHCdjYFSwuXsefl+fhuhZCWf5dsBQXw/F4E8kA3W3MbhZWOKwWrchaol5mGv4cuRcHYDVkgIJ/4VYojJwcIyyZOrywayuQiOGlw++hqKiIMYAZNJJVUiQgMx6G2X0OiWgUsXUliEsaRAJ+RCMJxGUz5n1+aOQF3LP9CVhbn0I4mYQoy0ivWuAirmTFQpTNo6TXZ0IWVJhDC/iF5UObrcX9RhW2+/T4xhvEuYge3rk5CLJMSVUlUskrJYEh3cL0izAZWIaigXJjCa+/dhDBlZvQW1YwfW0GPKVgUdXi7Ohv0Lz/ITpPfsXyqx5m+vits8KvwEjfF073mR8mhW8jBt5z0YfJxb+Rv9GGal0EdXka1OUCtuJ8GEsfQoZWy08cOCCEr/qndnhnhqVexlL7D320792v+35aOX+c8cgyX19WJlbl3Yt1pbthDPgAsxUubxzSJ5/yJe8MK99YArv/6j5WU5NCW1ubKAgMn/X2ttdUVlLl5graVungXR1vK0TEuZLgE+NjypbyB3lD7SPU2tJKHo/n31Pu7199g1WStD01OPjYB0cOj2+vraGjRw5RekppffPVl2lnQz2dPHF8fHZ2tv5OzJrcDhCR4HQ6W353jXWTEhtSYjeHBp2nut1ud0s693/wPw+RqMlGnZ/QAAAAAElFTkSuQmCC" />
         <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
         <link rel="shortcut icon" href="./assets/favicon-001bb586.ico" />
-      <script type="module" crossorigin src="./assets/index-423f0384.js"></script>
-      <link rel="stylesheet" href="./assets/index-fb2bb8fd.css">
+      <script type="module" crossorigin src="./assets/index-97a71ffe.js"></script>
+      <link rel="stylesheet" href="./assets/index-07577b83.css">
     </head>
     <body>
         <script>
@@ -70,15 +70,21 @@
             .mobile-dpad {
                 display: flex !important;
                 position: fixed;
-                bottom: max(28px, env(safe-area-inset-bottom, 28px));
-                left: max(24px, env(safe-area-inset-left, 24px));
-                z-index: 1000;
+                bottom: max(72px, calc(env(safe-area-inset-bottom, 0px) + 56px));
+                left: max(20px, calc(env(safe-area-inset-left, 0px) + 16px));
+                z-index: 99999;
                 pointer-events: auto;
                 user-select: none;
                 touch-action: none;
                 flex-direction: column;
                 align-items: center;
                 gap: 8px;
+            }
+            @media (min-width: 901px) and (hover: hover) {
+                .mobile-dpad {
+                    bottom: 32px;
+                    left: 32px;
+                }
             }
             .mobile-dpad .dpad-middle-row {
                 display: flex;
