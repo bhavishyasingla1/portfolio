@@ -28,15 +28,15 @@ export class PortalController {
   }
 
   bindEvents() {
-    // Brand link returns to home
+    // Brand link returns to home smoothly without full page reload
     const brandLink = document.getElementById('brand-link');
     if (brandLink) {
-      brandLink.addEventListener('click', () => {
+      brandLink.addEventListener('click', (e) => {
+        e.preventDefault();
         if (this.stage.isActive()) {
-          this.closeExperience();
-        } else {
-          this.showLanding(true);
+          this.stage.close();
         }
+        this.showLanding(true);
       });
     }
 

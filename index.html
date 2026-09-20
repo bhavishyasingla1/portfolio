@@ -42,13 +42,40 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#f5f5f7" />
 
-  <!-- 7. Typography Fonts -->
+  <!-- 7. Typography Fonts & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/index.css" />
+
+  <!-- Critical Anti-FOUC Styles (Guarantees no raw text or offscreen UI flashes) -->
+  <style>
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .view-selector,
+    .experience-stage {
+      display: none;
+    }
+    .view-selector.is-active,
+    .experience-stage.is-active {
+      display: flex;
+    }
+    body {
+      background-color: #f5f5f7;
+    }
+  </style>
 
   <!-- 8. Schema.org JSON-LD Structured Data (Section 6 google.md) -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="schema-jsonld">
   {
     "@context": "https://schema.org",
     "@graph": [
