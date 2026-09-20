@@ -18,7 +18,7 @@ check_endpoint() {
   local url="${BASE_URL}${path}"
   
   local status
-  status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+  status=$(curl -s -L -o /dev/null -w "%{http_code}" "$url")
   
   if [ "$status" -eq "$expected_status" ]; then
     echo " [PASS] $path -> HTTP $status"
