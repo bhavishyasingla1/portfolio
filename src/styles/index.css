@@ -210,19 +210,19 @@ body.mode-selector .grid-background {
 /* Responsive Rules for Mobile Devices & Portrait Viewports */
 @media (max-width: 1024px), (orientation: portrait) {
   .site-container {
-    padding: max(18px, env(safe-area-inset-top)) 24px max(16px, env(safe-area-inset-bottom)) 24px;
+    padding: max(18px, env(safe-area-inset-top)) 24px max(14px, env(safe-area-inset-bottom)) 24px;
     height: 100dvh;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-x: hidden;
+    overflow: hidden;
     box-sizing: border-box;
   }
 
   .site-header {
     order: 1;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     padding-left: 0;
     flex-shrink: 0;
   }
@@ -240,8 +240,6 @@ body.mode-selector .grid-background {
     height: 100%;
     min-height: 0;
     display: flex;
-    align-items: stretch;
-    justify-content: stretch;
     overflow: hidden;
     position: relative;
   }
@@ -251,44 +249,39 @@ body.mode-selector .grid-background {
     inset: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0;
   }
 
-  /* Landing View on Mobile: Top-to-Bottom Editorial Narrative */
+  /* Landing View on Mobile: Balanced Architectural Presentation */
   .hero-layout {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: stretch;
     height: 100%;
     width: 100%;
     margin: 0;
     gap: 0;
-    flex-shrink: 0;
   }
 
   .hero-content {
     flex: 0 0 auto;
-    height: auto;
-    padding-left: 0;
-    max-width: 100%;
     width: 100%;
+    padding-left: 0;
     transform: none;
-    z-index: 2;
     margin-top: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 18px;
+    z-index: 2;
   }
 
   .hero-headline {
-    font-size: clamp(2.3rem, 10.5vw, 3.2rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    font-size: clamp(1.85rem, 8vw, 2.25rem);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
     margin-bottom: 8px;
     display: flex;
     flex-direction: column;
@@ -299,40 +292,40 @@ body.mode-selector .grid-background {
   }
 
   .hero-subtitle {
-    font-size: clamp(10px, 2.7vw, 11px);
+    font-size: 10.5px;
     letter-spacing: 0.22em;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     opacity: 0.65;
   }
 
   .cta-wrapper {
     width: 100%;
-    margin-bottom: 4px;
   }
 
   .btn-explore {
     width: 100%;
-    max-width: 220px;
-    height: 48px;
-    min-height: 48px;
+    max-width: 210px;
+    height: 42px;
+    min-height: 42px;
     font-size: 11px;
     letter-spacing: 0.16em;
-    padding: 0 20px;
+    padding: 0 18px;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .hero-visual {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-height: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    pointer-events: none;
     margin: 0;
     padding: 0;
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-video {
@@ -344,6 +337,7 @@ body.mode-selector .grid-background {
     object-position: bottom center;
     display: block;
     margin: 0 auto;
+    filter: brightness(0.995);
   }
 
   /* Social Links placed cleanly across the bottom */
@@ -353,8 +347,8 @@ body.mode-selector .grid-background {
     bottom: auto;
     right: auto;
     margin-top: auto;
-    padding-top: 12px;
-    padding-bottom: max(4px, env(safe-area-inset-bottom));
+    padding-top: 10px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -367,23 +361,18 @@ body.mode-selector .grid-background {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
   }
 
   .social-link {
     font-size: 10.5px;
     letter-spacing: 0.16em;
+    padding: 6px 2px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .social-list li:last-child {
     margin-left: 0;
-  }
-
-  .social-link {
-    font-size: 10.5px;
-    padding: 8px 4px;
-    display: inline-flex;
-    align-items: center;
   }
 
   /* Selector View on Mobile */
@@ -503,13 +492,12 @@ body.mode-selector .grid-background {
     padding: max(12px, env(safe-area-inset-top)) 16px max(12px, env(safe-area-inset-bottom)) 16px;
   }
 
-  .hero-video {
-    height: clamp(140px, 24vh, 200px);
-    max-height: 24vh;
+  .hero-content {
+    margin-bottom: 12px;
   }
 
   .hero-headline {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .exp-title {
