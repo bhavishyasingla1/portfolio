@@ -159,7 +159,7 @@ body.mode-selector .grid-background {
   display: flex;
   align-items: center;
   gap: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 
 /* Experience Stage (Full Viewport Iframe Container) */
