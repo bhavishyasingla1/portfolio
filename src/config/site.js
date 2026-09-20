@@ -18,19 +18,13 @@ export const SITE_CONFIG = {
     jobTitle: 'AI Builder & Creative Technologist',
     url: 'https://bhavishyasingla.com',
     sameAs: [
-      'https://x.com/Bhavishyas_1',
       'https://www.linkedin.com/in/bhavishyasingla1/',
       'https://www.youtube.com/@bhavishyasingla1',
-      'https://www.instagram.com/bhavishyasingla1/'
+      'https://www.instagram.com/bhavishyasingla1/',
+      'https://x.com/Bhavishyas_1'
     ]
   },
   socials: [
-    {
-      id: 'x',
-      label: 'X',
-      url: 'https://x.com/Bhavishyas_1',
-      rel: 'noopener noreferrer me'
-    },
     {
       id: 'linkedin',
       label: 'LinkedIn',
@@ -47,6 +41,12 @@ export const SITE_CONFIG = {
       id: 'instagram',
       label: 'Instagram',
       url: 'https://www.instagram.com/bhavishyasingla1/',
+      rel: 'noopener noreferrer me'
+    },
+    {
+      id: 'x',
+      label: 'X',
+      url: 'https://x.com/Bhavishyas_1',
       rel: 'noopener noreferrer me'
     }
   ],

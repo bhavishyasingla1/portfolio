@@ -26,33 +26,11 @@
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-text-muted);
-  position: relative;
-  transition: 
-    color var(--transition-fast),
-    text-shadow var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.social-link::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background-color: var(--color-neon-red);
-  box-shadow: 0 0 8px var(--color-neon-red-glow);
-  transition: width var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 .social-link:hover {
   color: var(--color-neon-red);
-  text-shadow: 0 0 10px var(--color-neon-red-glow), 0 0 22px var(--color-neon-red-soft);
-  transform: translateY(-1px);
-}
-
-.social-link:hover::after {
-  width: 100%;
 }
 
 /* Explore CTA Button */

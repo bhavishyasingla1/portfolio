@@ -40,7 +40,7 @@ export default class LaptopSlideshow
         this.nextIndex = 1
         this.fadeProgress = 1 // 1 = fully on current image
         this.isFading = false
-        this.slideInterval = 1800 // 1.8 seconds per slide
+        this.slideInterval = 2000 // 2 seconds per slide
         this.fadeDuration = 350 // 350ms smooth cross-fade
         this.lastSwitchTime = Date.now()
         this.fadeStartTime = 0
@@ -74,8 +74,10 @@ export default class LaptopSlideshow
         if (!this.resources.items.macScreenModel) return
 
         this.mesh = this.resources.items.macScreenModel.scene.children[0]
+        // Tuned ambient brightness & subtle warmth to match the warm baked room lighting
         this.material = new THREE.MeshBasicMaterial({
-            map: this.texture
+            map: this.texture,
+            color: new THREE.Color(0.74, 0.72, 0.70)
         })
         this.mesh.material = this.material
         this.scene.add(this.mesh)

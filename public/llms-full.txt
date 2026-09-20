@@ -35,7 +35,7 @@ All three experiences are actual open-source projects created by creative develo
 - **SEO & Search Standards**: Compliant with Google Search Essentials, RFC 9309 robots.txt, Schema.org JSON-LD structured data, and Core Web Vitals targets.
 
 ## Social & Community Channels
-- X (Twitter): https://x.com/Bhavishyas_1
 - LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/
 - YouTube: https://www.youtube.com/@bhavishyasingla1
 - Instagram: https://www.instagram.com/bhavishyasingla1/
+- X (Twitter): https://x.com/Bhavishyas_1

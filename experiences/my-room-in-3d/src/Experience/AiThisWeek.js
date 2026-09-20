@@ -42,13 +42,14 @@ export default class AiThisWeek
             this.model.texture.minFilter = THREE.LinearMipmapLinearFilter
         }
 
-        // Geometry: square artwork card on TV
-        this.model.geometry = new THREE.PlaneGeometry(1.35, 1.35)
+        // Geometry: square artwork card on TV (smaller, perfectly proportioned)
+        this.model.geometry = new THREE.PlaneGeometry(0.95, 0.95)
         this.model.geometry.rotateY(- Math.PI * 0.5)
 
-        // Material
+        // Material with tuned ambient brightness
         this.model.material = new THREE.MeshBasicMaterial({
             map: this.model.texture,
+            color: new THREE.Color(0.85, 0.85, 0.85),
             transparent: true,
             side: THREE.DoubleSide
         })
@@ -106,6 +107,16 @@ export default class AiThisWeek
                 ease: 'power2.out'
             })
 
+            if (this.model.material && this.model.material.color)
+            {
+                gsap.to(this.model.material.color, {
+                    r: 1.0,
+                    g: 1.0,
+                    b: 1.0,
+                    duration: 0.3
+                })
+            }
+
             this.showTooltip()
             this.openNewsletter('hover')
         }
@@ -121,6 +132,16 @@ export default class AiThisWeek
                 duration: 0.3,
                 ease: 'power2.out'
             })
+
+            if (this.model.material && this.model.material.color)
+            {
+                gsap.to(this.model.material.color, {
+                    r: 0.85,
+                    g: 0.85,
+                    b: 0.85,
+                    duration: 0.3
+                })
+            }
 
             this.hideTooltip()
         }
