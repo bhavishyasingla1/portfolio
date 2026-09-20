@@ -14,6 +14,7 @@ export default class Controls
 
         this.setKeys()
         this.setPointer()
+        this.setMobileControls()
 
         this.events.on('debugDown', () =>
         {
@@ -126,8 +127,17 @@ export default class Controls
         this.pointer.delta = { x: 0, y: 0 }
         this.pointer.previous = { x: 0, y: 0 }
 
+        let activeTouches = 0
+        window.addEventListener('touchstart', (e) => { activeTouches = e.touches.length }, { passive: true })
+        window.addEventListener('touchend', (e) => { activeTouches = e.touches.length }, { passive: true })
+        window.addEventListener('touchcancel', (e) => { activeTouches = e.touches.length }, { passive: true })
+
         window.addEventListener('pointerdown', (event) =>
         {
+            if (event.target && event.target.closest && event.target.closest('#mobile-dpad'))
+            {
+                return
+            }
             this.pointer.down = true
             this.pointer.previous.x = event.clientX
             this.pointer.previous.y = event.clientY
@@ -136,6 +146,7 @@ export default class Controls
         window.addEventListener('pointermove', (event) =>
         {
             if(!this.pointer.down) return
+            if(activeTouches >= 2) return // Don't drag camera during 2-finger pinch zoom
 
             const movementX = typeof event.movementX === 'number' && event.movementX !== 0 
                 ? event.movementX 
@@ -155,6 +166,60 @@ export default class Controls
         {
             this.pointer.down = false
         })
+    }
+
+    setMobileControls()
+    {
+        const initDpad = () =>
+        {
+            const dpad = document.getElementById('mobile-dpad')
+            if(!dpad) return
+
+            const buttons = dpad.querySelectorAll('.dpad-btn')
+            buttons.forEach((btn) =>
+            {
+                const dir = btn.dataset.direction
+                if(!dir) return
+
+                const startMove = (e) =>
+                {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    this.keys.down[dir] = true
+                    this.events.emit('keyDown', dir)
+                    this.events.emit(`${dir}Down`)
+                    btn.classList.add('is-active')
+                }
+
+                const stopMove = (e) =>
+                {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    this.keys.down[dir] = false
+                    this.events.emit('keyUp', dir)
+                    this.events.emit(`${dir}Up`)
+                    btn.classList.remove('is-active')
+                }
+
+                btn.addEventListener('pointerdown', startMove)
+                btn.addEventListener('pointerup', stopMove)
+                btn.addEventListener('pointercancel', stopMove)
+                btn.addEventListener('pointerleave', stopMove)
+                btn.addEventListener('touchstart', startMove, { passive: false })
+                btn.addEventListener('touchend', stopMove, { passive: false })
+                btn.addEventListener('touchcancel', stopMove, { passive: false })
+                btn.addEventListener('contextmenu', (e) => e.preventDefault())
+            })
+        }
+
+        if (document.readyState === 'loading')
+        {
+            document.addEventListener('DOMContentLoaded', initDpad)
+        }
+        else
+        {
+            initDpad()
+        }
     }
 
     update()

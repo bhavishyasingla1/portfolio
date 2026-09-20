@@ -113,8 +113,8 @@ export default class Camera
         // Set up
         this.zoom = {}
         this.zoom.easing = 0.1
-        this.zoom.minDistance = 14
-        this.zoom.amplitude = 15
+        this.zoom.minDistance = 9
+        this.zoom.amplitude = 22
         this.zoom.value = this.config.cyberTruck ? 0.3 : 0.5
         this.zoom.targetValue = this.zoom.value
         this.zoom.distance = this.zoom.minDistance + this.zoom.amplitude * this.zoom.value
@@ -131,28 +131,28 @@ export default class Camera
         this.zoom.touch.startDistance = 0
         this.zoom.touch.startValue = 0
 
-        this.renderer.domElement.addEventListener('touchstart', (_event) =>
+        window.addEventListener('touchstart', (_event) =>
         {
             if(_event.touches.length === 2)
             {
                 this.zoom.touch.startDistance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientY - _event.touches[1].clientY)
                 this.zoom.touch.startValue = this.zoom.targetValue
             }
-        })
+        }, { passive: true })
 
-        this.renderer.domElement.addEventListener('touchmove', (_event) =>
+        window.addEventListener('touchmove', (_event) =>
         {
-            if(_event.touches.length === 2)
+            if(_event.touches.length === 2 && this.zoom.touch.startDistance > 0)
             {
                 _event.preventDefault()
 
                 const distance = Math.hypot(_event.touches[0].clientX - _event.touches[1].clientX, _event.touches[0].clientY - _event.touches[1].clientY)
                 const ratio = distance / this.zoom.touch.startDistance
 
-                this.zoom.targetValue = this.zoom.touch.startValue - (ratio - 1)
+                this.zoom.targetValue = this.zoom.touch.startValue - (ratio - 1) * 1.5
                 this.zoom.targetValue = Math.min(Math.max(this.zoom.targetValue, 0), 1)
             }
-        })
+        }, { passive: false })
 
         // Time tick event
         this.time.on('tick', () =>

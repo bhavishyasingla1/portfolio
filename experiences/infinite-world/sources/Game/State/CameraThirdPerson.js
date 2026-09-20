@@ -17,10 +17,44 @@ export default class CameraThirdPerson
         this.position = vec3.create()
         this.quaternion = quat2.create()
         this.distance = 15
+        this.distanceLimits = { min: 6, max: 40 }
+        this.touchDistance = 0
         this.phi = Math.PI * 0.45
         this.theta = - Math.PI * 0.25
         this.aboveOffset = 2
         this.phiLimits = { min: 0.1, max: Math.PI - 0.1 }
+
+        window.addEventListener('wheel', (event) =>
+        {
+            this.distance += event.deltaY * 0.02
+            this.distance = Math.min(Math.max(this.distance, this.distanceLimits.min), this.distanceLimits.max)
+        }, { passive: true })
+
+        window.addEventListener('touchstart', (event) =>
+        {
+            if (event.touches.length === 2)
+            {
+                this.touchDistance = Math.hypot(
+                    event.touches[0].clientX - event.touches[1].clientX,
+                    event.touches[0].clientY - event.touches[1].clientY
+                )
+            }
+        }, { passive: true })
+
+        window.addEventListener('touchmove', (event) =>
+        {
+            if (event.touches.length === 2 && this.touchDistance > 0)
+            {
+                const currentDistance = Math.hypot(
+                    event.touches[0].clientX - event.touches[1].clientX,
+                    event.touches[0].clientY - event.touches[1].clientY
+                )
+                const delta = (this.touchDistance - currentDistance) * 0.08
+                this.distance += delta
+                this.distance = Math.min(Math.max(this.distance, this.distanceLimits.min), this.distanceLimits.max)
+                this.touchDistance = currentDistance
+            }
+        }, { passive: true })
     }
 
     activate()

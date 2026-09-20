@@ -20,15 +20,16 @@ export default class Navigation
         this.view = {}
 
         const isPortrait = this.config.width < this.config.height
-        const initialRadius = isPortrait ? 30 * Math.max(1, (this.config.height / this.config.width) * 0.72) : 30
+        const initialRadius = isPortrait ? 30 * Math.max(1, (this.config.height / this.config.width) * 0.82) : 30
+        const initialTheta = isPortrait ? - Math.PI * 0.20 : - Math.PI * 0.25
 
         this.view.spherical = {}
-        this.view.spherical.value = new THREE.Spherical(initialRadius, Math.PI * 0.35, - Math.PI * 0.25)
+        this.view.spherical.value = new THREE.Spherical(initialRadius, Math.PI * 0.35, initialTheta)
         // this.view.spherical.value.radius = 5
         this.view.spherical.smoothed = this.view.spherical.value.clone()
-        this.view.spherical.smoothing = 0.005
+        this.view.spherical.smoothing = 0.012
         this.view.spherical.limits = {}
-        this.view.spherical.limits.radius = { min: 10, max: isPortrait ? 85 : 50 }
+        this.view.spherical.limits.radius = { min: 8, max: isPortrait ? 95 : 65 }
         this.view.spherical.limits.phi = { min: 0.01, max: Math.PI * 0.5 }
         this.view.spherical.limits.theta = { min: - Math.PI * 0.5, max: 0 }
 
@@ -123,20 +124,25 @@ export default class Navigation
          */
         this.view.touch = {
             distance: 0,
-            startRadius: 0
+            startRadius: 0,
+            startX: 0,
+            startY: 0,
+            hasMoved: false
         }
 
         this.view.onTouchStart = (_event) =>
         {
-            _event.preventDefault()
-
             if(_event.touches.length === 1)
             {
                 this.view.drag.alternative = false
+                this.view.touch.startX = _event.touches[0].clientX
+                this.view.touch.startY = _event.touches[0].clientY
+                this.view.touch.hasMoved = false
                 this.view.down(_event.touches[0].clientX, _event.touches[0].clientY)
             }
             else if(_event.touches.length === 2)
             {
+                _event.preventDefault()
                 this.view.drag.alternative = true
                 this.view.touch.distance = Math.hypot(
                     _event.touches[0].clientX - _event.touches[1].clientX,
@@ -146,19 +152,26 @@ export default class Navigation
             }
 
             window.addEventListener('touchend', this.view.onTouchEnd)
-            window.addEventListener('touchmove', this.view.onTouchMove)
+            window.addEventListener('touchmove', this.view.onTouchMove, { passive: false })
         }
 
         this.view.onTouchMove = (_event) =>
         {
-            _event.preventDefault()
-            
             if(_event.touches.length === 1)
             {
-                this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
+                const dist = Math.hypot(
+                    _event.touches[0].clientX - this.view.touch.startX,
+                    _event.touches[0].clientY - this.view.touch.startY
+                )
+                if (dist > 6) {
+                    this.view.touch.hasMoved = true
+                    _event.preventDefault()
+                    this.view.move(_event.touches[0].clientX, _event.touches[0].clientY)
+                }
             }
             else if(_event.touches.length === 2)
             {
+                _event.preventDefault()
                 const distance = Math.hypot(
                     _event.touches[0].clientX - _event.touches[1].clientX,
                     _event.touches[0].clientY - _event.touches[1].clientY
@@ -171,14 +184,13 @@ export default class Navigation
                         Math.max(this.view.spherical.value.radius, this.view.spherical.limits.radius.min),
                         this.view.spherical.limits.radius.max
                     )
+                    this.view.spherical.smoothed.radius += (this.view.spherical.value.radius - this.view.spherical.smoothed.radius) * 0.4
                 }
             }
         }
 
         this.view.onTouchEnd = (_event) =>
         {
-            _event.preventDefault()
-            
             this.view.up()
 
             if(_event.touches.length === 0)
