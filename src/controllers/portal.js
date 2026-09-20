@@ -229,8 +229,9 @@ export class PortalController {
     this.gridBackground.style.setProperty('--grid-offset-x', `${offsetX.toFixed(3)}px`);
     this.gridBackground.style.setProperty('--grid-offset-y', `${offsetY.toFixed(3)}px`);
 
-    // Lock brand and hero text flush to the grid lines for architectural symmetry
-    if (window.innerWidth > 900) {
+    // Lock brand and hero text flush to the grid lines for architectural symmetry on desktop landscape
+    const isDesktop = window.innerWidth > 1024 && window.innerWidth > window.innerHeight;
+    if (isDesktop) {
       document.documentElement.style.setProperty('--grid-size', `${gridSize.toFixed(3)}px`);
 
       const container = document.querySelector('.site-container');

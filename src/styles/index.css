@@ -207,8 +207,8 @@ body.mode-selector .grid-background {
   display: block;
 }
 
-/* Responsive Rules for Mobile Devices */
-@media (max-width: 768px) {
+/* Responsive Rules for Mobile Devices & Portrait Viewports */
+@media (max-width: 1024px), (orientation: portrait) {
   .site-container {
     padding: max(16px, env(safe-area-inset-top)) 20px max(14px, env(safe-area-inset-bottom)) 20px;
     height: 100dvh;
@@ -275,8 +275,8 @@ body.mode-selector .grid-background {
 
   .hero-visual {
     margin-right: 0;
-    max-height: 36vh;
-    height: clamp(220px, 33vh, 290px);
+    max-height: 38vh;
+    height: clamp(220px, 34vh, 380px);
     width: 100%;
     display: flex;
     justify-content: center;
