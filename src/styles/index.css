@@ -274,15 +274,15 @@ body.mode-selector .grid-background {
     padding-left: 0;
     transform: none;
     margin-top: 4px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     z-index: 2;
   }
 
   .hero-headline {
-    font-size: clamp(1.85rem, 8vw, 2.25rem);
-    line-height: 0.94;
-    letter-spacing: -0.035em;
-    margin-bottom: 8px;
+    font-size: clamp(2.3rem, 9.8vw, 3rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
   }
@@ -292,10 +292,10 @@ body.mode-selector .grid-background {
   }
 
   .hero-subtitle {
-    font-size: 10.5px;
+    font-size: 11.5px;
     letter-spacing: 0.22em;
-    margin-bottom: 14px;
-    opacity: 0.65;
+    margin-bottom: 16px;
+    opacity: 0.7;
   }
 
   .cta-wrapper {
@@ -304,12 +304,12 @@ body.mode-selector .grid-background {
 
   .btn-explore {
     width: 100%;
-    max-width: 210px;
-    height: 42px;
-    min-height: 42px;
-    font-size: 11px;
+    max-width: 230px;
+    height: 48px;
+    min-height: 48px;
+    font-size: 11.5px;
     letter-spacing: 0.16em;
-    padding: 0 18px;
+    padding: 0 20px;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -325,11 +325,10 @@ body.mode-selector .grid-background {
     margin: 0;
     padding: 0;
     position: relative;
-    overflow: hidden;
   }
 
   .hero-video {
-    height: 100%;
+    height: clamp(380px, 58vh, 600px);
     max-height: 100%;
     width: auto;
     aspect-ratio: 9 / 16;
