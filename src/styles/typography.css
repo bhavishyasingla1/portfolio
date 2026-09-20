@@ -27,7 +27,7 @@
   color: var(--color-text-primary);
   text-transform: uppercase;
   margin-bottom: 28px;
-  margin-left: -0.025em; /* Optically aligns the stem of F with container boundary */
+  margin-left: -0.07em; /* Optically aligns stem of F with button and subheading */
 }
 
 .headline-line {
@@ -42,7 +42,7 @@
   color: var(--color-text-muted);
   text-transform: uppercase;
   margin-bottom: 36px;
-  padding-left: 2px; /* Optical symmetry so AI is aligned flush with headline & button */
+  padding-left: 0; /* Aligns flush with button border */
 }
 
 .selector-index-label {
