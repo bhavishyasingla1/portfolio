@@ -20,6 +20,11 @@ html, body {
   user-select: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Screen reader only utility (per google.md accessibility & SEO guidelines) */
 .sr-only {
   position: absolute;

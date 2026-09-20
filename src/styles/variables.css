@@ -17,6 +17,9 @@
   --color-neon-green: #00ff66;
   --color-neon-glow: rgba(0, 255, 102, 0.45);
   --color-neon-glow-soft: rgba(0, 255, 102, 0.2);
+  --color-neon-red: #ff1e42;
+  --color-neon-red-glow: rgba(255, 30, 66, 0.7);
+  --color-neon-red-soft: rgba(255, 30, 66, 0.25);
 
   /* Grid System Metrics */
   --grid-size: 48px;

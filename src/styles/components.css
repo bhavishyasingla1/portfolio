@@ -5,7 +5,7 @@
 /* Social Links — Secondary edge text */
 .social-edge {
   position: fixed;
-  bottom: 32px;
+  bottom: 48px;
   right: 48px;
   z-index: 10;
 }
@@ -14,9 +14,11 @@
   display: flex;
   gap: 24px;
   list-style: none;
+  align-items: center;
 }
 
 .social-link {
+  display: inline-block;
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
@@ -25,22 +27,28 @@
   text-decoration: none;
   color: var(--color-text-muted);
   position: relative;
-  transition: color var(--transition-fast);
+  transition: 
+    color var(--transition-fast),
+    text-shadow var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .social-link::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   width: 0;
-  height: 1px;
-  background-color: var(--color-text-primary);
+  height: 1.5px;
+  background-color: var(--color-neon-red);
+  box-shadow: 0 0 8px var(--color-neon-red-glow);
   transition: width var(--transition-fast);
 }
 
 .social-link:hover {
-  color: var(--color-text-primary);
+  color: var(--color-neon-red);
+  text-shadow: 0 0 10px var(--color-neon-red-glow), 0 0 22px var(--color-neon-red-soft);
+  transform: translateY(-1px);
 }
 
 .social-link:hover::after {

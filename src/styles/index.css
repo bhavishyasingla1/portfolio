@@ -39,7 +39,7 @@ body.mode-selector .grid-background {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 32px 48px;
+  padding: 48px;
   z-index: 2;
 }
 
