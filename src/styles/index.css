@@ -210,7 +210,7 @@ body.mode-selector .grid-background {
 /* Responsive Rules for Mobile Devices & Portrait Viewports */
 @media (max-width: 1024px), (orientation: portrait) {
   .site-container {
-    padding: max(20px, env(safe-area-inset-top)) 24px max(20px, env(safe-area-inset-bottom)) 24px;
+    padding: max(18px, env(safe-area-inset-top)) 20px max(18px, env(safe-area-inset-bottom)) 20px;
     height: 100dvh;
     min-height: 100dvh;
     display: flex;
@@ -279,9 +279,9 @@ body.mode-selector .grid-background {
   }
 
   .hero-headline {
-    font-size: clamp(3.2rem, 13.5vw, 4.4rem);
-    line-height: 0.88;
-    letter-spacing: -0.05em;
+    font-size: clamp(2.35rem, 10.5vw, 3.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
     font-weight: 800;
     margin-bottom: 8px;
     display: flex;
@@ -290,10 +290,11 @@ body.mode-selector .grid-background {
 
   .hero-headline .headline-line {
     display: block;
+    white-space: nowrap;
   }
 
   .hero-subtitle {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.22em;
     margin-bottom: 14px;
@@ -301,21 +302,29 @@ body.mode-selector .grid-background {
   }
 
   .cta-wrapper {
-    width: 100%;
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
   }
 
   .btn-explore {
-    width: 100%;
-    max-width: 235px;
-    height: 48px;
-    min-height: 48px;
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    padding: 0 20px;
+    width: auto;
+    max-width: none;
+    height: 40px;
+    min-height: 40px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 0 16px;
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .btn-explore .btn-arrow {
+    font-size: 16px;
+    line-height: 1;
   }
 
   .hero-visual {
@@ -367,8 +376,8 @@ body.mode-selector .grid-background {
   }
 
   .social-link {
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     padding: 6px 2px;
     display: inline-flex;
     align-items: center;
@@ -496,11 +505,20 @@ body.mode-selector .grid-background {
   }
 
   .hero-content {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .hero-headline {
-    font-size: 1.75rem;
+    font-size: clamp(2.1rem, 9.8vw, 2.35rem);
+    line-height: 0.9;
+  }
+
+  .btn-explore {
+    height: 38px;
+    min-height: 38px;
+    padding: 0 14px;
+    gap: 10px;
+    font-size: 10.5px;
   }
 
   .exp-title {
@@ -508,6 +526,6 @@ body.mode-selector .grid-background {
   }
 
   .social-list {
-    gap: 12px;
+    gap: 8px;
   }
 }

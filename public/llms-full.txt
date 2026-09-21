@@ -23,11 +23,11 @@ All three experiences are actual open-source projects created by creative develo
 - **Technology**: Three.js, Vite, Simplex noise algorithms.
 - **Description**: A procedurally generated infinite terrain explorer where users navigate a limitless mathematical landscape in real-time with pointer lock and view mode controls.
 
-### 3. Folio 2019
+### 3. AI at Work
 - **URL**: https://bhavishyasingla.com/folio
-- **Source**: https://github.com/brunosimon/folio-2019 (MIT License)
-- **Technology**: Three.js, Vite, Cannon.js physics engine, Howler audio.
-- **Description**: An interactive 3D physics playground where visitors drive a physics-based toy car through a virtual portfolio landscape, bumping into objects, triggering interactive projects, and experiencing spatial sound.
+- **Source**: Cloned from https://github.com/brunosimon/folio-2019 (MIT License), customized for Bhavishya Singla
+- **Tech Stack**: Three.js, Cannon.js (physics), Webpack/Vite
+- **Description**: An interactive 3D physics playground where visitors drive a physics-based toy car through an interactive exploration landscape by Bhavishya Singla, bumping into objects, triggering interactive elements, and experiencing spatial sound.
 
 ## Technical Architecture
 - **Framework**: Minimalist Vanilla HTML5/CSS3/JavaScript with Vite tooling.
