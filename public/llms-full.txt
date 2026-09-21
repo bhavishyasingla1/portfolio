@@ -23,7 +23,7 @@ All three experiences are actual open-source projects created by creative develo
 - **Technology**: Three.js, Vite, Simplex noise algorithms.
 - **Description**: A procedurally generated infinite terrain explorer where users navigate a limitless mathematical landscape in real-time with pointer lock and view mode controls.
 
-### 3. AI at Work
+### 3. Folio
 - **URL**: https://bhavishyasingla.com/folio
 - **Source**: Cloned from https://github.com/brunosimon/folio-2019 (MIT License), customized for Bhavishya Singla
 - **Tech Stack**: Three.js, Cannon.js (physics), Webpack/Vite

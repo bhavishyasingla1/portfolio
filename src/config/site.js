@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   headline: 'FIGURING THINGS OUT.',
   subtitle: 'AI · TECHNOLOGY · CREATIVITY',
   tagline: 'AI, Technology & Creative Engineering',
-  description: 'Official portal of Bhavishya Singla exploring AI, technology, and creativity through three cloned interactive 3D WebGL experiences: My Room in 3D, Infinite World, and AI at Work.',
+  description: 'Official portal of Bhavishya Singla exploring AI, technology, and creativity through three cloned interactive 3D WebGL experiences: My Room in 3D, Infinite World, and Folio.',
   url: 'https://bhavishyasingla.com',
   locale: 'en_US',
   author: {
@@ -80,8 +80,8 @@ export const SITE_CONFIG = {
     folio: {
       id: 'folio',
       num: '03',
-      title: 'AI AT WORK',
-      shortTitle: 'AI AT WORK',
+      title: 'FOLIO',
+      shortTitle: 'FOLIO',
       tag: 'PHYSICS PLAYGROUND',
       path: '/folio/',
       directPath: '/folio/index.html',

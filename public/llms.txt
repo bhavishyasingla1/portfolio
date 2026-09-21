@@ -5,7 +5,7 @@
 ## Core Experiences
 - [My Room in 3D](https://bhavishyasingla.com/room): Interactive isometric 3D room experience built with Three.js.
 - [Infinite World](https://bhavishyasingla.com/world): Procedural infinite 3D terrain exploration in WebGL.
-- [AI at Work](https://bhavishyasingla.com/folio): Interactive 3D physics playground featuring an interactive car and exploration world by Bhavishya Singla.
+- [Folio](https://bhavishyasingla.com/folio): Interactive 3D physics playground featuring an interactive car and exploration world by Bhavishya Singla.
 
 ## Communities & Socials
 - LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/
