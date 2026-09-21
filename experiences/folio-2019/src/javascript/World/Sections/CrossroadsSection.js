@@ -24,9 +24,16 @@ export default class CrossroadsSection
 
     setStatic()
     {
+        const isProjectSign = (child) => {
+            return (child.position && child.position.x > 7.5 && Math.abs(child.position.y) < 2.0)
+        }
+
+        const filteredBaseChildren = this.resources.items.crossroadsStaticBase.scene.children.filter(child => !isProjectSign(child))
+        const filteredCollisionChildren = this.resources.items.crossroadsStaticCollision.scene.children.filter(child => !isProjectSign(child))
+
         this.objects.add({
-            base: this.resources.items.crossroadsStaticBase.scene,
-            collision: this.resources.items.crossroadsStaticCollision.scene,
+            base: { children: filteredBaseChildren },
+            collision: { children: filteredCollisionChildren },
             floorShadowTexture: this.resources.items.crossroadsStaticFloorShadowTexture,
             offset: new THREE.Vector3(this.x, this.y, 0),
             mass: 0

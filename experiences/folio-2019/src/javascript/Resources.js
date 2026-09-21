@@ -133,6 +133,7 @@ export default class Resources extends EventEmitter
             { name: 'informationBaguetteCollision', source: './models/information/baguette/collision.glb' },
 
             { name: 'informationContactTwitterLabel', source: './models/information/static/contactTwitterLabel.png', type: 'texture' },
+            { name: 'informationContactXLabel', source: './models/information/static/contactXLabel.png', type: 'texture' },
             { name: 'informationContactGithubLabel', source: './models/information/static/contactGithubLabel.png', type: 'texture' },
             { name: 'informationContactLinkedinLabel', source: './models/information/static/contactLinkedinLabel.png', type: 'texture' },
             { name: 'informationContactMailLabel', source: './models/information/static/contactMailLabel.png', type: 'texture' },
