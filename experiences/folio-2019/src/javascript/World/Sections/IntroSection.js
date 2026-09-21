@@ -192,22 +192,23 @@ export default class IntroSection
             })
         }
         this.objects.add({
-            base: this.resources.items.introCreativeBase.scene,
-            collision: this.resources.items.introCreativeCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0.25),
-            shadow: { sizeX: 5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
+            base: this.resources.items.introAiBase.scene,
+            collision: this.resources.items.introAiCollision.scene,
+            offset: new THREE.Vector3(2.4, - 11.5, 0),
+            rotation: new THREE.Euler(0, 0, 0.2),
+            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
             mass: 1.5,
             sleep: false,
             soundName: 'brick'
         })
         this.objects.add({
-            base: this.resources.items.introDevBase.scene,
-            collision: this.resources.items.introDevCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0),
-            shadow: { sizeX: 2.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
+            base: this.resources.items.introAtWorkBase.scene,
+            collision: this.resources.items.introAtWorkCollision.scene,
+            offset: new THREE.Vector3(4.5, - 11.5, 0),
+            rotation: new THREE.Euler(0, 0, - 0.05),
+            shadow: { sizeX: 4.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
             mass: 1.5,
+            sleep: false,
             soundName: 'brick'
         })
     }

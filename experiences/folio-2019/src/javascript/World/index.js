@@ -10,7 +10,7 @@ import Areas from './Areas.js'
 import Tiles from './Tiles.js'
 import Walls from './Walls.js'
 import IntroSection from './Sections/IntroSection.js'
-import ProjectsSection from './Sections/ProjectsSection.js'
+// import ProjectsSection from './Sections/ProjectsSection.js'
 import CrossroadsSection from './Sections/CrossroadsSection.js'
 import InformationSection from './Sections/InformationSection.js'
 import PlaygroundSection from './Sections/PlaygroundSection.js'
@@ -464,15 +464,13 @@ export default class World
         })
         this.container.add(this.sections.crossroads.container)
 
-        // Projects
-        this.sections.projects = new ProjectsSection({
-            ...options,
-            x: 30,
-            y: - 30
-            // x: 0,
-            // y: 0
-        })
-        this.container.add(this.sections.projects.container)
+        // Projects (removed)
+        // this.sections.projects = new ProjectsSection({
+        //     ...options,
+        //     x: 30,
+        //     y: - 30
+        // })
+        // this.container.add(this.sections.projects.container)
 
         // Information
         this.sections.information = new InformationSection({
