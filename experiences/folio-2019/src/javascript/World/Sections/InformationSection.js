@@ -21,7 +21,7 @@ export default class InformationSection
         this.setStatic()
         this.setBaguettes()
         this.setLinks()
-        // this.setActivities() // Removed activities per user request
+        this.setActivities()
         this.setTiles()
     }
 
@@ -86,21 +86,22 @@ export default class InformationSection
         this.links.container.matrixAutoUpdate = false
         this.container.add(this.links.container)
 
+        // Options
         this.links.options = [
             {
-                href: 'https://x.com/Bhavishyas_1',
-                labelTexture: this.resources.items.informationContactXLabelTexture
+                href: 'https://twitter.com/bruno_simon/',
+                labelTexture: this.resources.items.informationContactTwitterLabelTexture
             },
             {
-                href: 'https://github.com/bhavishyasingla1',
+                href: 'https://github.com/brunosimon/',
                 labelTexture: this.resources.items.informationContactGithubLabelTexture
             },
             {
-                href: 'https://www.linkedin.com/in/bhavishyasingla1/',
+                href: 'https://www.linkedin.com/in/simonbruno77/',
                 labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             },
             {
-                href: 'mailto:say@hibhavishya.in',
+                href: 'mailto:simon.bruno.77@gmail.com',
                 labelTexture: this.resources.items.informationContactMailLabelTexture
             }
         ]

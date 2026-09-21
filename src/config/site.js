@@ -80,14 +80,14 @@ export const SITE_CONFIG = {
     folio: {
       id: 'folio',
       num: '03',
-      title: 'FOLIO',
+      title: 'FOLIO 2019',
       shortTitle: 'FOLIO',
       tag: 'PHYSICS PLAYGROUND',
       path: '/folio/',
       directPath: '/folio/index.html',
       route: '/folio',
       hash: '#folio',
-      description: 'Interactive 3D car physics playground and exploration world by Bhavishya Singla.',
+      description: 'Interactive 3D car physics playground and developer portfolio.',
       sourceRepo: 'https://github.com/brunosimon/folio-2019'
     }
   }
