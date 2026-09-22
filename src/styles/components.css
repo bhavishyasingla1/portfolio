@@ -152,7 +152,7 @@
   color: var(--color-text-primary);
   border-radius: 2px;
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 0;
   transition: all var(--transition-fast);
 }
 

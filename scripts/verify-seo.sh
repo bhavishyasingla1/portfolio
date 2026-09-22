@@ -39,6 +39,7 @@ check_endpoint "/sitemap.xml" 200
 check_endpoint "/site.webmanifest" 200
 check_endpoint "/llms.txt" 200
 check_endpoint "/llms-full.txt" 200
+check_endpoint "/og-image.png" 200
 
 echo ""
 echo "--- 2. Header & Metadata Assertions on Homepage ---"
@@ -74,18 +75,35 @@ fi
 
 # Canonical link check
 CANONICAL=$(echo "$HTML" | grep -o '<link rel="canonical" href="[^"]*"' | sed 's/.*href="//;s/"$//')
-if [ -n "$CANONICAL" ]; then
-  echo " [PASS] Canonical URL: $CANONICAL"
+if [ "$CANONICAL" = "https://bhavishyasingla.com/" ]; then
+  echo " [PASS] Homepage Canonical URL: $CANONICAL"
 else
-  echo " [FAIL] Missing canonical link tag!"
+  echo " [FAIL] Incorrect or missing homepage canonical: '$CANONICAL'"
   FAILED=$((FAILED + 1))
 fi
 
-# Schema.org JSON-LD check
-if echo "$HTML" | grep -q 'application/ld+json'; then
-  echo " [PASS] Schema.org JSON-LD structured data detected."
+# Raster og:image check
+OG_IMG=$(echo "$HTML" | grep -o '<meta property="og:image" content="[^"]*"' | sed 's/.*content="//;s/"$//')
+if [ "$OG_IMG" = "https://bhavishyasingla.com/og-image.png" ]; then
+  echo " [PASS] Open Graph image correctly points to 1200x630 PNG: $OG_IMG"
 else
-  echo " [FAIL] Missing Schema.org JSON-LD structured data!"
+  echo " [FAIL] og:image is not pointing to og-image.png ($OG_IMG)"
+  FAILED=$((FAILED + 1))
+fi
+
+# 192x192 Favicon check
+if echo "$HTML" | grep -q 'sizes="192x192"'; then
+  echo " [PASS] 192x192 favicon declared for Google SERP display."
+else
+  echo " [FAIL] Missing 192x192 favicon link!"
+  FAILED=$((FAILED + 1))
+fi
+
+# Schema.org ProfilePage & Person & WebApplication
+if echo "$HTML" | grep -q '"@type": "ProfilePage"' && echo "$HTML" | grep -q '"@type": "Person"' && echo "$HTML" | grep -q '"knowsAbout"'; then
+  echo " [PASS] Schema.org ProfilePage & enriched Person entity detected on Homepage."
+else
+  echo " [FAIL] Missing ProfilePage or enriched Person structured data!"
   FAILED=$((FAILED + 1))
 fi
 
@@ -97,10 +115,66 @@ else
   FAILED=$((FAILED + 1))
 fi
 
+# Visible entity introduction in selector view
+if echo "$HTML" | grep -q 'class="selector-heading"' && echo "$HTML" | grep -q 'class="selector-capsule"'; then
+  echo " [PASS] Visible, spam-policy compliant entity heading & capsule detected in selector view."
+else
+  echo " [FAIL] Missing visible selector heading or capsule!"
+  FAILED=$((FAILED + 1))
+fi
+
+echo ""
+echo "--- 3. Sub-page SEO, Canonicals & Schemas ---"
+for SUB in "room" "world" "folio"; do
+  SUB_HTML=$(curl -s "$BASE_URL/$SUB")
+  
+  # Canonical check
+  if echo "$SUB_HTML" | grep -q "<link rel=\"canonical\" href=\"https://bhavishyasingla.com/$SUB\""; then
+    echo " [PASS] /$SUB -> Canonical URL correctly self-referenced."
+  else
+    echo " [FAIL] /$SUB -> Missing or incorrect canonical tag!"
+    FAILED=$((FAILED + 1))
+  fi
+
+  # Robots check
+  if echo "$SUB_HTML" | grep -q 'name="robots" content="index, follow'; then
+    echo " [PASS] /$SUB -> Robots directive present with snippet controls."
+  else
+    echo " [FAIL] /$SUB -> Missing robots meta tag!"
+    FAILED=$((FAILED + 1))
+  fi
+
+  # Schema.org WebApplication check
+  if echo "$SUB_HTML" | grep -q '"@type": "WebApplication"' && echo "$SUB_HTML" | grep -q '"@type": "BreadcrumbList"'; then
+    echo " [PASS] /$SUB -> Schema.org WebApplication + BreadcrumbList detected."
+  else
+    echo " [FAIL] /$SUB -> Missing WebApplication or BreadcrumbList schema!"
+    FAILED=$((FAILED + 1))
+  fi
+
+  # External Vercel leak check
+  if echo "$SUB_HTML" | grep -q 'vercel.app'; then
+    echo " [FAIL] /$SUB -> Still contains leaked third-party vercel.app URLs!"
+    FAILED=$((FAILED + 1))
+  else
+    echo " [PASS] /$SUB -> Free of third-party vercel.app metadata leaks."
+  fi
+done
+
+echo ""
+echo "--- 4. Sitemap & Image Protocol Validation ---"
+SITEMAP=$(curl -s "$BASE_URL/sitemap.xml")
+if echo "$SITEMAP" | grep -q 'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' && echo "$SITEMAP" | grep -q '<image:image>'; then
+  echo " [PASS] sitemap.xml contains Google Image Sitemap protocol extensions."
+else
+  echo " [FAIL] sitemap.xml missing image extensions!"
+  FAILED=$((FAILED + 1))
+fi
+
 echo ""
 echo "========================================================"
 if [ "$FAILED" -eq 0 ]; then
-  echo " ALL SEO & PROTOCOL CHECKS PASSED SUCCESSFULLY!"
+  echo " ALL SEO & PROTOCOL CHECKS PASSED SUCCESSFULLY (0 FAILURES)!"
 else
   echo " AUDIT COMPLETED WITH $FAILED FAILURES."
 fi

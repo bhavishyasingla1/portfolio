@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bhavishyasingla.com/</loc>
-    <lastmod>2026-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/og-image.png</image:loc>
+      <image:title>Bhavishya Singla — AI, Technology &amp; Interactive 3D Worlds</image:title>
+      <image:caption>Official portal of Bhavishya Singla exploring AI, technology, and interactive 3D computing.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/room</loc>
-    <lastmod>2026-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/og-image.png</image:loc>
+      <image:title>My Room in 3D — Isometric Three.js Space</image:title>
+      <image:caption>Interactive isometric 3D bedroom scene built with Three.js and WebGL.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/world</loc>
-    <lastmod>2026-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/og-image.png</image:loc>
+      <image:title>Infinite World — Procedural Three.js Terrain</image:title>
+      <image:caption>Procedurally generated infinite 3D terrain exploration in WebGL.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/folio</loc>
-    <lastmod>2026-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/og-image.png</image:loc>
+      <image:title>Playground — Interactive 3D Physics Car Playground</image:title>
+      <image:caption>Interactive 3D car physics playground and exploration landscape.</image:caption>
+    </image:image>
   </url>
 </urlset>

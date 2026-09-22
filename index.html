@@ -24,7 +24,7 @@
 
   <!-- 3. Editorial & Authorship Signals (Section 3.6 google.md) -->
   <meta name="author" content="Bhavishya Singla" />
-  <meta name="date" content="2026-09-20" scheme="YYYY-MM-DD" />
+  <meta name="date" content="2026-09-22" scheme="YYYY-MM-DD" />
   <meta name="keywords" content="Bhavishya Singla, AI, Artificial Intelligence, Creative Technologist, Three.js, WebGL, 3D Web, Bruno Simon, Portfolio" />
 
   <!-- 4. Open Graph Metadata (Section 3.4 google.md) -->
@@ -32,7 +32,8 @@
   <meta property="og:url" content="https://bhavishyasingla.com/" />
   <meta property="og:title" content="Bhavishya Singla — AI, Technology &amp; Interactive 3D Worlds" />
   <meta property="og:description" content="Official portal of Bhavishya Singla exploring AI, technology, and creativity through interactive 3D WebGL experiences." />
-  <meta property="og:image" content="https://bhavishyasingla.com/og-image.svg" />
+  <meta property="og:image" content="https://bhavishyasingla.com/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Bhavishya Singla — Figuring Things Out. AI, Technology, and Creative Engineering" />
@@ -45,10 +46,11 @@
   <meta name="twitter:creator" content="@Bhavishyas_1" />
   <meta name="twitter:title" content="Bhavishya Singla — AI, Technology &amp; Interactive 3D Worlds" />
   <meta name="twitter:description" content="Official portal of Bhavishya Singla exploring AI, technology, and creativity through interactive 3D WebGL experiences." />
-  <meta name="twitter:image" content="https://bhavishyasingla.com/og-image.svg" />
+  <meta name="twitter:image" content="https://bhavishyasingla.com/og-image.png" />
 
   <!-- 6. Icons & Web App Manifest (Section 3.5 google.md) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -97,11 +99,24 @@
     }
   </style>
 
-  <!-- 8. Schema.org JSON-LD Structured Data (Section 6 google.md) -->
+  <!-- 8. Schema.org JSON-LD Structured Data (Section 6 & 12.4 google.md) -->
   <script type="application/ld+json" id="schema-jsonld">
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://bhavishyasingla.com/#profilepage",
+        "url": "https://bhavishyasingla.com/",
+        "name": "Bhavishya Singla — Official Portfolio & Profile",
+        "description": "Official profile and portal of Bhavishya Singla exploring AI, technology, and interactive 3D WebGL computing.",
+        "inLanguage": "en-US",
+        "dateCreated": "2024-01-01T00:00:00+00:00",
+        "dateModified": "2026-09-22T00:00:00+00:00",
+        "mainEntity": {
+          "@id": "https://bhavishyasingla.com/#person"
+        }
+      },
       {
         "@type": "WebSite",
         "@id": "https://bhavishyasingla.com/#website",
@@ -118,8 +133,17 @@
         "@id": "https://bhavishyasingla.com/#person",
         "name": "Bhavishya Singla",
         "url": "https://bhavishyasingla.com",
+        "image": "https://bhavishyasingla.com/og-image.png",
         "jobTitle": "AI Builder & Creative Technologist",
         "description": "AI Builder and Creative Technologist exploring artificial intelligence, software engineering, and interactive 3D computing.",
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Creative Technology",
+          "Three.js",
+          "WebGL",
+          "3D Computer Graphics",
+          "Software Engineering"
+        ],
         "sameAs": [
           "https://github.com/bhavishyasingla1",
           "https://www.linkedin.com/in/bhavishyasingla1/",
@@ -139,33 +163,42 @@
             "@type": "ListItem",
             "position": 1,
             "item": {
-              "@type": "CreativeWork",
+              "@type": "WebApplication",
               "name": "My Room in 3D",
               "headline": "My Room in 3D — Isometric Three.js Environment",
               "description": "Creative isometric 3D bedroom scene built with Three.js and Webpack.",
-              "url": "https://bhavishyasingla.com/room"
+              "url": "https://bhavishyasingla.com/room",
+              "applicationCategory": "MultimediaApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires WebGL and JavaScript enabled."
             }
           },
           {
             "@type": "ListItem",
             "position": 2,
             "item": {
-              "@type": "CreativeWork",
+              "@type": "WebApplication",
               "name": "Infinite World",
               "headline": "Infinite World — Procedural Three.js Terrain",
               "description": "Procedurally generated infinite 3D terrain exploration in WebGL.",
-              "url": "https://bhavishyasingla.com/world"
+              "url": "https://bhavishyasingla.com/world",
+              "applicationCategory": "MultimediaApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires WebGL and JavaScript enabled."
             }
           },
           {
             "@type": "ListItem",
             "position": 3,
             "item": {
-              "@type": "CreativeWork",
+              "@type": "WebApplication",
               "name": "Playground",
               "headline": "Playground — Interactive 3D Physics Car Playground",
               "description": "Interactive 3D car physics playground and exploration landscape.",
-              "url": "https://bhavishyasingla.com/folio"
+              "url": "https://bhavishyasingla.com/folio",
+              "applicationCategory": "MultimediaApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires WebGL and JavaScript enabled."
             }
           }
         ]
@@ -177,14 +210,6 @@
 <body>
   <!-- Ambient Viewport Grid -->
   <div class="grid-background" id="grid-background" aria-hidden="true"></div>
-
-  <!-- AI Overview & Semantic Answer Capsule (Section 5.2 google.md) -->
-  <section class="sr-only" aria-label="Overview &amp; Entity Capsule">
-    <h2>Bhavishya Singla Portfolio &amp; 3D Experiences Overview</h2>
-    <p>
-      Bhavishya Singla is an AI builder and creative technologist exploring artificial intelligence, software engineering, and interactive 3D WebGL computing. This portal provides direct doorways into three real 3D WebGL environments: My Room in 3D (an isometric bedroom), Infinite World (a procedural terrain generator), and Playground (a physics-based interactive playground).
-    </p>
-  </section>
 
   <div class="site-container">
     <!-- Top Bar Navigation -->
@@ -263,11 +288,16 @@
       <!-- VIEW 2: Experience Selection Screen -->
       <section class="view-panel view-selector" id="view-selector" aria-label="Experience Index" aria-hidden="true">
         <div class="selector-content">
-          <div class="selector-header">
+          <header class="selector-header">
             <button type="button" class="btn-back" id="btn-selector-back" aria-label="Return to home headline">
               &larr; BACK
             </button>
-          </div>
+            <div class="selector-header-meta">
+              <span class="selector-index-label">03 WORLDS</span>
+              <span class="selector-meta-divider" aria-hidden="true">&bull;</span>
+              <h2 class="selector-heading">INTERACTIVE 3D EXPERIENCES</h2>
+            </div>
+          </header>
 
           <!-- Crawlable Hyperlinks for Googlebot & AI Crawlers (Section 2.2 google.md) -->
           <nav class="experiences-nav" aria-label="Selectable 3D worlds">
@@ -303,7 +333,12 @@
           </nav>
 
           <footer class="selector-footer">
-            <p>CLONED FROM BRUNO SIMON OPEN-SOURCE WORKS &middot; PRESERVED &amp; ATTRIBUTED</p>
+            <p class="selector-capsule">
+              <strong>Bhavishya Singla</strong> &mdash; AI builder and creative technologist exploring artificial intelligence, software engineering, and interactive 3D WebGL computing.
+            </p>
+            <p class="selector-attribution">
+              CLONED FROM BRUNO SIMON OPEN-SOURCE WORKS &middot; PRESERVED &amp; ATTRIBUTED
+            </p>
           </footer>
         </div>
       </section>

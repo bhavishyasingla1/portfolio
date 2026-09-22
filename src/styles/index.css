@@ -158,8 +158,73 @@ body.mode-selector .grid-background {
 .selector-header {
   display: flex;
   align-items: center;
-  gap: 32px;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 32px;
+  padding: 0 8px;
+}
+
+.selector-header-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-index-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.selector-meta-divider {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 11px;
+  user-select: none;
+}
+
+.selector-heading {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.selector-footer {
+  margin-top: 36px;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selector-capsule {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 660px;
+  margin: 0;
+}
+
+.selector-capsule strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.selector-attribution {
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(0, 0, 0, 0.38);
+  text-transform: uppercase;
+  margin: 0;
 }
 
 /* Experience Stage (Full Viewport Iframe Container) */
@@ -399,8 +464,41 @@ body.mode-selector .grid-background {
   }
 
   .selector-header {
-    gap: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 16px;
+    padding: 0 4px;
+  }
+
+  .selector-header-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .selector-heading {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .selector-index-label {
+    font-size: 9px;
+  }
+
+  .selector-footer {
+    margin-top: 18px;
+    padding: 0 4px;
+    gap: 6px;
+  }
+
+  .selector-capsule {
+    font-size: 10.5px;
+    line-height: 1.4;
+  }
+
+  .selector-attribution {
+    font-size: 8.5px;
   }
 
   .btn-back {
