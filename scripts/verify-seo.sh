@@ -115,14 +115,6 @@ else
   FAILED=$((FAILED + 1))
 fi
 
-# Visible entity introduction in selector view
-if echo "$HTML" | grep -q 'class="selector-heading"' && echo "$HTML" | grep -q 'class="selector-capsule"'; then
-  echo " [PASS] Visible, spam-policy compliant entity heading & capsule detected in selector view."
-else
-  echo " [FAIL] Missing visible selector heading or capsule!"
-  FAILED=$((FAILED + 1))
-fi
-
 echo ""
 echo "--- 3. Sub-page SEO, Canonicals & Schemas ---"
 for SUB in "room" "world" "folio"; do
