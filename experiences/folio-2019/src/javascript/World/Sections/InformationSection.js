@@ -21,7 +21,7 @@ export default class InformationSection
         this.setStatic()
         this.setBaguettes()
         this.setLinks()
-        this.setActivities()
+        // this.setActivities() // Removed legacy activities graphic in front of socials per user request
         this.setTiles()
     }
 

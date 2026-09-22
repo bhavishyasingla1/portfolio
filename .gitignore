@@ -32,6 +32,7 @@ yarn-error.log*
 !experiences/my-room-in-3d/static/assets/*.mp4
 !public/room/assets/*.mp4
 !public/hero-image.mp4
+!public/hero-image-mobile.mp4
 *.blend
 *.blend1
 /*.glb
