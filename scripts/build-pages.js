@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, rmSync } from 'fs';
 import { resolve, join, basename } from 'path';
 import { Marked, Renderer } from 'marked';
+import sharp from 'sharp';
 import { PROJECTS } from '../src/config/projects.js';
 import { renderProjectOg, renderArticleOg, renderArticlesIndexOg } from './og/render.js';
 
@@ -382,7 +383,7 @@ function parseFrontmatter(raw, file) {
   return { data, body: m[2] };
 }
 
-function makeMarked(toc) {
+function makeMarked(toc, sizes = {}) {
   const marked = new Marked({ gfm: true });
   const used = new Set();
   marked.use({
@@ -406,7 +407,9 @@ function makeMarked(toc) {
       },
       image({ href, title, text }) {
         const cap = title ? `<figcaption>${esc(title)}</figcaption>` : '';
-        return `<figure><img src="${esc(href)}" alt="${esc(text)}" loading="lazy" decoding="async" />${cap}</figure>`;
+        // Real dimensions stop the page jumping as images load (better Core Web Vitals)
+        const dims = sizes[href] ? ` width="${sizes[href].width}" height="${sizes[href].height}"` : '';
+        return `<figure><img src="${esc(href)}" alt="${esc(text)}"${dims} loading="lazy" decoding="async" />${cap}</figure>`;
       },
       table(token) {
         // Wrap tables so they scroll sideways on phones instead of breaking the layout
@@ -417,16 +420,58 @@ function makeMarked(toc) {
   return marked;
 }
 
-function loadArticles() {
+/**
+ * YouTube embeds in Markdown, on a line of their own:
+ *   {{youtube id="pNG_sWsy4s0" title="Video title" date="2026-11-05" duration="PT36S"}}
+ * Renders a click-to-play poster (no YouTube scripts until pressed) and adds a VideoObject
+ * to the article's structured data. Put a thumbnail at public/articles/images/yt-<id>.webp.
+ */
+function extractVideos(body) {
+  const videos = [];
+  const out = body.replace(/^\{\{youtube\s+([^}]*)\}\}\s*$/gm, (_, attrs) => {
+    const get = (k) => (attrs.match(new RegExp(`${k}="([^"]*)"`)) || [])[1] || '';
+    const v = { id: get('id'), title: get('title'), date: get('date'), duration: get('duration') };
+    if (!/^[\w-]{11}$/.test(v.id)) throw new Error(`Bad YouTube id: ${v.id}`);
+    videos.push(v);
+    const thumb = existsSync(join(ROOT, 'public', 'articles', 'images', `yt-${v.id}.webp`))
+      ? `/articles/images/yt-${v.id}.webp`
+      : `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`;
+    v.thumb = thumb;
+    return `\n<figure class="yt" data-yt="${v.id}">
+<button class="yt-play" type="button" aria-label="Play video: ${esc(v.title)}"><img src="${thumb}" alt="" width="1280" height="720" loading="lazy" decoding="async" /><span class="yt-icon" aria-hidden="true"></span></button>
+<figcaption>${esc(v.title)} &middot; <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">Watch on YouTube</a></figcaption>
+</figure>\n`;
+  });
+  return { body: out, videos };
+}
+
+async function imageSizes(body) {
+  const sizes = {};
+  for (const [, src] of body.matchAll(/!\[[^\]]*\]\((\/[^\s)]+)/g)) {
+    const file = join(ROOT, 'public', src.replace(/^\//, ''));
+    if (existsSync(file)) {
+      const { width, height } = await sharp(file).metadata();
+      sizes[src] = { width, height };
+    } else {
+      console.warn(`! image not found: public${src}`);
+    }
+  }
+  return sizes;
+}
+
+async function loadArticles() {
   if (!existsSync(ARTICLES_SRC)) return [];
-  return readdirSync(ARTICLES_SRC)
-    .filter((f) => f.endsWith('.md') && !f.startsWith('_'))
+  const files = readdirSync(ARTICLES_SRC).filter((f) => f.endsWith('.md') && !f.startsWith('_'));
+  const sizeMaps = {};
+  for (const f of files) sizeMaps[f] = await imageSizes(readFileSync(join(ARTICLES_SRC, f), 'utf8'));
+  return files
     .map((f) => {
       const raw = readFileSync(join(ARTICLES_SRC, f), 'utf8');
       const { data, body } = parseFrontmatter(raw, f);
       if (data.draft === 'true') return null;
       const toc = [];
-      const html = makeMarked(toc).parse(body);
+      const { body: mdBody, videos } = extractVideos(body);
+      const html = makeMarked(toc, sizeMaps[f]).parse(mdBody);
       const words = body.replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter(Boolean).length;
       const tags = Array.isArray(data.tags) ? data.tags : data.tags ? [data.tags] : [];
       return {
@@ -439,6 +484,7 @@ function loadArticles() {
         image: data.image,
         imageAlt: data.image_alt,
         dateLabel: fmtDate(data.date),
+        videos,
         html,
         toc,
         words,
@@ -478,6 +524,17 @@ function articlePage(a, i, all) {
         isPartOf: { '@id': `${SITE}/articles/#blog` }
       },
       PERSON,
+      ...a.videos.map((v) => ({
+        '@type': 'VideoObject',
+        name: v.title,
+        description: v.title,
+        thumbnailUrl: v.thumb.startsWith('http') ? v.thumb : `${SITE}${v.thumb}`,
+        ...(v.date ? { uploadDate: v.date } : {}),
+        ...(v.duration ? { duration: v.duration } : {}),
+        contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+        author: { '@id': `${SITE}/#person` }
+      })),
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -733,7 +790,7 @@ for (const [i, p] of PROJECTS.entries()) {
   write(join(ROOT, `${p.slug}.html`), projectPage(p, i, og));
 }
 
-const articles = loadArticles();
+const articles = await loadArticles();
 for (const a of articles) a.og = await renderArticleOg(a);
 const indexOg = await renderArticlesIndexOg();
 

@@ -1,75 +1,115 @@
 /**
- * Hero video theme switch.
- * Light theme: the original video (its light background and baked-in grid match the page).
- * Dark theme: a transparent cut-out so the person stands directly on the dark grid.
- *   Safari / iOS (WebKit) → HEVC with alpha (.mov). Everyone else → VP9 with alpha (.webm).
- *   Safari can play VP9 WebM but drops its transparency, hence the explicit split.
+ * Hero video: two stacked layers, crossfaded on theme change.
+ *   #hero-video        the original (light background, baked-in grid that matches the page)
+ *   .hero-video-alpha  a transparent cut-out for dark mode
+ *     Safari / iOS (WebKit) → HEVC with alpha (.mov); everyone else → VP9 with alpha (.webm).
+ *     Safari plays VP9 WebM but drops its transparency, hence the split.
+ * The hidden layer is paused to save battery, and re-synced to the visible one's
+ * time just before it fades in, so the dance never jumps.
  */
-
-const SOURCES = {
-  light: {
-    poster: { desktop: '/hero-poster.webp', mobile: '/hero-poster-mobile.webp' },
-    video: { desktop: ['/hero-image.mp4', 'video/mp4'], mobile: ['/hero-image-mobile.mp4', 'video/mp4'] }
-  },
-  darkWebKit: {
-    poster: { desktop: '/hero-poster-alpha.webp', mobile: '/hero-poster-alpha-mobile.webp' },
-    video: {
-      desktop: ['/hero-alpha.mov', 'video/quicktime; codecs="hvc1"'],
-      mobile: ['/hero-alpha-mobile.mov', 'video/quicktime; codecs="hvc1"']
-    }
-  },
-  dark: {
-    poster: { desktop: '/hero-poster-alpha.webp', mobile: '/hero-poster-alpha-mobile.webp' },
-    video: {
-      desktop: ['/hero-alpha.webm', 'video/webm; codecs="vp9"'],
-      mobile: ['/hero-alpha-mobile.webm', 'video/webm; codecs="vp9"']
-    }
-  }
-};
 
 const isWebKit = () => {
   const ua = navigator.userAgent;
   return /AppleWebKit/.test(ua) && !/Chrome\/|Chromium|Edg\/|OPR\/|Android|Firefox\//.test(ua);
 };
 
+const currentTheme = () => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+
 export function initHeroVideo() {
-  const video = document.getElementById('hero-video');
-  if (!video) return;
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
-  let current = 'light';
+  const base = document.getElementById('hero-video');
+  if (!base) return;
+  const mobile = window.matchMedia('(max-width: 768px)');
 
-  const apply = (theme) => {
-    const key = theme === 'dark' ? (isWebKit() ? 'darkWebKit' : 'dark') : 'light';
-    const size = mobileQuery.matches ? 'mobile' : 'desktop';
-    const id = `${key}:${size}`;
-    if (id === current) return;
-    const firstRun = current === 'light' && key === 'light';
-    current = id;
-    if (firstRun) return; // markup already holds the light sources
+  const alpha = document.createElement('video');
+  alpha.className = 'hero-video hero-video-alpha';
+  alpha.muted = true;
+  alpha.loop = true;
+  alpha.playsInline = true;
+  alpha.setAttribute('playsinline', '');
+  alpha.setAttribute('aria-hidden', 'true');
+  alpha.preload = 'none';
 
-    const set = SOURCES[key];
-    const [src, type] = set.video[size];
-    const wasPlaying = !video.paused;
-    const time = video.currentTime;
-
-    video.poster = set.poster[size];
-    video.replaceChildren(Object.assign(document.createElement('source'), { src, type }));
-    video.classList.toggle('is-alpha', key !== 'light');
-    video.load();
-    video.addEventListener(
-      'loadedmetadata',
-      () => {
-        if (time && Number.isFinite(video.duration)) video.currentTime = time % video.duration;
-        if (wasPlaying || video.autoplay) video.play().catch(() => {});
-      },
-      { once: true }
-    );
+  const alphaSource = () => {
+    const size = mobile.matches ? '-mobile' : '';
+    return isWebKit()
+      ? { src: `/hero-alpha${size}.mov`, type: 'video/quicktime; codecs="hvc1"', poster: `/hero-poster-alpha${size}.webp` }
+      : { src: `/hero-alpha${size}.webm`, type: 'video/webm; codecs="vp9"', poster: `/hero-poster-alpha${size}.webp` };
   };
 
-  current = 'light:' + (mobileQuery.matches ? 'mobile' : 'desktop');
-  const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-  if (theme === 'dark') apply('dark');
+  let loadedSrc = '';
+  const ensureAlpha = (preload = 'auto') => {
+    const { src, type, poster } = alphaSource();
+    if (loadedSrc === src) return;
+    loadedSrc = src;
+    alpha.poster = poster;
+    alpha.preload = preload;
+    alpha.replaceChildren(Object.assign(document.createElement('source'), { src, type }));
+    alpha.load();
+  };
+
+  // Keep the overlay exactly on top of the base video (its box is laid out by the page CSS)
+  const place = () => {
+    alpha.style.left = `${base.offsetLeft}px`;
+    alpha.style.top = `${base.offsetTop}px`;
+    alpha.style.width = `${base.offsetWidth}px`;
+    alpha.style.height = `${base.offsetHeight}px`;
+  };
+  base.insertAdjacentElement('afterend', alpha);
+  place();
+  new ResizeObserver(place).observe(base);
+  window.addEventListener('resize', place);
+
+  const sync = (from, to) => {
+    if (Number.isFinite(from.currentTime) && to.readyState >= 1 && Number.isFinite(to.duration) && to.duration > 0) {
+      to.currentTime = from.currentTime % to.duration;
+    }
+  };
+
+  const playIfVisible = (v) => v.play().catch(() => {});
+
+  const apply = (theme) => {
+    if (theme === 'dark') {
+      ensureAlpha();
+      const start = () => {
+        sync(base, alpha);
+        playIfVisible(alpha);
+        // pause the hidden layer once the fade has finished
+        setTimeout(() => currentTheme() === 'dark' && base.pause(), 600);
+      };
+      if (alpha.readyState >= 2) start();
+      else alpha.addEventListener('loadeddata', start, { once: true });
+    } else {
+      sync(alpha, base);
+      playIfVisible(base);
+      setTimeout(() => currentTheme() === 'light' && alpha.pause(), 600);
+    }
+  };
+
+  if (currentTheme() === 'dark') {
+    apply('dark');
+  } else {
+    // Warm the dark layer in the background so the first switch is instant
+    const warm = () => ensureAlpha('auto');
+    ('requestIdleCallback' in window ? requestIdleCallback : (fn) => setTimeout(fn, 2500))(warm, { timeout: 4000 });
+  }
 
   document.addEventListener('themechange', (e) => apply(e.detail.theme));
-  mobileQuery.addEventListener?.('change', () => apply(document.documentElement.dataset.theme));
+  mobile.addEventListener?.('change', () => {
+    loadedSrc = '';
+    if (currentTheme() === 'dark' || alpha.preload === 'auto') ensureAlpha();
+    if (currentTheme() === 'dark') apply('dark');
+  });
+
+  // While a panel (worlds / projects) covers the hero, pause both layers; resume the visible one after
+  new MutationObserver(() => {
+    if (document.body.classList.contains('mode-selector')) {
+      base.pause();
+      alpha.pause();
+    } else {
+      const visible = currentTheme() === 'dark' ? alpha : base;
+      const hidden = visible === alpha ? base : alpha;
+      hidden.pause();
+      playIfVisible(visible);
+    }
+  }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 }

@@ -8,16 +8,30 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
     <item>
-      <title>How I Made My 3D Avatar Load 40× Faster (23 MB to 0.56 MB)</title>
-      <link>https://bhavishyasingla.com/articles/avatar-23mb-to-half-a-megabyte</link>
-      <guid isPermaLink="true">https://bhavishyasingla.com/articles/avatar-23mb-to-half-a-megabyte</guid>
+      <title>Brag: Turn Any Project Into a Launch Video With One Command</title>
+      <link>https://bhavishyasingla.com/articles/brag-launch-videos</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/brag-launch-videos</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <description>My Three.js avatar took ages to appear, so visitors stared at a blue capsule. Here is how welding, quantization and Meshopt cut the GLB from 23 MB to 0.56 MB.</description>
-      <media:content url="https://bhavishyasingla.com/og/article-avatar-23mb-to-half-a-megabyte.png" medium="image" type="image/png" width="1200" height="630" />
+      <description>Brag is an open-source agent skill that turns the project you just built into a short launch video. I used it for Ring Ping and Rank Kiwi. Here's how it works.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-brag-launch-videos.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>AI</category>
+      <category>GitHub</category>
+      <category>Agent Skills</category>
+      <category>Video</category>
+      <category>Launch</category>
+    </item>
+    <item>
+      <title>How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)</title>
+      <link>https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <description>The three explorable 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is, and how I made them mine with AI tools.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-bruno-simon-3d-worlds-portfolio.png" medium="image" type="image/png" width="1200" height="630" />
       <category>Three.js</category>
-      <category>Performance</category>
+      <category>Bruno Simon</category>
+      <category>AI</category>
       <category>WebGL</category>
-      <category>3D</category>
+      <category>Portfolio</category>
     </item>
   </channel>
 </rss>

@@ -5,6 +5,7 @@
 
 import { ExperienceStage } from './stage.js';
 import { AppRouter } from './router.js';
+import { initProjects } from '../ui/projects.js';
 
 export class PortalController {
   constructor() {
@@ -27,6 +28,7 @@ export class PortalController {
       loading: document.getElementById('stage-loading')
     });
 
+    this.projects = initProjects();
     this.router = new AppRouter(this);
     this.bindEvents();
   }
@@ -117,7 +119,9 @@ export class PortalController {
     // Keyboard support: Escape exits stage or selector
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        if (this.stage.isActive()) {
+        if (this.projects.isOpen()) {
+          this.projects.close();
+        } else if (this.stage.isActive()) {
           this.closeExperience();
         } else if (this.body.classList.contains('mode-selector')) {
           this.showLanding(true);
@@ -135,6 +139,7 @@ export class PortalController {
 
   showLanding(updateHistory = true) {
     this.stage.close();
+    this.projects.close();
     clearTimeout(this.subPanelTimer);
     this.body.classList.remove('mode-selector');
 

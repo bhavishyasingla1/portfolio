@@ -608,27 +608,42 @@ body:has(.experience-stage.is-active) .articles-edge {
 }
 
 /* ═══════════════════════════════════════════════
-   Dark theme: the hero video is light, so frame it as a lit print
+   Hero video, two layers: the original (light) and a transparent cut-out (dark).
+   Both stay mounted and in sync; the theme switch crossfades them with the page colours.
    ═══════════════════════════════════════════════ */
-:root[data-theme="dark"] .hero-video {
-  border-radius: 3px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 40px 120px -30px rgba(0, 0, 0, 0.9);
-  filter: brightness(0.93);
+.hero-visual {
+  position: relative;
+}
+
+.hero-video {
+  transition: opacity 520ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-video-alpha {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  background-color: transparent !important;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5)) !important;
+}
+
+:root[data-theme="dark"] .hero-video-alpha {
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .hero-video:not(.hero-video-alpha) {
+  opacity: 0;
+}
+
+/* The global theme-transition rule would otherwise cancel the opacity fade */
+html.theme-transition .hero-video {
+  transition: opacity 520ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 :root[data-theme="dark"] .experience-link:hover .exp-tag,
 :root[data-theme="dark"] .articles-edge-kicker {
   color: #000;
-}
-
-/* Transparent cut-out video: no frame, the person stands on the grid */
-:root[data-theme="dark"] .hero-video.is-alpha {
-  border-radius: 0;
-  box-shadow: none;
-  background-color: transparent;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
 }
 
 /* ═══════════════════════════════════════════════
@@ -701,8 +716,9 @@ body:has(.experience-stage.is-active) .articles-edge {
   html.js .view-landing .cta-wrapper .btn-explore:nth-child(2) { animation-delay: 560ms; }
 
   /* Opacity only: a filter keyframe would override the video's brightness calibration */
-  html.js .hero-video {
-    animation: fade-only 1200ms ease 150ms both;
+  /* backwards (not both): once finished, the theme rules own the opacity again */
+  html.js .hero-video:not(.hero-video-alpha) {
+    animation: fade-only 1200ms ease 150ms backwards;
   }
 
   html.js .site-header,

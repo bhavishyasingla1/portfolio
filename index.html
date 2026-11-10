@@ -314,7 +314,7 @@
     <!-- Edge Articles corner (bottom-left, mirrors the socials on the right) -->
     <aside class="articles-edge" aria-label="Articles">
       <a href="/articles/" class="articles-edge-title">Articles <span aria-hidden="true">&rarr;</span></a>
-      <!-- latest-article:start --><a href="/articles/avatar-23mb-to-half-a-megabyte" class="articles-edge-latest"><span class="articles-edge-kicker">Latest</span> How I Made My 3D Avatar Load 40× Faster (23 MB to 0.56 MB)</a><!-- latest-article:end -->
+      <!-- latest-article:start --><a href="/articles/brag-launch-videos" class="articles-edge-latest"><span class="articles-edge-kicker">Latest</span> Brag: Turn Any Project Into a Launch Video With One Command</a><!-- latest-article:end -->
     </aside>
 
     <!-- Edge Social Links (Crawlable rel="noopener noreferrer me") -->
@@ -438,79 +438,56 @@
       </section>
 
 
-      <!-- VIEW 3: Projects Index (each row links to a crawlable project page) -->
+      <!-- VIEW 3: Projects. Logo tiles; tapping one slides in its details (src/ui/projects.js).
+           Every tile is a real link to the project page, so it works without JavaScript too. -->
       <section class="view-panel view-selector view-projects" id="view-projects" aria-label="Projects" aria-hidden="true">
-        <div class="selector-content">
-          <div class="selector-header">
+        <div class="selector-content pj">
+          <div class="selector-header pj-header">
             <button type="button" class="btn-back" id="btn-projects-back" aria-label="Return to home headline">
               &larr; BACK
             </button>
+            <p class="pj-label"><span>04</span> Projects I&rsquo;ve built &amp; shipped</p>
           </div>
 
-          <nav class="experiences-nav" aria-label="Projects built by Bhavishya Singla">
-            <ul class="experiences-list projects-list">
-              <li class="experience-item project-item">
-                <a href="/ringping" class="experience-link project-link" id="proj-link-ringping">
-                  <span class="exp-num">01</span>
-                  <span class="exp-dash">&mdash;</span>
-                  <img class="project-logo" src="/projects/ringping.webp" width="56" height="56" alt="" />
-                  <span class="project-main">
-                    <span class="exp-title">RING PING</span>
-                    <span class="project-desc">Reminders that ring your phone like a real call.</span>
-                  </span>
-                  <span class="exp-tag">ANDROID APP</span>
-                  <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+          <div class="pj-stage" id="pj-stage">
+            <nav class="pj-grid-wrap" aria-label="Projects built by Bhavishya Singla">
+              <ul class="pj-grid">
+              <li class="pj-cell">
+                <a href="/ringping" class="pj-tile" data-slug="ringping" aria-label="Ring Ping: reminder app that rings like a call">
+                  <span class="pj-num">01</span>
+                  <span class="pj-logo"><img src="/projects/ringping.webp" width="120" height="120" alt="" /></span>
+                  <span class="pj-name">RING PING</span>
+                  <span class="pj-tag">ANDROID APP</span>
                 </a>
-                <a href="https://ringping.space/" class="project-site" target="_blank" rel="noopener" aria-label="Visit ringping.space (opens in a new tab)">RINGPING.SPACE <span aria-hidden="true">&nearr;</span></a>
               </li>
-              <li class="experience-item project-item">
-                <a href="/rankkiwi" class="experience-link project-link" id="proj-link-rankkiwi">
-                  <span class="exp-num">02</span>
-                  <span class="exp-dash">&mdash;</span>
-                  <img class="project-logo" src="/projects/rankkiwi.webp" width="56" height="56" alt="" />
-                  <span class="project-main">
-                    <span class="exp-title">RANK KIWI</span>
-                    <span class="project-desc">Spot viral outlier Reels and YouTube videos.</span>
-                  </span>
-                  <span class="exp-tag">CHROME EXTENSION</span>
-                  <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+              <li class="pj-cell">
+                <a href="/rankkiwi" class="pj-tile" data-slug="rankkiwi" aria-label="Rank Kiwi: find viral outlier content">
+                  <span class="pj-num">02</span>
+                  <span class="pj-logo"><img src="/projects/rankkiwi.webp" width="120" height="120" alt="" /></span>
+                  <span class="pj-name">RANK KIWI</span>
+                  <span class="pj-tag">CHROME EXTENSION</span>
                 </a>
-                <a href="https://rankkiwi.com/" class="project-site" target="_blank" rel="noopener" aria-label="Visit rankkiwi.com (opens in a new tab)">RANKKIWI.COM <span aria-hidden="true">&nearr;</span></a>
               </li>
-              <li class="experience-item project-item">
-                <a href="/linkedinrank" class="experience-link project-link" id="proj-link-linkedinrank">
-                  <span class="exp-num">03</span>
-                  <span class="exp-dash">&mdash;</span>
-                  <img class="project-logo" src="/projects/linkedinrank.webp" width="56" height="56" alt="" />
-                  <span class="project-main">
-                    <span class="exp-title">LINKEDINRANK</span>
-                    <span class="project-desc">Recruiter-grade LinkedIn profile audit.</span>
-                  </span>
-                  <span class="exp-tag">WEB APP</span>
-                  <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+              <li class="pj-cell">
+                <a href="/linkedinrank" class="pj-tile" data-slug="linkedinrank" aria-label="LinkedInRank: recruiter-grade profile audit">
+                  <span class="pj-num">03</span>
+                  <span class="pj-logo"><img src="/projects/linkedinrank.webp" width="120" height="120" alt="" /></span>
+                  <span class="pj-name">LINKEDINRANK</span>
+                  <span class="pj-tag">WEB APP</span>
                 </a>
-                <a href="https://linkedinrank.com/" class="project-site" target="_blank" rel="noopener" aria-label="Visit linkedinrank.com (opens in a new tab)">LINKEDINRANK.COM <span aria-hidden="true">&nearr;</span></a>
               </li>
-              <li class="experience-item project-item">
-                <a href="/aithisweek" class="experience-link project-link" id="proj-link-aithisweek">
-                  <span class="exp-num">04</span>
-                  <span class="exp-dash">&mdash;</span>
-                  <img class="project-logo project-logo--cover" src="/projects/aithisweek.webp" width="56" height="56" alt="" />
-                  <span class="project-main">
-                    <span class="exp-title">AI THIS WEEK</span>
-                    <span class="project-desc">Weekly newsletter on thriving in the AI era.</span>
-                  </span>
-                  <span class="exp-tag">NEWSLETTER</span>
-                  <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+              <li class="pj-cell">
+                <a href="/aithisweek" class="pj-tile" data-slug="aithisweek" aria-label="AI This Week: weekly newsletter on thriving in the AI era">
+                  <span class="pj-num">04</span>
+                  <span class="pj-logo"><img src="/projects/aithisweek.webp" width="120" height="120" alt="" /></span>
+                  <span class="pj-name">AI THIS WEEK</span>
+                  <span class="pj-tag">NEWSLETTER</span>
                 </a>
-                <a href="https://www.linkedin.com/newsletters/ai-this-week-7353859555715436544/" class="project-site" target="_blank" rel="noopener" aria-label="Subscribe to AI This Week on LinkedIn (opens in a new tab)">SUBSCRIBE <span aria-hidden="true">&nearr;</span></a>
               </li>
-            </ul>
-          </nav>
-
-          <footer class="selector-footer">
-            <p>DESIGNED, BUILT &amp; WRITTEN BY BHAVISHYA SINGLA &middot; ALL FREE</p>
-          </footer>
+              </ul>
+            </nav>
+            <div class="pj-detail" id="pj-detail" role="region" aria-label="Project details" aria-roledescription="carousel" hidden></div>
+          </div>
         </div>
       </section>
 

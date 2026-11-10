@@ -152,7 +152,24 @@ function initSignup() {
   });
 }
 
+// Click-to-play YouTube: the iframe (and YouTube's scripts) load only when asked
+function initVideos() {
+  document.querySelectorAll('figure.yt[data-yt]').forEach((fig) => {
+    const btn = fig.querySelector('.yt-play');
+    btn?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${fig.dataset.yt}?autoplay=1&rel=0&playsinline=1`;
+      iframe.title = btn.getAttribute('aria-label')?.replace(/^Play video: /, '') || 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      btn.replaceWith(iframe);
+      fig.classList.add('is-playing');
+    });
+  });
+}
+
 initTheme();
 initReveal();
 initArticleSearch();
 initSignup();
+initVideos();
