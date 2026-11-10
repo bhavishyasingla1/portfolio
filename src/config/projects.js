@@ -21,7 +21,7 @@ export const PROJECTS = [
     tag: 'Android · Reminders',
     tagline: "Reminders you can't ignore.",
     summary:
-      'A reminder app that rings your Android phone like an incoming call when something is due. It goes full screen, even when the phone is locked, and calls back until you act.',
+      'A reminder app that rings your Android phone like an incoming call. It goes full screen, even when the phone is locked, and calls back until you act.',
     audience:
       'Anyone who misses notifications, including many people with ADHD. It covers medicine, wake-ups, meetings, bills, workouts and calling family.',
     category: 'LifestyleApplication',

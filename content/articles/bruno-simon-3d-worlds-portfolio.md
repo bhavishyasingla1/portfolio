@@ -1,10 +1,11 @@
 ---
 title: How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)
-description: The three explorable 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is, and how I made them mine with AI tools.
+seo_title: Bruno Simon's 3D Worlds, Remixed Into My Portfolio
+description: The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.
 date: 2026-11-10
 tags: [Three.js, Bruno Simon, AI, WebGL, Portfolio]
-image: /articles/images/bruno-simon-my-room.webp
-image_alt: My Room in 3D on bhavishyasingla.com, with my newsletter on the TV and my photos on the screens
+image: /articles/images/cover-bruno-worlds.webp
+image_alt: Chibi Bhavishya driving a little red car through a playground of flying blocks
 ---
 
 If you've clicked **Explore World** on this site, you've walked through three 3D worlds: a cosy room, an endless landscape and a little car playground. I didn't build them from scratch. They started life as open-source projects by **[Bruno Simon](https://bruno-simon.com/)**, one of the best creative developers on the web and the teacher behind [Three.js Journey](https://threejs-journey.com/).

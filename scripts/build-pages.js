@@ -426,6 +426,48 @@ function makeMarked(toc, sizes = {}) {
  * Renders a click-to-play poster (no YouTube scripts until pressed) and adds a VideoObject
  * to the article's structured data. Put a thumbnail at public/articles/images/yt-<id>.webp.
  */
+/**
+ * Horizontal bar charts in Markdown, on a line of their own:
+ *   {{bars title="Cost per video" data="Haiku:5.83,Sonnet:28.59,Opus:92" prefix="₹" suffix="" decimals="2" note="..."}}
+ * One measure per chart (no dual axes), HTML bars in ink colour so they follow light/dark theme
+ * and keep readable text on phones, values labelled at the bar end, hover titles, aria-label.
+ * Always pair a chart with a Markdown table of the same numbers.
+ */
+function renderBars(body) {
+  return body.replace(/^\{\{bars\s+([^}]*)\}\}\s*$/gm, (_, attrs) => {
+    const get = (k, d = '') => (attrs.match(new RegExp(`${k}="([^"]*)"`)) || [])[1] ?? d;
+    const title = get('title');
+    const prefix = get('prefix');
+    const suffix = get('suffix');
+    const decimals = Number(get('decimals', '0'));
+    const note = get('note');
+    const rows = get('data')
+      .split(',')
+      .map((pair) => {
+        const i = pair.lastIndexOf(':');
+        return { label: pair.slice(0, i).trim(), value: Number(pair.slice(i + 1)) };
+      });
+    const max = Math.max(...rows.map((r) => r.value));
+    const fmt = (v) => `${prefix}${v.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`;
+    const summary = `${title}: ${rows.map((r) => `${r.label} ${fmt(r.value)}`).join(', ')}`;
+    const bars = rows
+      .map(
+        (r) => `<div class="chart-row" title="${esc(r.label)}: ${esc(fmt(r.value))}">
+<span class="chart-label">${esc(r.label)}</span>
+<span class="chart-track"><span class="chart-bar" style="--r:${(r.value / max).toFixed(4)}"></span><span class="chart-value">${esc(fmt(r.value))}</span></span>
+</div>`
+      )
+      .join('\n');
+    return `\n<figure class="chart" data-reveal>
+<figcaption class="chart-title">${esc(title)}</figcaption>
+<div class="chart-rows" role="img" aria-label="${esc(summary)}">
+${bars}
+</div>
+${note ? `<p class="chart-note">${esc(note)}</p>` : ''}
+</figure>\n`;
+  });
+}
+
 function extractVideos(body) {
   const videos = [];
   const out = body.replace(/^\{\{youtube\s+([^}]*)\}\}\s*$/gm, (_, attrs) => {
@@ -470,7 +512,7 @@ async function loadArticles() {
       const { data, body } = parseFrontmatter(raw, f);
       if (data.draft === 'true') return null;
       const toc = [];
-      const { body: mdBody, videos } = extractVideos(body);
+      const { body: mdBody, videos } = extractVideos(renderBars(body));
       const html = makeMarked(toc, sizeMaps[f]).parse(mdBody);
       const words = body.replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter(Boolean).length;
       const tags = Array.isArray(data.tags) ? data.tags : data.tags ? [data.tags] : [];
@@ -483,6 +525,7 @@ async function loadArticles() {
         tags,
         image: data.image,
         imageAlt: data.image_alt,
+        seoTitle: data.seo_title,
         dateLabel: fmtDate(data.date),
         videos,
         html,
@@ -501,7 +544,9 @@ function articlePage(a, i, all) {
   const older = all[i + 1];
   const image = `${SITE}${a.og}`;
   const cover = a.image ? (a.image.startsWith('http') ? a.image : `${SITE}${a.image}`) : null;
-  const title = `${a.title} | Bhavishya Singla`;
+  // Search results show ~60 characters: prefer a short seo_title, add the name only if it fits
+  const base = a.seoTitle || a.title;
+  const title = base.length + 19 <= 65 ? `${base} | Bhavishya Singla` : base;
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -662,8 +707,9 @@ function articlesIndex(all, og) {
     .map(
       (a) => `          <li class="al-item" data-search="${esc([a.title, a.description, ...a.tags].join(' ').toLowerCase())}">
             <a class="al-link" href="/articles/${a.slug}">
-              <time class="al-date" datetime="${a.date}">${fmtDate(a.date)}</time>
+              ${a.image ? `<span class="al-thumb"><img src="${a.image}" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>` : '<span class="al-thumb is-empty"></span>'}
               <span class="al-main">
+                <time class="al-date" datetime="${a.date}">${fmtDate(a.date)}</time>
                 <span class="al-title">${esc(a.title)}</span>
                 <span class="al-desc">${esc(a.description)}</span>
               </span>
@@ -700,6 +746,37 @@ ${signupForm('signup-index', '/articles/')}
     headHtml: head({ title, description, canonical, jsonld, image: `${SITE}${og}`, imageAlt: 'Articles by Bhavishya Singla' }),
     content
   });
+}
+
+/* ───────────────────────── 404 ───────────────────────── */
+
+function notFoundPage(all) {
+  const latest = all
+    .slice(0, 3)
+    .map((a) => `<li><a href="/articles/${a.slug}">${esc(a.title)}</a></li>`)
+    .join('');
+  const headHtml = head({
+    title: 'Page not found | Bhavishya Singla',
+    description: 'This page does not exist. Head back to the home page, the projects or the articles.',
+    canonical: `${SITE}/`,
+    jsonld: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Page not found' }
+  })
+    .replace('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />', '<meta name="robots" content="noindex" />')
+    .replace(`  <link rel="canonical" href="${SITE}/" />\n`, '');
+  const content = `${header([{ label: '404' }])}
+
+    <main id="content" class="nf">
+      <p class="pp-eyebrow" data-enter="1"><span>404</span> &mdash; Lost in the grid</p>
+      <h1 class="pp-title" data-enter="2"><span class="headline-line">NOTHING</span><span class="headline-line">HERE.</span></h1>
+      <p class="pp-summary" data-enter="3">This page wandered off. Maybe it is still driving around the playground. Try one of these instead:</p>
+      <div class="pp-actions" data-enter="4">
+        <a href="/" class="btn-explore pp-visit"><span class="btn-text">BACK HOME</span><span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="/#projects" class="pp-back">PROJECTS</a>
+        <a href="/articles/" class="pp-back">ARTICLES</a>
+      </div>
+      ${latest ? `<div class="nf-latest" data-enter="5"><p class="pp-label">Latest articles</p><ul>${latest}</ul></div>` : ''}
+    </main>`;
+  return document_({ bodyClass: 'is-404', headHtml, content });
 }
 
 /* ───────────────────────── feeds & sitemap ───────────────────────── */
@@ -799,6 +876,7 @@ mkdirSync(ARTICLES_OUT, { recursive: true });
 write(join(ARTICLES_OUT, 'index.html'), articlesIndex(articles, indexOg));
 articles.forEach((a, i) => write(join(ARTICLES_OUT, `${a.slug}.html`), articlePage(a, i, articles)));
 
+write(join(ROOT, '404.html'), notFoundPage(articles));
 write(join(ROOT, 'public', 'feed.xml'), rss(articles));
 write(join(ROOT, 'public', 'sitemap.xml'), sitemap(articles));
 injectLatestIntoLanding(articles);

@@ -74,7 +74,8 @@
   <!-- 8. Typography Fonts & Critical Resource Preloads -->
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="image" href="/hero-poster.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/hero-poster-alpha.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
+  <link rel="preload" as="image" href="/hero-poster-alpha-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)" />
   <link rel="stylesheet" href="/src/styles/index.css" />
 
   <!-- Critical Anti-FOUC Styles (Guarantees no raw text or offscreen UI flashes) -->
@@ -314,7 +315,7 @@
     <!-- Edge Articles corner (bottom-left, mirrors the socials on the right) -->
     <aside class="articles-edge" aria-label="Articles">
       <a href="/articles/" class="articles-edge-title">Articles <span aria-hidden="true">&rarr;</span></a>
-      <!-- latest-article:start --><a href="/articles/brag-launch-videos" class="articles-edge-latest"><span class="articles-edge-kicker">Latest</span> Brag: Turn Any Project Into a Launch Video With One Command</a><!-- latest-article:end -->
+      <!-- latest-article:start --><a href="/articles/haiku-vs-sonnet-vs-opus-music-videos" class="articles-edge-latest"><span class="articles-edge-kicker">Latest</span> Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos</a><!-- latest-article:end -->
     </aside>
 
     <!-- Edge Social Links (Crawlable rel="noopener noreferrer me") -->
@@ -379,12 +380,24 @@
               loop
               muted
               playsinline
-              preload="metadata"
-              poster="/hero-poster.webp"
-            >
-              <source src="/hero-image-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-              <source src="/hero-image.mp4" type="video/mp4" />
-            </video>
+              preload="auto"
+            ></video>
+            <!-- One transparent cut-out for both themes. Safari/iOS need HEVC-with-alpha (.mov);
+                 every other browser gets VP9-with-alpha (.webm). Picked here so loading starts immediately. -->
+            <script>
+              (function () {
+                var v = document.getElementById('hero-video');
+                var ua = navigator.userAgent;
+                var webkit = /AppleWebKit/.test(ua) && !/Chrome\/|Chromium|Edg\/|OPR\/|Android|Firefox\//.test(ua);
+                var m = window.matchMedia('(max-width: 768px)').matches ? '-mobile' : '';
+                v.poster = '/hero-poster-alpha' + m + '.webp';
+                var s = document.createElement('source');
+                s.src = webkit ? '/hero-alpha' + m + '.mov' : '/hero-alpha' + m + '.webm';
+                s.type = webkit ? 'video/quicktime; codecs="hvc1"' : 'video/webm; codecs="vp9"';
+                v.appendChild(s);
+              })();
+            </script>
+            <noscript><img class="hero-video" src="/hero-poster-alpha.webp" alt="" width="810" height="1440" /></noscript>
           </div>
         </div>
       </section>
@@ -446,7 +459,6 @@
             <button type="button" class="btn-back" id="btn-projects-back" aria-label="Return to home headline">
               &larr; BACK
             </button>
-            <p class="pj-label"><span>04</span> Projects I&rsquo;ve built &amp; shipped</p>
           </div>
 
           <div class="pj-stage" id="pj-stage">

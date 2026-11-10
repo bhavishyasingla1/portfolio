@@ -53,9 +53,15 @@
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/brag-launch-videos</loc>

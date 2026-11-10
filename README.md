@@ -232,5 +232,12 @@ the top of the article. JPG, PNG or WebP all work.
 
 ## Hero video
 
-Light theme uses the original video. Dark theme swaps to a transparent cut-out (`hero-alpha.webm` for
-Chrome/Firefox/Android, `hero-alpha.mov` HEVC-with-alpha for Safari/iPhone), see `src/ui/hero-video.js`.
+One transparent cut-out plays in both themes, so switching theme only changes the page behind it.
+`hero-alpha.webm` (VP9 with alpha) is used by Chrome, Firefox and Android; `hero-alpha.mov` (HEVC with alpha)
+by Safari and iPhone. A small inline script in `index.html` picks the right file before the page finishes loading.
+
+## Article illustrations
+
+The chibi covers are drawn in code: `scripts/illustrations/chibi.js` is the character and
+`scripts/illustrations/covers.js` builds one scene per article (`node scripts/illustrations/covers.js`).
+Charts in articles use `{{bars ...}}` and videos use `{{youtube ...}}`; see the comments in `scripts/build-pages.js`.

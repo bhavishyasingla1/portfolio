@@ -6,7 +6,22 @@
     <atom:link href="https://bhavishyasingla.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>Guides, notes and favourite GitHub repositories on AI, building products and the web.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos</title>
+      <link>https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Three Claude models, one 30-second music video each. A boat, a tomato and a very relaxed sloth. Here's what Haiku, Sonnet and Opus cost me, with charts.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-haiku-vs-sonnet-vs-opus-music-videos.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>AI</category>
+      <category>Claude</category>
+      <category>Claude Code</category>
+      <category>Opus</category>
+      <category>Sonnet</category>
+      <category>Haiku</category>
+      <category>Video</category>
+    </item>
     <item>
       <title>Brag: Turn Any Project Into a Launch Video With One Command</title>
       <link>https://bhavishyasingla.com/articles/brag-launch-videos</link>
@@ -25,7 +40,7 @@
       <link>https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</link>
       <guid isPermaLink="true">https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <description>The three explorable 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is, and how I made them mine with AI tools.</description>
+      <description>The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.</description>
       <media:content url="https://bhavishyasingla.com/og/article-bruno-simon-3d-worlds-portfolio.png" medium="image" type="image/png" width="1200" height="630" />
       <category>Three.js</category>
       <category>Bruno Simon</category>

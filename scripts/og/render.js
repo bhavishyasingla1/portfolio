@@ -20,7 +20,9 @@ const STAMPS = join(ROOT, 'scripts', 'og', '.cache');
 const fonts = [
   { name: 'Space Grotesk', data: readFileSync(join(FONT_DIR, 'SpaceGrotesk-Bold.ttf')), weight: 700, style: 'normal' },
   { name: 'Inter', data: readFileSync(join(FONT_DIR, 'Inter-Medium.ttf')), weight: 500, style: 'normal' },
-  { name: 'Inter', data: readFileSync(join(FONT_DIR, 'Inter-SemiBold.ttf')), weight: 600, style: 'normal' }
+  { name: 'Inter', data: readFileSync(join(FONT_DIR, 'Inter-SemiBold.ttf')), weight: 600, style: 'normal' },
+  // One-glyph fallback for ₹ (missing from the Latin subsets above), Inter Bold, SIL OFL
+  { name: 'Rupee', data: readFileSync(join(FONT_DIR, 'Inter-Rupee.ttf')), weight: 700, style: 'normal' }
 ];
 
 // satori only reads PNG/JPEG, so every image is normalised to PNG with sharp first
@@ -196,7 +198,7 @@ async function render(name, tree, fingerprint) {
   mkdirSync(STAMPS, { recursive: true });
   const file = join(OUT, `${name}.png`);
   const stamp = join(STAMPS, `${name}.hash`);
-  const hash = createHash('sha1').update(JSON.stringify(fingerprint)).update('v4').digest('hex');
+  const hash = createHash('sha1').update(JSON.stringify(fingerprint)).update('v5').digest('hex');
   if (existsSync(file) && existsSync(stamp) && readFileSync(stamp, 'utf8') === hash) return `/og/${name}.png`;
   const svg = await satori(await tree, { width: 1200, height: 630, fonts });
   const png = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();

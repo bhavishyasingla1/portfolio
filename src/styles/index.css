@@ -608,37 +608,14 @@ body:has(.experience-stage.is-active) .articles-edge {
 }
 
 /* ═══════════════════════════════════════════════
-   Hero video, two layers: the original (light) and a transparent cut-out (dark).
-   Both stay mounted and in sync; the theme switch crossfades them with the page colours.
+   Hero video: a single transparent cut-out for both themes, so switching
+   theme only changes the page behind it (no video swap, no flash).
    ═══════════════════════════════════════════════ */
-.hero-visual {
-  position: relative;
-}
-
 .hero-video {
-  transition: opacity 520ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero-video-alpha {
-  position: absolute;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
   background-color: transparent !important;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5)) !important;
-}
-
-:root[data-theme="dark"] .hero-video-alpha {
-  opacity: 1;
-}
-
-:root[data-theme="dark"] .hero-video:not(.hero-video-alpha) {
-  opacity: 0;
-}
-
-/* The global theme-transition rule would otherwise cancel the opacity fade */
-html.theme-transition .hero-video {
-  transition: opacity 520ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  /* No CSS filter: Chrome composites a filtered <video> as one opaque layer,
+     which shows as a faint box around the cut-out. */
+  filter: none !important;
 }
 
 :root[data-theme="dark"] .experience-link:hover .exp-tag,
@@ -715,9 +692,8 @@ html.theme-transition .hero-video {
   html.js .view-landing .cta-wrapper .btn-explore:nth-child(1) { animation-delay: 480ms; }
   html.js .view-landing .cta-wrapper .btn-explore:nth-child(2) { animation-delay: 560ms; }
 
-  /* Opacity only: a filter keyframe would override the video's brightness calibration */
-  /* backwards (not both): once finished, the theme rules own the opacity again */
-  html.js .hero-video:not(.hero-video-alpha) {
+  /* Opacity only, so the fade never touches the video filter */
+  html.js .hero-video {
     animation: fade-only 1200ms ease 150ms backwards;
   }
 

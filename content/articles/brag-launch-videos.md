@@ -1,10 +1,11 @@
 ---
 title: "Brag: Turn Any Project Into a Launch Video With One Command"
+seo_title: "Brag: Turn Any Project Into a Launch Video"
 description: Brag is an open-source agent skill that turns the project you just built into a short launch video. I used it for Ring Ping and Rank Kiwi. Here's how it works.
 date: 2026-11-10
 tags: [AI, GitHub, Agent Skills, Video, Launch]
-image: /articles/images/brag-launch-videos.webp
-image_alt: Launch videos for Ring Ping and Rank Kiwi, made with Brag
+image: /articles/images/cover-brag.webp
+image_alt: Chibi Bhavishya shouting a product launch through a megaphone
 ---
 
 Building the thing is only half the job. The other half is showing people, and making a good launch video usually means hours of editing, music hunting and second-guessing.
