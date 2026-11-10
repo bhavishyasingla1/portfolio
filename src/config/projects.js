@@ -133,26 +133,32 @@ export const PROJECTS = [
     tag: 'Newsletter · AI & Careers',
     tagline: 'Thrive in the AI era.',
     summary:
-      'A weekly LinkedIn newsletter for ambitious professionals. Practical playbooks on building with AI, finishing projects, winning hackathons and getting hired.',
+      'A weekly LinkedIn newsletter helping ambitious professionals thrive in the AI era. Short, practical reads on building with AI, growing your career and actually finishing things.',
     audience:
-      'Students, builders and early-career professionals who want to use AI to grow faster.',
+      'Students, builders and early-career professionals who want to use AI to learn, ship and get hired faster.',
     schemaType: 'Periodical',
     facts: [
-      ['Format', 'LinkedIn newsletter'],
+      ['Subscribers', '6,528+'],
+      ['Editions', '37 and counting'],
       ['Cadence', 'Weekly'],
-      ['Editions', '5 so far'],
       ['Price', 'Free']
     ],
-    featuresLabel: 'Recent editions',
+    featuresLabel: 'What you get',
     features: [
-      ['Build Something a Creator Will Show Their Audience', 'Nov 6, 2026'],
-      ['Get Hired by the Creators You Watch', 'Oct 29, 2026'],
-      ['Stop Asking AI to Build Your Project. Ask It to Help You Finish One.', 'Oct 16, 2026'],
-      ['"You\'ve Exhausted Your Daily Limit." Here\'s How to Keep Going.', 'Oct 9, 2026'],
-      ["A Good Project Won't Guarantee a Hackathon Win. Here's What Will.", 'Oct 4, 2026']
+      ['Practical AI playbooks', 'How to use AI tools to plan, build and finish real projects, not just start them.'],
+      ['Career moves for the AI era', 'Getting noticed, getting hired and working with the creators and companies you admire.'],
+      ['The builder mindset', 'Hackathons, side projects and shipping: what actually makes work stand out.'],
+      ['Smarter studying', 'AI tricks for exams, learning and beating the daily-limit wall.'],
+      ['Five-minute reads', 'One focused idea a week, with a bold collage cover you will recognise in your feed.']
     ],
     logo: '/projects/aithisweek.webp',
     logoPng: '/projects/aithisweek.png',
-    logoCover: true
+    logoCover: true,
+    proof: {
+      badge: '6,528+ subscribers on LinkedIn',
+      asOf: '2026-11-11',
+      url: 'https://www.linkedin.com/newsletters/ai-this-week-7353859555715436544/',
+      cta: 'Subscribe on LinkedIn'
+    }
   }
 ];

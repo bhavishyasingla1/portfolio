@@ -205,7 +205,11 @@ function proofStrip(p) {
   }
   if (pr.users) items.push(`<span><strong>${pr.users.toLocaleString('en-US')}</strong> users</span>`);
   if (pr.badge) items.push(`<span><strong>${esc(pr.badge)}</strong></span>`);
-  const source = pr.source ? `<span class="proof-source">on ${esc(pr.source)}${pr.asOf ? ` &middot; ${fmtDate(pr.asOf)}` : ''}</span>` : '';
+  const source = pr.source
+    ? `<span class="proof-source">on ${esc(pr.source)}${pr.asOf ? ` &middot; ${fmtDate(pr.asOf)}` : ''}</span>`
+    : pr.asOf
+      ? `<span class="proof-source">as of ${fmtDate(pr.asOf)}</span>`
+      : '';
   return `      <aside class="proof" aria-label="Traction" data-reveal>
         <p class="proof-items">${items.join('<span class="proof-sep" aria-hidden="true"></span>')}${source}</p>
         ${pr.url ? `<a class="proof-link" href="${pr.url}" target="_blank" rel="noopener">${esc(pr.cta || 'See listing')} <span aria-hidden="true">&nearr;</span></a>` : ''}

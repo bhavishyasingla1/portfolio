@@ -6,7 +6,7 @@
 - [Ring Ping](https://bhavishyasingla.com/ringping): Free Android reminder app that rings your phone like an incoming call until you act. Website: https://ringping.space/
 - [Rank Kiwi](https://bhavishyasingla.com/rankkiwi): Free Chrome extension that finds viral outlier Instagram Reels and YouTube videos by comparing each to the creator's median views. Website: https://rankkiwi.com/
 - [LinkedInRank](https://bhavishyasingla.com/linkedinrank): Free recruiter-grade LinkedIn profile audit across 30+ recruiter signals. Website: https://linkedinrank.com/
-- [AI This Week](https://bhavishyasingla.com/aithisweek): Weekly LinkedIn newsletter helping ambitious professionals thrive in the AI era.
+- [AI This Week](https://bhavishyasingla.com/aithisweek): Weekly LinkedIn newsletter (6,528+ subscribers, 37+ editions) helping ambitious professionals thrive in the AI era.
 
 ## Articles
 - [All articles](https://bhavishyasingla.com/articles/): Guides, notes and favourite GitHub repositories on AI, building products and the web. RSS: https://bhavishyasingla.com/feed.xml
