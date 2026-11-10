@@ -1,8 +1,18 @@
 {
   "name": "portfolio",
   "compatibility_date": "2026-09-18",
+  // Edge worker: permanent redirects + www → apex (see worker/index.js)
+  "main": "worker/index.js",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "routes": [
+    // apex domain (already attached in Cloudflare; listed so deploys keep it)
+    { "pattern": "bhavishyasingla.com", "custom_domain": true },
+    // www has a proxied DNS record; this route lets the worker answer it with a 301
+    { "pattern": "www.bhavishyasingla.com/*", "zone_name": "bhavishyasingla.com" }
+  ]
 }
