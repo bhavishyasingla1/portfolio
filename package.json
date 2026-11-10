@@ -4,14 +4,19 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/build-pages.js && vite",
+    "build": "node scripts/build-pages.js && vite build",
+    "build:pages": "node scripts/build-pages.js",
     "build:experiences": "node scripts/build-experiences.js",
-    "build:all": "node scripts/build-experiences.js && vite build",
+    "build:all": "node scripts/build-experiences.js && npm run build",
     "audit:seo": "./scripts/verify-seo.sh",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "marked": "^15.0.12",
+    "satori": "^0.12.2",
+    "sharp": "^0.33.5",
     "vite": "^6.2.0"
   }
 }

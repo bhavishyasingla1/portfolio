@@ -2,10 +2,19 @@
 
 > Bhavishya Singla is a builder working across Artificial Intelligence, Technology, and Creative Engineering. The portfolio website serves as a minimalist portal and doorway into interactive 3D WebGL worlds and experiences.
 
+## Projects
+- [Ring Ping](https://bhavishyasingla.com/ringping): Free Android reminder app that rings your phone like an incoming call until you act. Website: https://ringping.space/
+- [Rank Kiwi](https://bhavishyasingla.com/rankkiwi): Free Chrome extension that finds viral outlier Instagram Reels and YouTube videos by comparing each to the creator's median views. Website: https://rankkiwi.com/
+- [LinkedInRank](https://bhavishyasingla.com/linkedinrank): Free recruiter-grade LinkedIn profile audit across 30+ recruiter signals. Website: https://linkedinrank.com/
+- [AI This Week](https://bhavishyasingla.com/aithisweek): Weekly LinkedIn newsletter helping ambitious professionals thrive in the AI era.
+
+## Articles
+- [All articles](https://bhavishyasingla.com/articles/): Guides, notes and favourite GitHub repositories on AI, building products and the web. RSS: https://bhavishyasingla.com/feed.xml
+
 ## Core Experiences
-- [My Room in 3D](https://bhavishyasingla.com/room): Interactive isometric 3D room experience built with Three.js.
-- [Infinite World](https://bhavishyasingla.com/world): Procedural infinite 3D terrain exploration in WebGL.
-- [Playground](https://bhavishyasingla.com/folio): Interactive 3D physics playground featuring an interactive car and exploration landscape.
+- [My Room in 3D](https://bhavishyasingla.com/room/): Interactive isometric 3D room experience built with Three.js.
+- [Infinite World](https://bhavishyasingla.com/world/): Procedural infinite 3D terrain exploration in WebGL.
+- [Playground](https://bhavishyasingla.com/folio/): Interactive 3D physics playground featuring an interactive car and exploration landscape.
 
 ## Communities & Socials
 - LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/

@@ -28,6 +28,18 @@
   --grid-color: rgba(0, 0, 0, 0.065);
   --grid-color-active: rgba(0, 0, 0, 0.08);
 
+  /* Hairlines, surfaces & washes (theme-aware) */
+  --color-text-body: #222222;
+  --color-text-faint: rgba(0, 0, 0, 0.4);
+  --line-1: rgba(0, 0, 0, 0.08);
+  --line-2: rgba(0, 0, 0, 0.11);
+  --line-3: rgba(0, 0, 0, 0.16);
+  --line-4: rgba(0, 0, 0, 0.34);
+  --surface: rgba(255, 255, 255, 0.6);
+  --wash: rgba(0, 0, 0, 0.03);
+  --shadow-color: rgba(0, 0, 0, 0.12);
+  color-scheme: light;
+
   /* Video Color Calibration */
   --video-brightness: 0.99;
 
@@ -38,4 +50,59 @@
   /* Animation Timings */
   --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark theme: explicit choice, or system preference when no choice is stored */
+:root[data-theme="dark"] {
+  --color-bg: #0c0c0e;
+  --color-bg-subtle: #151518;
+  --color-text-primary: #f2f2f4;
+  --color-text-body: #d4d4d8;
+  --color-text-muted: #a1a1aa;
+  --color-text-light: #71717a;
+  --color-text-faint: rgba(255, 255, 255, 0.34);
+  --color-border: #27272a;
+  --color-border-dark: #f2f2f4;
+  --grid-color: rgba(255, 255, 255, 0.055);
+  --grid-color-active: rgba(255, 255, 255, 0.07);
+  --line-1: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.11);
+  --line-3: rgba(255, 255, 255, 0.16);
+  --line-4: rgba(255, 255, 255, 0.36);
+  --surface: rgba(255, 255, 255, 0.035);
+  --wash: rgba(255, 255, 255, 0.04);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0c0c0e;
+    --color-bg-subtle: #151518;
+    --color-text-primary: #f2f2f4;
+    --color-text-body: #d4d4d8;
+    --color-text-muted: #a1a1aa;
+    --color-text-light: #71717a;
+    --color-text-faint: rgba(255, 255, 255, 0.34);
+    --color-border: #27272a;
+    --color-border-dark: #f2f2f4;
+    --grid-color: rgba(255, 255, 255, 0.055);
+    --grid-color-active: rgba(255, 255, 255, 0.07);
+    --line-1: rgba(255, 255, 255, 0.08);
+    --line-2: rgba(255, 255, 255, 0.11);
+    --line-3: rgba(255, 255, 255, 0.16);
+    --line-4: rgba(255, 255, 255, 0.36);
+    --surface: rgba(255, 255, 255, 0.035);
+    --wash: rgba(255, 255, 255, 0.04);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+/* Smooth cross-fade when the visitor flips the theme */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 420ms ease, color 420ms ease, border-color 420ms ease, fill 420ms ease !important;
 }

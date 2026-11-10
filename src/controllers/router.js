@@ -29,6 +29,8 @@ export class AppRouter {
       this.portal.openExperienceDirect('folio', false);
     } else if (hash === '#explore') {
       this.portal.showSelector(false);
+    } else if (hash === '#projects' || pathname === '/projects') {
+      this.portal.showProjects(false);
     } else {
       this.portal.showLanding(false);
     }
@@ -43,6 +45,12 @@ export class AppRouter {
   navigateToSelector() {
     if (window.location.hash !== '#explore') {
       window.history.pushState({ view: 'selector' }, '', '#explore');
+    }
+  }
+
+  navigateToProjects() {
+    if (window.location.hash !== '#projects') {
+      window.history.pushState({ view: 'projects' }, '', '/#projects');
     }
   }
 
