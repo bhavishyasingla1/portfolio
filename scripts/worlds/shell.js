@@ -1,7 +1,7 @@
 /**
  * Adds the shared "world shell" to each 3D world page, in both the built copy (public/<world>/index.html)
  * and its source, so a rebuild keeps it:
- *   - an instant title + loading screen with real progress (script: public/world-shell.js)
+ *   - the page title and description as visually hidden text (no loading screen is drawn over the world)
  *   - structured data that credits Bruno Simon as creator and Bhavishya as contributor
  *   - Google Analytics only (no session recording inside the 3D scenes), skipped for Global Privacy Control
  *   - preload hints for each world's heaviest files
@@ -17,9 +17,9 @@ const ROOT = process.cwd();
 const SITE = 'https://bhavishyasingla.com';
 
 const FILES = {
-  room: { pub: 'public/room/index.html', src: 'experiences/my-room-in-3d/src/index.html', expected: 36 },
-  world: { pub: 'public/world/index.html', src: 'experiences/infinite-world/index.html', expected: 6 },
-  folio: { pub: 'public/folio/index.html', src: 'experiences/folio-2019/src/index.html', expected: 130 }
+  room: { pub: 'public/room/index.html', src: 'experiences/my-room-in-3d/src/index.html' },
+  world: { pub: 'public/world/index.html', src: 'experiences/infinite-world/index.html' },
+  folio: { pub: 'public/folio/index.html', src: 'experiences/folio-2019/src/index.html' }
 };
 
 // Heavy files each world always needs. Preloading starts the downloads before the 3D code has parsed.
@@ -45,45 +45,20 @@ const blockRe = (name) => new RegExp(`\\s*<!-- ${name}:start -->[\\s\\S]*?<!-- $
 const ANALYTICS = `<script src="/consent.js" data-ga-only defer></script>`;
 
 const SHELL_CSS = `<style>
-  @font-face{font-family:"WS Grotesk";src:url("/fonts/space-grotesk-latin.woff2") format("woff2");font-weight:300 700;font-display:swap}
-  .ws{position:fixed;inset:0;z-index:9990;display:flex;align-items:center;background:#0c0c0e;color:#f2f2f4;
-    background-image:linear-gradient(to right,rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.055) 1px,transparent 1px);
-    background-size:64px 64px;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    transition:opacity .6s cubic-bezier(.16,1,.3,1)}
-  .ws.is-done{opacity:0;pointer-events:none}
-  .ws-in{width:min(1088px,calc(100% - 48px));margin:0 auto}
-  .ws-eyebrow{margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a1a1aa}
-  .ws-eyebrow span{color:#8098ff}
-  .ws-title{margin:0 0 24px;font-family:"WS Grotesk","Space Grotesk",sans-serif;font-size:clamp(3rem,11vw,128px);font-weight:700;line-height:.86;letter-spacing:-.045em;text-transform:uppercase}
-  .ws-text{max-width:52ch;margin:0 0 14px;font-size:17px;line-height:1.6;color:#d4d4d8}
-  .ws-meta{max-width:60ch;margin:0;font-size:13.5px;line-height:1.6;color:#a1a1aa}
-  .ws-meta strong{margin-right:8px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#f2f2f4}
-  .ws-meta a{color:#f2f2f4;text-underline-offset:3px}
-  .ws-bar{height:3px;margin:40px 0 14px;background:rgba(255,255,255,.14);overflow:hidden}
-  .ws-bar span{display:block;height:100%;background:#2f55ff;box-shadow:0 0 14px rgba(64,104,255,.8);transform:scaleX(0);transform-origin:left}
-  .ws-foot{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a1a1aa}
-  .ws-status{margin:0}
-  .ws-skip{padding:8px 0;background:none;border:none;font:inherit;letter-spacing:inherit;text-transform:inherit;color:#a1a1aa;cursor:pointer}
-  .ws-skip:hover,.ws-skip:focus-visible{color:#fff}
+  /* The page's title and description, for search engines and screen readers. Nothing is drawn over the
+     world: a full-screen title card used to flash here for a moment and could not be read in time. */
+  .ws{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
   .exit-control:hover{background-color:#2f55ff!important;border-color:#2f55ff!important;color:#fff!important;box-shadow:0 0 20px rgba(64,104,255,.6)!important}
-  @media (max-width:600px){.ws-text{font-size:15.5px}.ws-bar{margin-top:28px}}
-  @media (prefers-reduced-motion:reduce){.ws{transition:none}}
 </style>`;
 
-function shellHtml(w, expected) {
+function shellHtml(w) {
   return `${SHELL_CSS}
-<div id="ws" class="ws" data-expected="${expected}">
-  <div class="ws-in">
-    <p class="ws-eyebrow"><span>${w.num}</span> &mdash; ${w.kind}</p>
-    <h1 class="ws-title">${w.name}</h1>
-    <p class="ws-text">${w.summary}</p>
-    <p class="ws-meta"><strong>Controls</strong>${w.controls}</p>
-    <p class="ws-meta"><strong>Credit</strong>Built on <a href="${w.original.url}" target="_blank" rel="noopener">${w.original.name}</a> by Bruno Simon, changed by Bhavishya Singla. <a href="/worlds/" target="_top">About the worlds</a></p>
-    <div class="ws-bar" aria-hidden="true"><span></span></div>
-    <div class="ws-foot"><p class="ws-status" role="status">Loading <b>0</b>%</p><button type="button" class="ws-skip">Skip</button></div>
-  </div>
-</div>
-<script src="/world-shell.js" defer></script>`;
+<div id="ws" class="ws">
+  <h1>${w.name}</h1>
+  <p>${w.summary}</p>
+  <p>Controls: ${w.controls}</p>
+  <p>Built on ${w.original.name} by Bruno Simon, changed by Bhavishya Singla.</p>
+</div>`;
 }
 
 function jsonLd(w) {
@@ -123,7 +98,7 @@ ${JSON.stringify(
 </script>`;
 }
 
-function patch(html, w, { expected, id }) {
+function patch(html, w, { id }) {
   let s = html;
   // 1. analytics: drop the old Google tag and Clarity snippets, add the single replacement
   s = s.replace(blockRe('world-analytics'), '');
@@ -145,7 +120,7 @@ function patch(html, w, { expected, id }) {
 
   // 4. the shell, first thing in <body>
   s = s.replace(blockRe('world-shell'), '');
-  s = s.replace(/<body([^>]*)>/i, (m) => `${m}\n${block('world-shell', shellHtml(w, expected))}`);
+  s = s.replace(/<body([^>]*)>/i, (m) => `${m}\n${block('world-shell', shellHtml(w))}`);
 
   // 5. social image and description that match the worlds page
   s = s.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")/g, `$1${SITE}/og/worlds.png$2`);
@@ -161,7 +136,7 @@ for (const w of WORLDS) {
       continue;
     }
     const before = readFileSync(path, 'utf8');
-    const after = patch(before, w, { expected: f.expected, id: w.id });
+    const after = patch(before, w, { id: w.id });
     if (after !== before) writeFileSync(path, after);
     console.log(`${after !== before ? '✓' : '·'} ${rel}`);
   }

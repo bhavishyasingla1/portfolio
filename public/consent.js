@@ -91,6 +91,8 @@
     'border:1px solid var(--color-text-primary,#0c0c0e);box-shadow:6px 6px 0 var(--color-accent,#1f3dff);opacity:0;' +
     'transition:opacity .28s ease,transform .36s cubic-bezier(.16,1,.3,1);font:400 13px/1.5 Inter,system-ui,sans-serif}' +
     '.cn.is-in{opacity:1;transform:translate(-50%,0)}' +
+    // never sit on top of a 3D world opened from the home page; it returns when the world is closed
+    'body:has(.experience-stage.is-active) .cn{visibility:hidden}' +
     '.cn p{margin:0;flex:1;min-width:0}.cn a{color:inherit;text-decoration:underline;text-underline-offset:3px}' +
     '.cn-btns{display:flex;gap:8px;flex:none}' +
     '.cn button{appearance:none;cursor:pointer;height:36px;padding:0 14px;border:1px solid var(--color-text-primary,#0c0c0e);background:transparent;color:inherit;' +
