@@ -34,7 +34,9 @@ export default class Application
         this.setCamera()
         this.setPasses()
         this.setWorld()
-        this.setTitle()
+        // The original animates the tab title into a little driving car. Left off here so the page keeps
+        // its own title, for visitors' tabs and for search engines (which otherwise see the original's).
+        // this.setTitle()
         // The Three.js Journey course pop-up from the original project is switched off here
     }
 
