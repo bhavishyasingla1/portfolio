@@ -248,7 +248,7 @@ the top of the article. JPG, PNG or WebP all work.
 One transparent cut-out plays in both themes, so switching theme only changes the page behind it.
 `hero-alpha.webm` (VP9 with alpha) is used by Chrome, Firefox and Android; `hero-alpha.mov` (HEVC with alpha)
 by Safari and iPhone. A small inline script in `index.html` picks the right file before the page finishes loading.
-Desktop files are 1080×1920 and the `-mobile` ones 720×1280. They are cached for a year, so bump `ver` in that
+Desktop files are 810×1440 and the `-mobile` ones 540×960. They are cached for a year, so bump `ver` in that
 inline script (and the two poster preloads) whenever you replace them.
 
 ## Article illustrations
