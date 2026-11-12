@@ -86,3 +86,7 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Strict-Transport-Security: max-age=31536000
+
+# The RSS feed is for feed readers, not for search results
+/feed.xml
+  X-Robots-Tag: noindex
