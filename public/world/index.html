@@ -159,7 +159,8 @@
                 display: flex !important;
                 position: fixed;
                 bottom: max(72px, calc(env(safe-area-inset-bottom, 0px) + 56px));
-                left: max(20px, calc(env(safe-area-inset-left, 0px) + 16px));
+                right: max(20px, calc(env(safe-area-inset-right, 0px) + 16px));
+                left: auto !important;
                 z-index: 99999;
                 pointer-events: auto;
                 user-select: none;
@@ -171,7 +172,7 @@
             @media (min-width: 901px) and (hover: hover) {
                 .mobile-dpad {
                     bottom: 32px;
-                    left: 32px;
+                    right: 32px;
                 }
             }
             .mobile-dpad .dpad-middle-row {
@@ -213,10 +214,10 @@
             }
             .mobile-dpad .dpad-btn:active,
             .mobile-dpad .dpad-btn.is-active {
-                background: rgba(0, 255, 102, 0.35);
-                border-color: #00ff66;
-                color: #00ff66;
-                box-shadow: 0 0 24px rgba(0, 255, 102, 0.7);
+                background: rgba(47, 85, 255, 0.45);
+                border-color: #8098ff;
+                color: #ffffff;
+                box-shadow: 0 0 24px rgba(64, 104, 255, 0.7);
                 transform: scale(0.92);
             }
         </style>
@@ -250,7 +251,7 @@
                     </div>
                 </div>
                 <div class="controls">
-                    <div class="group" style="margin-left: auto;">
+                    <div class="group" style="margin-right: auto;">
                         Infinite procedurally generated world — <a href="https://github.com/brunosimon/infinite-world" target="_blank">GitHub</a>
                     </div>
                 </div>

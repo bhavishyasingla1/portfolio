@@ -193,13 +193,24 @@ function header(active) {
   const links = NAV.map(
     (n) => `<a href="${n.href}" class="site-nav-link"${n.key === active ? ' aria-current="true"' : ''}>${n.label}</a>`
   ).join('\n          ');
+  // On phones the links live in a full-screen menu (see "Phone menu" in enhance.css and initNav in page.js).
+  // Without JavaScript the Menu button is hidden and the links simply wrap under the name.
   return `    <header class="pp-header">
       <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="site-nav" aria-label="Main">
+        <nav class="site-nav" id="site-nav" aria-label="Main">
+          <div class="site-nav-top">
+            <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
+            <button type="button" class="nav-btn nav-close" data-nav-close><span>Close</span><span class="nav-x" aria-hidden="true"></span></button>
+          </div>
           ${links}
+          <div class="site-nav-extra">
+            <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
+            <p>${SOCIALS.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer me">${label}</a>`).join('')}</p>
+          </div>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false">${THEME_ICON}</button>
+        <button type="button" class="nav-btn nav-open" data-nav-open aria-expanded="false" aria-controls="site-nav"><span>Menu</span><span class="nav-bars" aria-hidden="true"></span></button>
       </div>
     </header>`;
 }

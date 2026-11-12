@@ -141,14 +141,23 @@
     <header class="pp-header">
       <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="site-nav" aria-label="Main">
+        <nav class="site-nav" id="site-nav" aria-label="Main">
+          <div class="site-nav-top">
+            <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
+            <button type="button" class="nav-btn nav-close" data-nav-close><span>Close</span><span class="nav-x" aria-hidden="true"></span></button>
+          </div>
           <a href="/#projects" class="site-nav-link">Projects</a>
           <a href="/worlds/" class="site-nav-link">3D Worlds</a>
           <a href="/articles/" class="site-nav-link">Articles</a>
           <a href="/about" class="site-nav-link" aria-current="true">About</a>
           <a href="/contact" class="site-nav-link">Contact</a>
+          <div class="site-nav-extra">
+            <a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a>
+            <p><a href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a><a href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a><a href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a><a href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a><a href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></p>
+          </div>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
+        <button type="button" class="nav-btn nav-open" data-nav-open aria-expanded="false" aria-controls="site-nav"><span>Menu</span><span class="nav-bars" aria-hidden="true"></span></button>
       </div>
     </header>
 
