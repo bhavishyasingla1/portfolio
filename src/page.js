@@ -6,6 +6,38 @@
 
 import { initTheme } from './ui/theme.js';
 
+/** Phone menu: the Menu button opens the main links as a full-screen panel. */
+function initNav() {
+  const nav = document.getElementById('site-nav');
+  const openBtn = document.querySelector('[data-nav-open]');
+  if (!nav || !openBtn) return;
+  const root = document.documentElement;
+  const rest = [...document.querySelectorAll('main, .site-footer')];
+  const phone = window.matchMedia('(max-width: 768px)');
+
+  const set = (open) => {
+    root.classList.toggle('nav-open', open);
+    openBtn.setAttribute('aria-expanded', String(open));
+    rest.forEach((el) => (el.inert = open));
+    if (open) nav.querySelector('[data-nav-close]')?.focus({ preventScroll: true });
+    else openBtn.focus({ preventScroll: true });
+  };
+
+  openBtn.addEventListener('click', () => set(true));
+  nav.querySelector('[data-nav-close]')?.addEventListener('click', () => set(false));
+  // a link was chosen: close straight away so the next page is not hidden behind the panel on back/forward
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a') && root.classList.contains('nav-open')) set(false);
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && root.classList.contains('nav-open')) set(false);
+  });
+  phone.addEventListener('change', (e) => {
+    if (!e.matches && root.classList.contains('nav-open')) set(false);
+  });
+  window.addEventListener('pageshow', () => root.classList.contains('nav-open') && set(false));
+}
+
 function initReveal() {
   const items = document.querySelectorAll('[data-reveal]');
   if (!items.length) return;
@@ -448,6 +480,7 @@ function initCopy() {
 }
 
 initTheme();
+initNav();
 initReveal();
 initArticleSearch();
 initSignup();
