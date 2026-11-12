@@ -373,6 +373,7 @@ body.mode-selector .grid-background {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    gap: 8px; /* space-between does the spacing; the desktop gap pushed "X" off narrow screens */
   }
 
   .social-link {
@@ -424,7 +425,7 @@ body.mode-selector .grid-background {
     row-gap: 3px;
     align-items: center;
     padding: 16px 4px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--line-1);
   }
 
   .exp-num {
@@ -481,7 +482,7 @@ body.mode-selector .grid-background {
     font-size: 9px;
     line-height: 1.5;
     letter-spacing: 0.12em;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--color-text-faint);
   }
 
   /* Stage Controls on Mobile (Safe-Area Aware) */
@@ -527,5 +528,224 @@ body.mode-selector .grid-background {
 
   .social-list {
     gap: 8px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   Articles corner (desktop): bottom-left, mirrors the socials
+   ═══════════════════════════════════════════════ */
+.articles-edge {
+  position: fixed;
+  left: var(--articles-edge-left, 87.5px);
+  bottom: var(--social-edge-bottom, 57px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(340px, 30vw);
+  transition: left var(--transition-smooth), bottom var(--transition-smooth);
+}
+
+.articles-edge-title {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.articles-edge-title span {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 250ms ease;
+}
+
+.articles-edge-latest {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-fast);
+}
+
+.articles-edge-kicker {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-radius: 1px;
+}
+
+@media (hover: hover) {
+  .articles-edge-title:hover span {
+    transform: translateX(4px);
+  }
+
+  .articles-edge-latest:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+/* Header right side */
+.site-header .header-articles {
+  display: none;
+}
+
+/* The 3D stage covers the header; keep the toggle out of the way while a world is open */
+body:has(.experience-stage.is-active) .articles-edge {
+  visibility: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   Hero video: a single transparent cut-out for both themes, so switching
+   theme only changes the page behind it (no video swap, no flash).
+   ═══════════════════════════════════════════════ */
+.hero-video {
+  background-color: transparent !important;
+  /* No CSS filter: Chrome composites a filtered <video> as one opaque layer,
+     which shows as a faint box around the cut-out. */
+  filter: none !important;
+}
+
+:root[data-theme="dark"] .experience-link:hover .exp-tag,
+:root[data-theme="dark"] .articles-edge-kicker {
+  color: #000;
+}
+
+/* ═══════════════════════════════════════════════
+   Premium CTA: ink fill sweeps in from the left
+   ═══════════════════════════════════════════════ */
+.cta-wrapper .btn-explore {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 350ms cubic-bezier(0.16, 1, 0.3, 1), border-color 250ms ease, transform 250ms ease;
+}
+
+.cta-wrapper .btn-explore::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-text-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .cta-wrapper .btn-explore:hover {
+    color: var(--color-bg);
+    background-color: var(--color-bg);
+  }
+
+  .cta-wrapper .btn-explore:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   Motion. Only transforms that never feed alignGrid()'s
+   measurements (video, button and social rects stay put).
+   ═══════════════════════════════════════════════ */
+@keyframes hero-line {
+  from { opacity: 0; transform: translateY(0.4em); clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; transform: none; clip-path: inset(0 0 -12% 0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fade-only {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .view-landing .headline-line {
+    animation: hero-line 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  html.js .view-landing .headline-line:nth-child(1) { animation-delay: 120ms; }
+  html.js .view-landing .headline-line:nth-child(2) { animation-delay: 220ms; }
+
+  html.js .view-landing .hero-subtitle {
+    animation: fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+  }
+
+  html.js .view-landing .cta-wrapper .btn-explore {
+    animation: fade-only 800ms ease both;
+  }
+  html.js .view-landing .cta-wrapper .btn-explore:nth-child(1) { animation-delay: 480ms; }
+  html.js .view-landing .cta-wrapper .btn-explore:nth-child(2) { animation-delay: 560ms; }
+
+  /* Opacity only, so the fade never touches the video filter */
+  html.js .hero-video {
+    animation: fade-only 1200ms ease 150ms backwards;
+  }
+
+  html.js .site-header,
+  html.js .social-edge,
+  html.js .articles-edge {
+    animation: fade-only 900ms ease 700ms both;
+  }
+
+  /* Lists stagger in each time a panel opens */
+  .view-panel.is-active .experience-item {
+    animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .view-panel.is-active .experience-item:nth-child(1) { animation-delay: 60ms; }
+  .view-panel.is-active .experience-item:nth-child(2) { animation-delay: 120ms; }
+  .view-panel.is-active .experience-item:nth-child(3) { animation-delay: 180ms; }
+  .view-panel.is-active .experience-item:nth-child(4) { animation-delay: 240ms; }
+  .view-panel.is-active .experience-item:nth-child(5) { animation-delay: 300ms; }
+
+  .view-panel.is-active .selector-footer {
+    animation: fade-only 700ms ease 360ms both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Mobile & portrait: socials own the bottom edge, Articles moves into the header */
+@media (max-width: 1024px), (orientation: portrait) {
+  .articles-edge {
+    display: none;
+  }
+
+  .site-header .header-articles {
+    display: inline-block;
+    padding: 10px 4px;
+  }
+
+  .site-header .header-actions {
+    gap: 14px;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
   }
 }

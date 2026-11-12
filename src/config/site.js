@@ -59,7 +59,7 @@ export const SITE_CONFIG = {
       tag: 'ISOMETRIC 3D SPACE',
       path: '/room/',
       directPath: '/room/index.html',
-      route: '/room',
+      route: '/room/',
       hash: '#room',
       description: 'Creative isometric 3D bedroom scene built with Three.js and Webpack.',
       sourceRepo: 'https://github.com/brunosimon/my-room-in-3d'
@@ -72,7 +72,7 @@ export const SITE_CONFIG = {
       tag: 'PROCEDURAL TERRAIN',
       path: '/world/',
       directPath: '/world/index.html',
-      route: '/world',
+      route: '/world/',
       hash: '#world',
       description: 'Procedurally generated infinite 3D terrain exploration in WebGL.',
       sourceRepo: 'https://github.com/brunosimon/infinite-world'
@@ -85,7 +85,7 @@ export const SITE_CONFIG = {
       tag: 'PHYSICS PLAYGROUND',
       path: '/folio/',
       directPath: '/folio/index.html',
-      route: '/folio',
+      route: '/folio/',
       hash: '#folio',
       description: 'Interactive 3D car physics playground and exploration world.',
       sourceRepo: 'https://github.com/brunosimon/folio-2019'

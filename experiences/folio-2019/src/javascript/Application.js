@@ -6,7 +6,6 @@ import Time from './Utils/Time.js'
 import World from './World/index.js'
 import Resources from './Resources.js'
 import Camera from './Camera.js'
-import ThreejsJourney from './ThreejsJourney.js'
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
@@ -36,7 +35,7 @@ export default class Application
         this.setPasses()
         this.setWorld()
         this.setTitle()
-        this.setThreejsJourney()
+        // The Three.js Journey course pop-up from the original project is switched off here
     }
 
     /**
@@ -88,8 +87,11 @@ export default class Application
         })
         // this.renderer.setClearColor(0x414141, 1)
         this.renderer.setClearColor(0x000000, 1)
-        // this.renderer.setPixelRatio(Math.min(Math.max(window.devicePixelRatio, 1.5), 2))
-        this.renderer.setPixelRatio(2)
+        // Start from the screen's own density (between 1.5 and 2) instead of always rendering at 2×.
+        // On an ordinary monitor that is 44% fewer pixels per frame. setAdaptiveResolution() then
+        // lowers it further if this device still cannot hold a smooth frame rate.
+        this.pixelRatio = Math.min(Math.max(window.devicePixelRatio || 1, 1.5), 2)
+        this.renderer.setPixelRatio(this.pixelRatio)
         this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
         this.renderer.autoClear = false
 
@@ -121,6 +123,50 @@ export default class Application
             {
                 this.camera.target.x = this.world.car.chassis.object.position.x
                 this.camera.target.y = this.world.car.chassis.object.position.y
+            }
+        })
+    }
+
+    /**
+     * Keeps the playground smooth. Frame times are averaged over one-second windows; after three slow
+     * windows in a row the scene is rendered a little smaller (the canvas is stretched back to full
+     * size, so only sharpness changes, never the layout). It only ever steps down, so it cannot flicker.
+     */
+    setAdaptiveResolution()
+    {
+        const minimum = 1
+        let frames = 0
+        let total = 0
+        let slowWindows = 0
+
+        this.time.on('tick', () =>
+        {
+            if(this.pixelRatio <= minimum || document.hidden || this.time.elapsed < 4000)
+            {
+                return
+            }
+
+            frames++
+            total += this.time.delta
+
+            if(frames < 60)
+            {
+                return
+            }
+
+            const average = total / frames
+            frames = 0
+            total = 0
+
+            // slower than ~45 frames per second
+            slowWindows = average > 22 ? slowWindows + 1 : 0
+
+            if(slowWindows >= 3)
+            {
+                slowWindows = 0
+                this.pixelRatio = Math.max(minimum, this.pixelRatio - 0.25)
+                this.renderer.setPixelRatio(this.pixelRatio)
+                this.passes.composer.setPixelRatio(this.pixelRatio)
             }
         })
     }
@@ -213,6 +259,8 @@ export default class Application
             this.passes.verticalBlurPass.material.uniforms.uResolution.value.x = this.sizes.viewport.width
             this.passes.verticalBlurPass.material.uniforms.uResolution.value.y = this.sizes.viewport.height
         })
+
+        this.setAdaptiveResolution()
     }
 
     /**
@@ -265,18 +313,6 @@ export default class Application
 
             document.title = `${'_'.repeat(this.title.width - this.title.position)}🚗${'_'.repeat(this.title.position)}`
         }, this.title.frequency)
-    }
-
-    /**
-     * Set Three.js Journey
-     */
-    setThreejsJourney()
-    {
-        this.threejsJourney = new ThreejsJourney({
-            config: this.config,
-            time: this.time,
-            world: this.world
-        })
     }
 
     /**

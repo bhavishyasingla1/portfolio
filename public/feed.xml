@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Bhavishya Singla — Articles</title>
+    <link>https://bhavishyasingla.com/articles/</link>
+    <atom:link href="https://bhavishyasingla.com/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Guides, notes and favourite GitHub repositories on AI, building products and the web.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>The Outlier Score: I'm Making a Billionaire Micro-Drama With My Products in the Plot</title>
+      <link>https://bhavishyasingla.com/articles/outlier-score-micro-drama-series</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/outlier-score-micro-drama-series</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>A billionaire CEO, an erased co-founder and a junior analyst with one strange number. My animated micro-drama, why Rank Kiwi is in the plot and what I'm testing.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-outlier-score-micro-drama-series.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>micro drama</category>
+      <category>The Outlier Score</category>
+      <category>Erased series</category>
+      <category>billionaire CEO drama</category>
+      <category>Rank Kiwi</category>
+      <category>Ring Ping</category>
+      <category>product placement</category>
+      <category>soft marketing</category>
+      <category>Claude animation</category>
+      <category>YouTube Shorts series</category>
+    </item>
+    <item>
+      <title>I Let AI Edit an Entire Reel for ₹50: ChatGPT vs Antigravity vs Claude</title>
+      <link>https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Motion graphics, sound effects and visuals, edited by AI for about ₹50 a reel. I tried ChatGPT, Google Antigravity and Claude. One was clearly ahead.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-ai-edited-my-reel-chatgpt-claude-antigravity.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>AI video editing</category>
+      <category>Claude video editing</category>
+      <category>ChatGPT</category>
+      <category>Google Antigravity</category>
+      <category>reel editing</category>
+      <category>content creators</category>
+      <category>motion graphics</category>
+    </item>
+    <item>
+      <title>The Canary Trick: Why I Make Claude Say My Name in Every Reply</title>
+      <link>https://bhavishyasingla.com/articles/claude-canary-trick</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/claude-canary-trick</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Add one line to CLAUDE.md telling Claude to start every reply with your name. The moment it stops, your session is degrading. Here is how the canary trick works.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-claude-canary-trick.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>Claude</category>
+      <category>CLAUDE.md</category>
+      <category>Claude Code</category>
+      <category>context window</category>
+      <category>context rot</category>
+      <category>prompt engineering</category>
+      <category>canary technique</category>
+      <category>Peter Steinberger</category>
+    </item>
+    <item>
+      <title>How to Claim Your Business on ChatGPT (and Get the Blue Tick)</title>
+      <link>https://bhavishyasingla.com/articles/claim-business-on-chatgpt</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/claim-business-on-chatgpt</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>OpenAI now lets businesses claim their profile in ChatGPT. What you get, the three things you need, what Indian businesses should keep ready and what it does not do.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-claim-business-on-chatgpt.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>ChatGPT business profile</category>
+      <category>claim business on ChatGPT</category>
+      <category>ChatGPT blue tick</category>
+      <category>Business Hub</category>
+      <category>AI visibility</category>
+      <category>small business</category>
+    </item>
+    <item>
+      <title>Groq, Not Grok: The Free AI API I Build Everything On</title>
+      <link>https://bhavishyasingla.com/articles/groq-free-api</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/groq-free-api</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Groq (with a Q) has a free API tier that is fast enough to build real things on. Here is how to get a key, what the free limits are and when it stops being enough.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-groq-free-api.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>Groq</category>
+      <category>Groq API</category>
+      <category>free AI API</category>
+      <category>Groq vs Grok</category>
+      <category>Gemini API rate limits</category>
+      <category>student developers</category>
+    </item>
+    <item>
+      <title>ElevenLabs for ₹100: What the $1 Starter Month Actually Gets You</title>
+      <link>https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>I paid about ₹100 for a month of ElevenLabs Starter. What 30,000 credits buy, the one catch with auto-renewal and how to try it without paying ₹600 next month.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-elevenlabs-starter-one-dollar.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>ElevenLabs</category>
+      <category>ElevenLabs pricing</category>
+      <category>ElevenLabs Starter plan</category>
+      <category>AI voice</category>
+      <category>voice cloning</category>
+      <category>AI voiceover</category>
+    </item>
+    <item>
+      <title>I Cloned My Voice With a Free Tool and With ElevenLabs. Then I Tried Hindi.</title>
+      <link>https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Two AI copies of my voice, one paid and one free from GitHub. In English you can barely tell them apart. In Hindi, one of them changed what I said.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-free-voice-cloning-vs-elevenlabs.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>voice cloning</category>
+      <category>free voice cloning</category>
+      <category>ElevenLabs alternative</category>
+      <category>VoiceStudio</category>
+      <category>Hindi AI voice</category>
+      <category>AI dubbing</category>
+      <category>Hindi dubbing</category>
+    </item>
+    <item>
+      <title>AI For Everyone: My Millennium Fellowship Project on AI Literacy</title>
+      <link>https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Anyone can get an answer from AI in seconds. Knowing when to question it is the skill. AI For Everyone is my Millennium Fellowship project for SDG 4, Quality Education.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-ai-for-everyone-millennium-fellowship.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>Millennium Fellowship</category>
+      <category>AI For Everyone</category>
+      <category>AI literacy</category>
+      <category>SDG 4</category>
+      <category>Quality Education</category>
+      <category>responsible AI</category>
+      <category>AI education India</category>
+    </item>
+    <item>
+      <title>Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos</title>
+      <link>https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Three Claude models, one 30-second music video each. A boat, a tomato and a very relaxed sloth. Here's what Haiku, Sonnet and Opus cost me, with charts.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-haiku-vs-sonnet-vs-opus-music-videos.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>AI</category>
+      <category>Claude</category>
+      <category>Claude Code</category>
+      <category>Opus</category>
+      <category>Sonnet</category>
+      <category>Haiku</category>
+      <category>Video</category>
+    </item>
+    <item>
+      <title>Brag: Turn Any Project Into a Launch Video With One Command</title>
+      <link>https://bhavishyasingla.com/articles/brag-launch-videos</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/brag-launch-videos</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <description>Brag is an open-source agent skill that turns the project you just built into a short launch video. I used it for Ring Ping and Rank Kiwi. Here's how it works.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-brag-launch-videos.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>AI</category>
+      <category>GitHub</category>
+      <category>Agent Skills</category>
+      <category>Video</category>
+      <category>Launch</category>
+    </item>
+    <item>
+      <title>How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)</title>
+      <link>https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</link>
+      <guid isPermaLink="true">https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <description>The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.</description>
+      <media:content url="https://bhavishyasingla.com/og/article-bruno-simon-3d-worlds-portfolio.png" medium="image" type="image/png" width="1200" height="630" />
+      <category>Three.js</category>
+      <category>Bruno Simon</category>
+      <category>AI</category>
+      <category>WebGL</category>
+      <category>Portfolio</category>
+    </item>
+  </channel>
+</rss>

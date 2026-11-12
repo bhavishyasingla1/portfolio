@@ -14,7 +14,7 @@ export default {
     {
         outDir: '../dist', // Output in the dist/ folder
         emptyOutDir: true, // Empty the folder first
-        sourcemap: true // Add sourcemap
+        sourcemap: false // No public source maps (they were 4 MB each)
     },
     plugins:
     [

@@ -1,0 +1,522 @@
+{
+  "ringping-hero": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-hero-1760.webp",
+        "w": 1760,
+        "h": 856,
+        "kb": 38
+      },
+      {
+        "src": "/projects/shots/ringping-hero-880.webp",
+        "w": 880,
+        "h": 428,
+        "kb": 17
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-how": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-how-1760.webp",
+        "w": 1760,
+        "h": 615,
+        "kb": 29
+      },
+      {
+        "src": "/projects/shots/ringping-how-880.webp",
+        "w": 880,
+        "h": 307,
+        "kb": 13
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-callbacks": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-callbacks-784.webp",
+        "w": 784,
+        "h": 668,
+        "kb": 14
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-calendar": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-calendar-824.webp",
+        "w": 824,
+        "h": 1178,
+        "kb": 20
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-alarms": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-alarms-824.webp",
+        "w": 824,
+        "h": 962,
+        "kb": 22
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-heycola": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-heycola-1032.webp",
+        "w": 1032,
+        "h": 904,
+        "kb": 16
+      },
+      {
+        "src": "/projects/shots/ringping-heycola-880.webp",
+        "w": 880,
+        "h": 771,
+        "kb": 14
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-askcola": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-askcola-824.webp",
+        "w": 824,
+        "h": 646,
+        "kb": 13
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-languages": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-languages-1152.webp",
+        "w": 1152,
+        "h": 788,
+        "kb": 19
+      },
+      {
+        "src": "/projects/shots/ringping-languages-880.webp",
+        "w": 880,
+        "h": 602,
+        "kb": 14
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "ringping-mobile": {
+    "files": [
+      {
+        "src": "/projects/shots/ringping-mobile-780.webp",
+        "w": 780,
+        "h": 1688,
+        "kb": 43
+      },
+      {
+        "src": "/projects/shots/ringping-mobile-390.webp",
+        "w": 390,
+        "h": 844,
+        "kb": 21
+      }
+    ],
+    "bg": "#0f0f1a"
+  },
+  "rankkiwi-youtube": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-youtube-1600.webp",
+        "w": 1600,
+        "h": 1041,
+        "kb": 183
+      },
+      {
+        "src": "/projects/shots/rankkiwi-youtube-880.webp",
+        "w": 880,
+        "h": 573,
+        "kb": 75
+      }
+    ],
+    "bg": "#030201"
+  },
+  "rankkiwi-instagram": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-instagram-1760.webp",
+        "w": 1760,
+        "h": 1151,
+        "kb": 104
+      },
+      {
+        "src": "/projects/shots/rankkiwi-instagram-880.webp",
+        "w": 880,
+        "h": 576,
+        "kb": 43
+      }
+    ],
+    "bg": "#000000"
+  },
+  "rankkiwi-reel": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-reel-1760.webp",
+        "w": 1760,
+        "h": 1455,
+        "kb": 60
+      },
+      {
+        "src": "/projects/shots/rankkiwi-reel-880.webp",
+        "w": 880,
+        "h": 728,
+        "kb": 28
+      }
+    ],
+    "bg": "#f5f8f5"
+  },
+  "rankkiwi-video": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-video-1760.webp",
+        "w": 1760,
+        "h": 1455,
+        "kb": 60
+      },
+      {
+        "src": "/projects/shots/rankkiwi-video-880.webp",
+        "w": 880,
+        "h": 728,
+        "kb": 27
+      }
+    ],
+    "bg": "#f5f8f5"
+  },
+  "rankkiwi-score": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-score-1240.webp",
+        "w": 1240,
+        "h": 974,
+        "kb": 26
+      },
+      {
+        "src": "/projects/shots/rankkiwi-score-880.webp",
+        "w": 880,
+        "h": 691,
+        "kb": 18
+      }
+    ],
+    "bg": "#ffffff"
+  },
+  "rankkiwi-filters": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-filters-1096.webp",
+        "w": 1096,
+        "h": 1128,
+        "kb": 20
+      },
+      {
+        "src": "/projects/shots/rankkiwi-filters-880.webp",
+        "w": 880,
+        "h": 906,
+        "kb": 16
+      }
+    ],
+    "bg": "#ffffff"
+  },
+  "rankkiwi-transcription": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-transcription-1096.webp",
+        "w": 1096,
+        "h": 1220,
+        "kb": 37
+      },
+      {
+        "src": "/projects/shots/rankkiwi-transcription-880.webp",
+        "w": 880,
+        "h": 980,
+        "kb": 30
+      }
+    ],
+    "bg": "#ffffff"
+  },
+  "rankkiwi-how": {
+    "files": [
+      {
+        "src": "/projects/shots/rankkiwi-how-1760.webp",
+        "w": 1760,
+        "h": 979,
+        "kb": 75
+      },
+      {
+        "src": "/projects/shots/rankkiwi-how-880.webp",
+        "w": 880,
+        "h": 489,
+        "kb": 29
+      }
+    ],
+    "bg": "#ffffff"
+  },
+  "linkedinrank-hero": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-hero-1760.webp",
+        "w": 1760,
+        "h": 1039,
+        "kb": 41
+      },
+      {
+        "src": "/projects/shots/linkedinrank-hero-880.webp",
+        "w": 880,
+        "h": 519,
+        "kb": 17
+      }
+    ],
+    "bg": "#fbfbfe"
+  },
+  "linkedinrank-benchmark": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-benchmark-1760.webp",
+        "w": 1760,
+        "h": 1157,
+        "kb": 55
+      },
+      {
+        "src": "/projects/shots/linkedinrank-benchmark-880.webp",
+        "w": 880,
+        "h": 578,
+        "kb": 20
+      }
+    ],
+    "bg": "#f5f5fe"
+  },
+  "linkedinrank-beforeafter": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-beforeafter-1760.webp",
+        "w": 1760,
+        "h": 871,
+        "kb": 45
+      },
+      {
+        "src": "/projects/shots/linkedinrank-beforeafter-880.webp",
+        "w": 880,
+        "h": 435,
+        "kb": 17
+      }
+    ],
+    "bg": "#fbfbfe"
+  },
+  "linkedinrank-studio": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-studio-1760.webp",
+        "w": 1760,
+        "h": 804,
+        "kb": 35
+      },
+      {
+        "src": "/projects/shots/linkedinrank-studio-880.webp",
+        "w": 880,
+        "h": 402,
+        "kb": 13
+      }
+    ],
+    "bg": "#fbfbfe"
+  },
+  "linkedinrank-tools": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-tools-1760.webp",
+        "w": 1760,
+        "h": 1256,
+        "kb": 63
+      },
+      {
+        "src": "/projects/shots/linkedinrank-tools-880.webp",
+        "w": 880,
+        "h": 628,
+        "kb": 23
+      }
+    ],
+    "bg": "#fbfbfe"
+  },
+  "linkedinrank-mobile": {
+    "files": [
+      {
+        "src": "/projects/shots/linkedinrank-mobile-780.webp",
+        "w": 780,
+        "h": 1688,
+        "kb": 50
+      },
+      {
+        "src": "/projects/shots/linkedinrank-mobile-390.webp",
+        "w": 390,
+        "h": 844,
+        "kb": 23
+      }
+    ],
+    "bg": "#fbfbfe"
+  },
+  "aithisweek-page": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-page-1520.webp",
+        "w": 1520,
+        "h": 2660,
+        "kb": 215
+      },
+      {
+        "src": "/projects/shots/aithisweek-page-760.webp",
+        "w": 760,
+        "h": 1330,
+        "kb": 79
+      }
+    ],
+    "bg": "#ffffff"
+  },
+  "aithisweek-ed1": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed1-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 89
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed1-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 27
+      }
+    ],
+    "bg": "#010202"
+  },
+  "aithisweek-ed2": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed2-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 76
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed2-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 25
+      }
+    ],
+    "bg": "#000000"
+  },
+  "aithisweek-ed3": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed3-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 138
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed3-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 42
+      }
+    ],
+    "bg": "#000000"
+  },
+  "aithisweek-ed4": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed4-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 135
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed4-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 39
+      }
+    ],
+    "bg": "#020202"
+  },
+  "aithisweek-ed5": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed5-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 129
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed5-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 39
+      }
+    ],
+    "bg": "#010101"
+  },
+  "aithisweek-ed6": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed6-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 130
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed6-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 39
+      }
+    ],
+    "bg": "#000100"
+  },
+  "aithisweek-ed7": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed7-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 131
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed7-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 36
+      }
+    ],
+    "bg": "#a0c301"
+  },
+  "aithisweek-ed8": {
+    "files": [
+      {
+        "src": "/projects/shots/aithisweek-ed8-960.webp",
+        "w": 960,
+        "h": 540,
+        "kb": 130
+      },
+      {
+        "src": "/projects/shots/aithisweek-ed8-480.webp",
+        "w": 480,
+        "h": 270,
+        "kb": 36
+      }
+    ],
+    "bg": "#050505"
+  }
+}

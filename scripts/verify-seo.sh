@@ -31,9 +31,9 @@ check_endpoint() {
 echo ""
 echo "--- 1. HTTP Status Codes & Routing ---"
 check_endpoint "/" 200
-check_endpoint "/room" 200
-check_endpoint "/world" 200
-check_endpoint "/folio" 200
+check_endpoint "/room/" 200
+check_endpoint "/world/" 200
+check_endpoint "/folio/" 200
 check_endpoint "/robots.txt" 200
 check_endpoint "/sitemap.xml" 200
 check_endpoint "/site.webmanifest" 200
@@ -108,7 +108,7 @@ else
 fi
 
 # Crawlable anchor check for experiences
-if echo "$HTML" | grep -q 'href="/room"' && echo "$HTML" | grep -q 'href="/world"' && echo "$HTML" | grep -q 'href="/folio"'; then
+if echo "$HTML" | grep -q 'href="/room/"' && echo "$HTML" | grep -q 'href="/world/"' && echo "$HTML" | grep -q 'href="/folio/"'; then
   echo " [PASS] Crawlable <a> hyperlinks detected for all three experiences."
 else
   echo " [FAIL] Missing crawlable hyperlinks for experiences!"
@@ -118,10 +118,10 @@ fi
 echo ""
 echo "--- 3. Sub-page SEO, Canonicals & Schemas ---"
 for SUB in "room" "world" "folio"; do
-  SUB_HTML=$(curl -s "$BASE_URL/$SUB")
+  SUB_HTML=$(curl -s "$BASE_URL/$SUB/")
   
   # Canonical check
-  if echo "$SUB_HTML" | grep -q "<link rel=\"canonical\" href=\"https://bhavishyasingla.com/$SUB\""; then
+  if echo "$SUB_HTML" | grep -q "<link rel=\"canonical\" href=\"https://bhavishyasingla.com/$SUB/\""; then
     echo " [PASS] /$SUB -> Canonical URL correctly self-referenced."
   else
     echo " [FAIL] /$SUB -> Missing or incorrect canonical tag!"

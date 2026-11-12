@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 
 import Game from '@/Game.js'
 import View from '@/View/View.js'
@@ -57,14 +58,15 @@ export default class Player
 
         this.helper.geometry = new THREE.CapsuleGeometry(0.5, 0.8, 3, 16)
         this.helper.geometry.translate(0, 0.9, 0)
-        // Keep helper visible as fallback until the 3D model finishes loading
-        this.helper.visible = true
+        // Never render the capsule: the avatar model is small enough to appear almost instantly
+        this.helper.visible = false
         this.group.add(this.helper)
     }
 
     setModel()
     {
         this.loader = new GLTFLoader()
+        this.loader.setMeshoptDecoder(MeshoptDecoder)
         this.actions = {}
         this.currentAction = null
 
@@ -121,6 +123,8 @@ export default class Player
                 if(child.material)
                 {
                     child.material.vertexColors = true
+                    // Model ships without normals (flat-shaded, welded to cut size); derive them per face
+                    child.material.flatShading = true
                     child.material.roughness = 0.5
                     child.material.metalness = 0.0
                     child.material.needsUpdate = true
@@ -129,10 +133,6 @@ export default class Player
         })
 
         this.group.add(this.model)
-
-        // Hide fallback capsule now that 3D model is active
-        if(this.helper)
-            this.helper.visible = false
 
         // Setup Animation Mixer
         if(gltf.animations && gltf.animations.length > 0)

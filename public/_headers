@@ -10,19 +10,19 @@
 /models/*
   Cache-Control: public, max-age=31536000, immutable
 
-/hero-image.mp4
+/hero-alpha*
   Cache-Control: public, max-age=31536000, immutable
 
-/hero-image-mobile.mp4
+/hero-poster-alpha*
   Cache-Control: public, max-age=31536000, immutable
 
-/hero-poster.webp
-  Cache-Control: public, max-age=31536000, immutable
+/og/*
+  Cache-Control: public, max-age=604800
 
-/hero-poster-mobile.webp
-  Cache-Control: public, max-age=31536000, immutable
+/projects/*
+  Cache-Control: public, max-age=2592000
 
-/hero-poster.png
+/articles/images/*
   Cache-Control: public, max-age=2592000
 
 /*.png
@@ -36,3 +36,56 @@
 
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+/projects/shots/*
+  Cache-Control: public, max-age=2592000
+
+/worlds/*
+  Cache-Control: public, max-age=2592000
+
+# 3D worlds. Bundles have a fingerprint in their name, so they can be cached for good.
+# Models, textures and sounds keep their names: a week in the browser, then refreshed in the
+# background while the cached copy is still shown. Repeat visits open almost instantly.
+/room/bundle.*
+  Cache-Control: public, max-age=31536000, immutable
+
+/folio/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/world/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/room/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/room/draco/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
+/room/basis/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
+/folio/models/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/folio/sounds/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/folio/draco/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000
+
+/world/models/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/world-shell.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Baseline security headers for every response
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000

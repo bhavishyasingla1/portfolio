@@ -5,12 +5,15 @@
 
 import { ExperienceStage } from './stage.js';
 import { AppRouter } from './router.js';
+import { initProjects } from '../ui/projects.js';
 
 export class PortalController {
   constructor() {
     this.body = document.body;
     this.landingPanel = document.getElementById('view-landing');
     this.selectorPanel = document.getElementById('view-selector');
+    this.projectsPanel = document.getElementById('view-projects');
+    this.subPanels = [this.selectorPanel, this.projectsPanel].filter(Boolean);
     this.heroVideo = document.getElementById('hero-video');
     this.heroContent = document.querySelector('.hero-content');
     this.siteHeader = document.querySelector('.site-header');
@@ -25,6 +28,7 @@ export class PortalController {
       loading: document.getElementById('stage-loading')
     });
 
+    this.projects = initProjects();
     this.router = new AppRouter(this);
     this.bindEvents();
   }
@@ -71,14 +75,25 @@ export class PortalController {
       });
     }
 
-    // Back from selector click
-    const btnBack = document.getElementById('btn-selector-back');
-    if (btnBack) {
-      btnBack.addEventListener('click', (e) => {
+    // Explore Projects CTA click
+    const btnProjects = document.getElementById('btn-projects');
+    if (btnProjects) {
+      btnProjects.addEventListener('click', (e) => {
         e.preventDefault();
-        this.showLanding(true);
+        this.showProjects(true);
       });
     }
+
+    // Back buttons (worlds selector and projects index)
+    ['btn-selector-back', 'btn-projects-back'].forEach((id) => {
+      const btnBack = document.getElementById(id);
+      if (btnBack) {
+        btnBack.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.showLanding(true);
+        });
+      }
+    });
 
     // Experience links
     const expLinks = document.querySelectorAll('.experience-link');
@@ -104,7 +119,9 @@ export class PortalController {
     // Keyboard support: Escape exits stage or selector
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        if (this.stage.isActive()) {
+        if (this.projects.isOpen()) {
+          this.projects.close();
+        } else if (this.stage.isActive()) {
           this.closeExperience();
         } else if (this.body.classList.contains('mode-selector')) {
           this.showLanding(true);
@@ -122,10 +139,14 @@ export class PortalController {
 
   showLanding(updateHistory = true) {
     this.stage.close();
+    this.projects.close();
+    clearTimeout(this.subPanelTimer);
     this.body.classList.remove('mode-selector');
 
-    this.selectorPanel.classList.remove('is-active');
-    this.selectorPanel.setAttribute('aria-hidden', 'true');
+    this.subPanels.forEach((panel) => {
+      panel.classList.remove('is-active');
+      panel.setAttribute('aria-hidden', 'true');
+    });
 
     this.landingPanel.classList.remove('is-exiting');
     this.landingPanel.classList.add('is-active');
@@ -145,6 +166,47 @@ export class PortalController {
   }
 
   showSelector(updateHistory = true) {
+    this.showSubPanel(this.selectorPanel);
+    this.prefetchWorldAssets();
+
+    if (updateHistory) {
+      this.router.navigateToSelector();
+    }
+  }
+
+  showProjects(updateHistory = true) {
+    this.showSubPanel(this.projectsPanel);
+
+    if (updateHistory) {
+      this.router.navigateToProjects();
+    }
+  }
+
+  /**
+   * Warm the HTTP cache with the Infinite World avatar while the visitor is
+   * still choosing, so the character is ready the moment the world opens.
+   */
+  prefetchWorldAssets() {
+    if (this.didPrefetchWorld) return;
+    this.didPrefetchWorld = true;
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = '/world/models/player.glb';
+    link.as = 'fetch';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+
+    // Also fetch each world's page ahead of the click, so opening one starts on its 3D files straight away
+    ['/room/', '/world/', '/folio/'].forEach((href) => {
+      const doc = document.createElement('link');
+      doc.rel = 'prefetch';
+      doc.href = href;
+      doc.as = 'document';
+      document.head.appendChild(doc);
+    });
+  }
+
+  showSubPanel(targetPanel) {
     this.stage.close();
     this.body.classList.add('mode-selector');
 
@@ -170,14 +232,18 @@ export class PortalController {
     this.landingPanel.classList.remove('is-active');
     this.landingPanel.setAttribute('aria-hidden', 'true');
 
-    setTimeout(() => {
-      this.selectorPanel.classList.add('is-active');
-      this.selectorPanel.setAttribute('aria-hidden', 'false');
-    }, 150);
+    this.subPanels.forEach((panel) => {
+      if (panel !== targetPanel) {
+        panel.classList.remove('is-active');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
 
-    if (updateHistory) {
-      this.router.navigateToSelector();
-    }
+    clearTimeout(this.subPanelTimer);
+    this.subPanelTimer = setTimeout(() => {
+      targetPanel.classList.add('is-active');
+      targetPanel.setAttribute('aria-hidden', 'false');
+    }, 150);
   }
 
   openExperience(expId, updateHistory = true) {
@@ -255,6 +321,8 @@ export class PortalController {
       if (this.heroContent) {
         this.heroContent.style.paddingLeft = `${snapPadding.toFixed(2)}px`;
       }
+      // Articles corner (bottom-left) sits on the same vertical grid line as the headline
+      document.documentElement.style.setProperty('--articles-edge-left', `${(baseLeft + snapPadding).toFixed(2)}px`);
 
       // Align right edge of socials anchored to the video right edge with comfortable ~14px inset
       const rightOffset = Math.max(24, window.innerWidth - rect.right) + 14;
@@ -292,6 +360,7 @@ export class PortalController {
       if (this.siteHeader) this.siteHeader.style.removeProperty('padding-left');
       document.documentElement.style.removeProperty('--social-edge-right');
       document.documentElement.style.removeProperty('--social-edge-bottom');
+      document.documentElement.style.removeProperty('--articles-edge-left');
       this.heroShiftY = 0;
     }
   }
