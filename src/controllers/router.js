@@ -43,8 +43,8 @@ export class AppRouter {
   }
 
   navigateToSelector() {
-    if (window.location.hash !== '#explore') {
-      window.history.pushState({ view: 'selector' }, '', '#explore');
+    if (window.location.pathname !== '/' || window.location.hash !== '#explore') {
+      window.history.pushState({ view: 'selector' }, '', '/#explore');
     }
   }
 

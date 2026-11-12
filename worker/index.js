@@ -5,7 +5,8 @@
  * is served untouched from the built site in ./dist.
  *
  *   www.bhavishyasingla.com/*, *.workers.dev/*  → https://bhavishyasingla.com/*
- *   /room  /world  /folio  /articles        → same path + "/"
+ *   /room  /world  /folio  /articles  /worlds → same path + "/"
+ *   /ringping/, /articles/foo/, /contact/   → the same URL without the trailing "/"
  *   /index.html, /room/index.html, …        → the folder URL
  *   /ringping.html, /articles/foo.html      → the clean URL (/ringping, /articles/foo)
  *   retired URLs (see MOVED)                → their replacement
@@ -20,13 +21,18 @@ const MOVED = {
   '/hero-image-mobile.mp4': '/'
 };
 
-const FOLDERS = new Set(['/room', '/world', '/folio', '/articles']);
+const FOLDERS = new Set(['/room', '/world', '/folio', '/articles', '/worlds']);
+
+// Folder URLs that are served from an index.html and so keep their trailing slash
+const isFolder = (path) => FOLDERS.has(path.replace(/\/$/, '')) || /^\/(room|world|folio)\//.test(path);
 
 function redirectTarget(url) {
   const path = url.pathname;
   if (MOVED[path]) return MOVED[path];
   if (FOLDERS.has(path)) return `${path}/`;
   if (path === '/index.html') return '/';
+  // pages are served without a trailing slash; only real folders keep one
+  if (path.length > 1 && path.endsWith('/') && !isFolder(path)) return path.slice(0, -1);
   if (path.endsWith('/index.html')) return path.slice(0, -'index.html'.length);
   // clean URLs for generated pages, but leave the 3D worlds' own files alone
   if (path.endsWith('.html') && !/^\/(room|world|folio)\//.test(path)) return path.slice(0, -'.html'.length);

@@ -373,6 +373,7 @@ body.mode-selector .grid-background {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    gap: 8px; /* space-between does the spacing; the desktop gap pushed "X" off narrow screens */
   }
 
   .social-link {
@@ -582,8 +583,8 @@ body.mode-selector .grid-background {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #000;
-  background: var(--color-neon-green);
+  color: var(--color-on-accent);
+  background: var(--color-accent);
   border-radius: 1px;
 }
 

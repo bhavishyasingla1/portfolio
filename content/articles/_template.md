@@ -3,11 +3,14 @@ title: Your article title, written the way people search for it
 description: One or two sentences (120–160 characters) that answer the reader's question. Used in Google results and link previews.
 date: 2026-11-10
 updated: 2026-11-10
-tags: [AI, GitHub, Guide]
+topic: AI Tools
+keywords: [AI, GitHub, Guide]
 image: /articles/images/your-cover.webp
 image_alt: Describe the cover image in one sentence
 draft: true
 ---
+
+`topic` must be one of the topics listed in `ARTICLE_TOPICS` at the top of `scripts/build-pages.js` (one per article; it becomes a filter on the Articles page). `keywords` are for search engines and the on-page search only, and are never shown.
 
 Files starting with "_" are never published. Copy this file, rename it to the URL you want
 (for example `best-ai-github-repos.md` becomes /articles/best-ai-github-repos), fill in the

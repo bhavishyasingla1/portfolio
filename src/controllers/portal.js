@@ -195,6 +195,15 @@ export class PortalController {
     link.as = 'fetch';
     link.crossOrigin = 'anonymous';
     document.head.appendChild(link);
+
+    // Also fetch each world's page ahead of the click, so opening one starts on its 3D files straight away
+    ['/room/', '/world/', '/folio/'].forEach((href) => {
+      const doc = document.createElement('link');
+      doc.rel = 'prefetch';
+      doc.href = href;
+      doc.as = 'document';
+      document.head.appendChild(doc);
+    });
   }
 
   showSubPanel(targetPanel) {

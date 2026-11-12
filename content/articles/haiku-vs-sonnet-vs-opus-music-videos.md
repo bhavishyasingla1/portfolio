@@ -3,7 +3,8 @@ title: "Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music
 seo_title: "Haiku vs Sonnet vs Opus: ₹6 vs ₹92 AI Music Videos"
 description: Three Claude models, one 30-second music video each. A boat, a tomato and a very relaxed sloth. Here's what Haiku, Sonnet and Opus cost me, with charts.
 date: 2026-11-11
-tags: [AI, Claude, Claude Code, Opus, Sonnet, Haiku, Video]
+topic: Claude
+keywords: [AI, Claude, Claude Code, Opus, Sonnet, Haiku, Video]
 image: /articles/images/cover-ai-models.webp
 image_alt: Chibi Bhavishya sweating over a very long receipt next to three coin stacks of growing height
 ---

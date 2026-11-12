@@ -3,18 +3,10 @@
 <html lang="en" dir="ltr">
 <head>
   <script>(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V65GFWC76"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8V65GFWC76');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Articles &amp; Guides by Bhavishya Singla — AI, Building &amp; the Web</title>
-  <meta name="description" content="Guides, notes and favourite GitHub repositories from Bhavishya Singla on AI, building products, performance and the web." />
+  <meta name="description" content="Guides, experiments and the videos behind them: AI tools, Claude, AI video and the projects Bhavishya Singla is building." />
   <link rel="canonical" href="https://bhavishyasingla.com/articles/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Bhavishya Singla" />
@@ -22,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bhavishyasingla.com/articles/" />
   <meta property="og:title" content="Articles &amp; Guides by Bhavishya Singla — AI, Building &amp; the Web" />
-  <meta property="og:description" content="Guides, notes and favourite GitHub repositories from Bhavishya Singla on AI, building products, performance and the web." />
+  <meta property="og:description" content="Guides, experiments and the videos behind them: AI tools, Claude, AI video and the projects Bhavishya Singla is building." />
   <meta property="og:image" content="https://bhavishyasingla.com/og/articles.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
@@ -34,7 +26,7 @@
   <meta name="twitter:site" content="@Bhavishyas_1" />
   <meta name="twitter:creator" content="@Bhavishyas_1" />
   <meta name="twitter:title" content="Articles &amp; Guides by Bhavishya Singla — AI, Building &amp; the Web" />
-  <meta name="twitter:description" content="Guides, notes and favourite GitHub repositories from Bhavishya Singla on AI, building products, performance and the web." />
+  <meta name="twitter:description" content="Guides, experiments and the videos behind them: AI tools, Claude, AI video and the projects Bhavishya Singla is building." />
   <meta name="twitter:image" content="https://bhavishyasingla.com/og/articles.png" />
   <meta name="twitter:image:alt" content="Articles by Bhavishya Singla" />
 
@@ -45,18 +37,29 @@
   <link rel="alternate" type="application/rss+xml" title="Bhavishya Singla — Articles" href="/feed.xml" />
   <meta name="theme-color" content="#f2f2f4" />
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ym814ukuow");
-  </script>
-
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/styles/project-page.css" />
+  <link rel="stylesheet" href="/src/styles/enhance.css" />
   <script type="module" src="/src/page.js"></script>
+  <script src="/consent.js" defer></script>
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": "/" } },
+        { "not": { "href_matches": "/room/*" } },
+        { "not": { "href_matches": "/world/*" } },
+        { "not": { "href_matches": "/folio/*" } },
+        { "not": { "href_matches": "/*.xml" } },
+        { "not": { "selector_matches": "[data-lightbox], [target=_blank]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{ "where": { "href_matches": "/" }, "eagerness": "moderate" }]
+  }
+  </script>
 
   <script type="application/ld+json">
 {
@@ -67,7 +70,7 @@
       "@id": "https://bhavishyasingla.com/articles/#blog",
       "url": "https://bhavishyasingla.com/articles/",
       "name": "Articles by Bhavishya Singla",
-      "description": "Guides, notes and favourite GitHub repositories from Bhavishya Singla on AI, building products, performance and the web.",
+      "description": "Guides, experiments and the videos behind them: AI tools, Claude, AI video and the projects Bhavishya Singla is building.",
       "inLanguage": "en-US",
       "author": {
         "@id": "https://bhavishyasingla.com/#person"
@@ -76,6 +79,70 @@
         "@id": "https://bhavishyasingla.com/#person"
       },
       "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/outlier-score-micro-drama-series#article",
+          "headline": "The Outlier Score: I'm Making a Billionaire Micro-Drama With My Products in the Plot",
+          "url": "https://bhavishyasingla.com/articles/outlier-score-micro-drama-series",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "A billionaire CEO, an erased co-founder and a junior analyst with one strange number. My animated micro-drama, why Rank Kiwi is in the plot and what I'm testing."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity#article",
+          "headline": "I Let AI Edit an Entire Reel for ₹50: ChatGPT vs Antigravity vs Claude",
+          "url": "https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "Motion graphics, sound effects and visuals, edited by AI for about ₹50 a reel. I tried ChatGPT, Google Antigravity and Claude. One was clearly ahead."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/claude-canary-trick#article",
+          "headline": "The Canary Trick: Why I Make Claude Say My Name in Every Reply",
+          "url": "https://bhavishyasingla.com/articles/claude-canary-trick",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "Add one line to CLAUDE.md telling Claude to start every reply with your name. The moment it stops, your session is degrading. Here is how the canary trick works."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/claim-business-on-chatgpt#article",
+          "headline": "How to Claim Your Business on ChatGPT (and Get the Blue Tick)",
+          "url": "https://bhavishyasingla.com/articles/claim-business-on-chatgpt",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "OpenAI now lets businesses claim their profile in ChatGPT. What you get, the three things you need, what Indian businesses should keep ready and what it does not do."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/groq-free-api#article",
+          "headline": "Groq, Not Grok: The Free AI API I Build Everything On",
+          "url": "https://bhavishyasingla.com/articles/groq-free-api",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "Groq (with a Q) has a free API tier that is fast enough to build real things on. Here is how to get a key, what the free limits are and when it stops being enough."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar#article",
+          "headline": "ElevenLabs for ₹100: What the $1 Starter Month Actually Gets You",
+          "url": "https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "I paid about ₹100 for a month of ElevenLabs Starter. What 30,000 credits buy, the one catch with auto-renewal and how to try it without paying ₹600 next month."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs#article",
+          "headline": "I Cloned My Voice With a Free Tool and With ElevenLabs. Then I Tried Hindi.",
+          "url": "https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "Two AI copies of my voice, one paid and one free from GitHub. In English you can barely tell them apart. In Hindi, one of them changed what I said."
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship#article",
+          "headline": "AI For Everyone: My Millennium Fellowship Project on AI Literacy",
+          "url": "https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship",
+          "datePublished": "2026-11-12T00:00:00+00:00",
+          "description": "Anyone can get an answer from AI in seconds. Knowing when to question it is the skill. AI For Everyone is my Millennium Fellowship project for SDG 4, Quality Education."
+        },
         {
           "@type": "BlogPosting",
           "@id": "https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos#article",
@@ -107,20 +174,24 @@
       "@id": "https://bhavishyasingla.com/#website",
       "url": "https://bhavishyasingla.com/",
       "name": "Bhavishya Singla",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://bhavishyasingla.com/articles/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
+      "publisher": {
+        "@id": "https://bhavishyasingla.com/#person"
       }
     },
     {
       "@type": "Person",
       "@id": "https://bhavishyasingla.com/#person",
       "name": "Bhavishya Singla",
-      "url": "https://bhavishyasingla.com"
+      "url": "https://bhavishyasingla.com/",
+      "image": "https://bhavishyasingla.com/bhavishya.png",
+      "jobTitle": "AI Builder & Creative Technologist",
+      "sameAs": [
+        "https://github.com/bhavishyasingla1",
+        "https://www.linkedin.com/in/bhavishyasingla1/",
+        "https://www.youtube.com/@bhavishyasingla1",
+        "https://www.instagram.com/bhavishyasingla1/",
+        "https://x.com/Bhavishyas_1"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -149,10 +220,14 @@
 
   <div class="pp-container">
     <header class="pp-header">
-      <a href="/" class="brand">BHAVISHYA SINGLA</a>
+      <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="pp-crumbs" aria-label="Breadcrumb">
-        <span aria-current="page">Articles</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#projects" class="site-nav-link">Projects</a>
+          <a href="/worlds/" class="site-nav-link">3D Worlds</a>
+          <a href="/articles/" class="site-nav-link" aria-current="true">Articles</a>
+          <a href="/about" class="site-nav-link">About</a>
+          <a href="/contact" class="site-nav-link">Contact</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
       </div>
@@ -160,60 +235,163 @@
 
     <main id="content">
       <section class="al-hero" aria-labelledby="al-title">
-        <p class="pp-eyebrow" data-enter="1"><span>03</span> &mdash; Guides, notes &amp; repos I like</p>
+        <p class="pp-eyebrow" data-enter="1"><span>11</span> &mdash; Guides, experiments &amp; the videos behind them</p>
         <h1 class="pp-title" id="al-title"><span class="headline-line" data-enter="2">ARTICLES.</span></h1>
         <form class="al-search" role="search" action="/articles/" data-enter="3">
           <label class="sr-only" for="article-search">Search articles</label>
           <input id="article-search" name="q" type="search" placeholder="Search articles" autocomplete="off" spellcheck="false" />
           <kbd class="al-kbd" aria-hidden="true">/</kbd>
         </form>
+        <div class="al-topics" data-enter="4" role="group" aria-label="Filter by topic">
+          <button type="button" class="al-chip is-active" data-topic="" aria-pressed="true">All<span>11</span></button>
+          <button type="button" class="al-chip" data-topic="AI Tools" aria-pressed="false">AI Tools<span>4</span></button>
+          <button type="button" class="al-chip" data-topic="Claude" aria-pressed="false">Claude<span>2</span></button>
+          <button type="button" class="al-chip" data-topic="Video" aria-pressed="false">Video<span>3</span></button>
+          <button type="button" class="al-chip" data-topic="Projects" aria-pressed="false">Projects<span>2</span></button>
+        </div>
       </section>
 
-      <ol class="al-list" id="article-list" data-enter="4">
-          <li class="al-item" data-search="haiku vs sonnet vs opus: i paid ₹6, ₹28 and ₹92 for three ai music videos three claude models, one 30-second music video each. a boat, a tomato and a very relaxed sloth. here's what haiku, sonnet and opus cost me, with charts. ai claude claude code opus sonnet haiku video">
-            <a class="al-link" href="/articles/haiku-vs-sonnet-vs-opus-music-videos">
-              <span class="al-thumb"><img src="/articles/images/cover-ai-models.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+      <ol class="al-list" id="article-list" data-enter="5">
+          <li class="al-item is-featured" data-topic="Video" data-search="the outlier score: i'm making a billionaire micro-drama with my products in the plot a billionaire ceo, an erased co-founder and a junior analyst with one strange number. my animated micro-drama, why rank kiwi is in the plot and what i'm testing. video micro drama the outlier score erased series billionaire ceo drama rank kiwi ring ping product placement soft marketing claude animation youtube shorts series">
+            <a class="al-link" href="/articles/outlier-score-micro-drama-series">
+              <span class="al-thumb"><img src="/articles/images/cover-outlier.webp" alt="" width="1600" height="840" fetchpriority="high" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
               <span class="al-main">
-                <time class="al-date" datetime="2026-11-11">11 NOV 2026</time>
+                <span class="al-date"><span class="al-new">Latest</span><span class="al-topic">Video</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">The Outlier Score: I'm Making a Billionaire Micro-Drama With My Products in the Plot</span>
+                <span class="al-desc">A billionaire CEO, an erased co-founder and a junior analyst with one strange number. My animated micro-drama, why Rank Kiwi is in the plot and what I'm testing.</span>
+              </span>
+              <span class="al-meta"><span>5 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="Video" data-search="i let ai edit an entire reel for ₹50: chatgpt vs antigravity vs claude motion graphics, sound effects and visuals, edited by ai for about ₹50 a reel. i tried chatgpt, google antigravity and claude. one was clearly ahead. video ai video editing claude video editing chatgpt google antigravity reel editing content creators motion graphics">
+            <a class="al-link" href="/articles/ai-edited-my-reel-chatgpt-claude-antigravity">
+              <span class="al-thumb"><img src="/articles/images/cover-ai-edits-reel.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">Video</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">I Let AI Edit an Entire Reel for ₹50: ChatGPT vs Antigravity vs Claude</span>
+                <span class="al-desc">Motion graphics, sound effects and visuals, edited by AI for about ₹50 a reel. I tried ChatGPT, Google Antigravity and Claude. One was clearly ahead.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="Claude" data-search="the canary trick: why i make claude say my name in every reply add one line to claude.md telling claude to start every reply with your name. the moment it stops, your session is degrading. here is how the canary trick works. claude claude claude.md claude code context window context rot prompt engineering canary technique peter steinberger">
+            <a class="al-link" href="/articles/claude-canary-trick">
+              <span class="al-thumb"><img src="/articles/images/cover-canary.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">Claude</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">The Canary Trick: Why I Make Claude Say My Name in Every Reply</span>
+                <span class="al-desc">Add one line to CLAUDE.md telling Claude to start every reply with your name. The moment it stops, your session is degrading. Here is how the canary trick works.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="AI Tools" data-search="how to claim your business on chatgpt (and get the blue tick) openai now lets businesses claim their profile in chatgpt. what you get, the three things you need, what indian businesses should keep ready and what it does not do. ai tools chatgpt business profile claim business on chatgpt chatgpt blue tick business hub ai visibility small business">
+            <a class="al-link" href="/articles/claim-business-on-chatgpt">
+              <span class="al-thumb"><img src="/articles/images/cover-chatgpt-business.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">AI Tools</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">How to Claim Your Business on ChatGPT (and Get the Blue Tick)</span>
+                <span class="al-desc">OpenAI now lets businesses claim their profile in ChatGPT. What you get, the three things you need, what Indian businesses should keep ready and what it does not do.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="AI Tools" data-search="groq, not grok: the free ai api i build everything on groq (with a q) has a free api tier that is fast enough to build real things on. here is how to get a key, what the free limits are and when it stops being enough. ai tools groq groq api free ai api groq vs grok gemini api rate limits student developers">
+            <a class="al-link" href="/articles/groq-free-api">
+              <span class="al-thumb"><img src="/articles/images/cover-groq.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">AI Tools</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">Groq, Not Grok: The Free AI API I Build Everything On</span>
+                <span class="al-desc">Groq (with a Q) has a free API tier that is fast enough to build real things on. Here is how to get a key, what the free limits are and when it stops being enough.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="AI Tools" data-search="elevenlabs for ₹100: what the $1 starter month actually gets you i paid about ₹100 for a month of elevenlabs starter. what 30,000 credits buy, the one catch with auto-renewal and how to try it without paying ₹600 next month. ai tools elevenlabs elevenlabs pricing elevenlabs starter plan ai voice voice cloning ai voiceover">
+            <a class="al-link" href="/articles/elevenlabs-starter-one-dollar">
+              <span class="al-thumb"><img src="/articles/images/cover-elevenlabs-offer.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">AI Tools</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">ElevenLabs for ₹100: What the $1 Starter Month Actually Gets You</span>
+                <span class="al-desc">I paid about ₹100 for a month of ElevenLabs Starter. What 30,000 credits buy, the one catch with auto-renewal and how to try it without paying ₹600 next month.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="AI Tools" data-search="i cloned my voice with a free tool and with elevenlabs. then i tried hindi. two ai copies of my voice, one paid and one free from github. in english you can barely tell them apart. in hindi, one of them changed what i said. ai tools voice cloning free voice cloning elevenlabs alternative voicestudio hindi ai voice ai dubbing hindi dubbing">
+            <a class="al-link" href="/articles/free-voice-cloning-vs-elevenlabs">
+              <span class="al-thumb"><img src="/articles/images/cover-voice-clone.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">AI Tools</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">I Cloned My Voice With a Free Tool and With ElevenLabs. Then I Tried Hindi.</span>
+                <span class="al-desc">Two AI copies of my voice, one paid and one free from GitHub. In English you can barely tell them apart. In Hindi, one of them changed what I said.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="Projects" data-search="ai for everyone: my millennium fellowship project on ai literacy anyone can get an answer from ai in seconds. knowing when to question it is the skill. ai for everyone is my millennium fellowship project for sdg 4, quality education. projects millennium fellowship ai for everyone ai literacy sdg 4 quality education responsible ai ai education india">
+            <a class="al-link" href="/articles/ai-for-everyone-millennium-fellowship">
+              <span class="al-thumb"><img src="/articles/images/cover-ai-for-everyone.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">Projects</span><time datetime="2026-11-12">12 NOV 2026</time></span>
+                <span class="al-title">AI For Everyone: My Millennium Fellowship Project on AI Literacy</span>
+                <span class="al-desc">Anyone can get an answer from AI in seconds. Knowing when to question it is the skill. AI For Everyone is my Millennium Fellowship project for SDG 4, Quality Education.</span>
+              </span>
+              <span class="al-meta"><span>3 MIN READ</span><span>+ VIDEO</span></span>
+              <span class="exp-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li class="al-item" data-topic="Claude" data-search="haiku vs sonnet vs opus: i paid ₹6, ₹28 and ₹92 for three ai music videos three claude models, one 30-second music video each. a boat, a tomato and a very relaxed sloth. here's what haiku, sonnet and opus cost me, with charts. claude ai claude claude code opus sonnet haiku video">
+            <a class="al-link" href="/articles/haiku-vs-sonnet-vs-opus-music-videos">
+              <span class="al-thumb"><img src="/articles/images/cover-ai-models.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
+              <span class="al-main">
+                <span class="al-date"><span class="al-topic">Claude</span><time datetime="2026-11-11">11 NOV 2026</time></span>
                 <span class="al-title">Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos</span>
                 <span class="al-desc">Three Claude models, one 30-second music video each. A boat, a tomato and a very relaxed sloth. Here's what Haiku, Sonnet and Opus cost me, with charts.</span>
               </span>
-              <span class="al-meta"><span>AI &middot; Claude</span><span>4 MIN READ</span></span>
+              <span class="al-meta"><span>4 MIN READ</span><span>+ VIDEO</span></span>
               <span class="exp-arrow" aria-hidden="true">&rarr;</span>
             </a>
           </li>
-          <li class="al-item" data-search="brag: turn any project into a launch video with one command brag is an open-source agent skill that turns the project you just built into a short launch video. i used it for ring ping and rank kiwi. here's how it works. ai github agent skills video launch">
+          <li class="al-item" data-topic="Video" data-search="brag: turn any project into a launch video with one command brag is an open-source agent skill that turns the project you just built into a short launch video. i used it for ring ping and rank kiwi. here's how it works. video ai github agent skills video launch">
             <a class="al-link" href="/articles/brag-launch-videos">
-              <span class="al-thumb"><img src="/articles/images/cover-brag.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+              <span class="al-thumb"><img src="/articles/images/cover-brag.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /><span class="al-play" aria-hidden="true"></span></span>
               <span class="al-main">
-                <time class="al-date" datetime="2026-11-10">10 NOV 2026</time>
+                <span class="al-date"><span class="al-topic">Video</span><time datetime="2026-11-10">10 NOV 2026</time></span>
                 <span class="al-title">Brag: Turn Any Project Into a Launch Video With One Command</span>
                 <span class="al-desc">Brag is an open-source agent skill that turns the project you just built into a short launch video. I used it for Ring Ping and Rank Kiwi. Here's how it works.</span>
               </span>
-              <span class="al-meta"><span>AI &middot; GitHub</span><span>2 MIN READ</span></span>
+              <span class="al-meta"><span>2 MIN READ</span><span>+ VIDEO</span></span>
               <span class="exp-arrow" aria-hidden="true">&rarr;</span>
             </a>
           </li>
-          <li class="al-item" data-search="how i turned bruno simon's open-source 3d worlds into my portfolio (with ai) the three 3d worlds on my site started as bruno simon's open-source three.js projects. here's what each one is and how i made them mine with ai. three.js bruno simon ai webgl portfolio">
+          <li class="al-item" data-topic="Projects" data-search="how i turned bruno simon's open-source 3d worlds into my portfolio (with ai) the three 3d worlds on my site started as bruno simon's open-source three.js projects. here's what each one is and how i made them mine with ai. projects three.js bruno simon ai webgl portfolio">
             <a class="al-link" href="/articles/bruno-simon-3d-worlds-portfolio">
               <span class="al-thumb"><img src="/articles/images/cover-bruno-worlds.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
               <span class="al-main">
-                <time class="al-date" datetime="2026-11-10">10 NOV 2026</time>
+                <span class="al-date"><span class="al-topic">Projects</span><time datetime="2026-11-10">10 NOV 2026</time></span>
                 <span class="al-title">How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)</span>
                 <span class="al-desc">The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.</span>
               </span>
-              <span class="al-meta"><span>Three.js &middot; Bruno Simon</span><span>3 MIN READ</span></span>
+              <span class="al-meta"><span>3 MIN READ</span></span>
               <span class="exp-arrow" aria-hidden="true">&rarr;</span>
             </a>
           </li>
       </ol>
-      <p class="al-empty" id="article-empty" hidden>No articles match <strong></strong>. Try another word.</p>
+      <p class="al-empty" id="article-empty" hidden>Nothing matches <strong></strong>. <button type="button" class="al-reset">Show all articles</button></p>
 
       <section class="signup" aria-labelledby="signup-index-title" data-reveal>
         <div class="signup-text">
           <p class="pp-label">Newsletter</p>
           <h2 class="signup-title" id="signup-index-title">Stay in the loop.</h2>
-          <p class="signup-desc">Join the list for occasional, important updates only. No spam, ever, and you can opt out any time by replying.</p>
+          <p class="signup-desc">Join the list for occasional, important updates only. No spam, ever, and you can opt out any time by replying. <a href="/privacy">How your email is used</a>.</p>
         </div>
         <form class="signup-form" data-signup data-source="/articles/" action="https://script.google.com/macros/s/AKfycbwGv1Vq2Wi0bUmpwCdOrQcVWdPYd2tRq0pKvw7HiwLeBc44mbHoGf1x_ARYcBNIpk-4/exec" method="post" novalidate>
           <div class="signup-row">
@@ -226,15 +404,63 @@
         </form>
       </section>
     </main>
-    <footer class="pp-footer">
-      <ul class="social-list">
-        <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
-        <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-        <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-        <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-        <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
-      </ul>
-      <p class="pp-copy"><a href="/articles/">Articles</a> &middot; <a href="/#projects">Projects</a> &middot; &copy; 2026 Bhavishya Singla</p>
+    <footer class="site-footer">
+      <div class="sf-cta">
+        <p class="sf-kicker">Got an idea, a question or a project?</p>
+        <a class="sf-mail" href="/contact"><span>Say hi</span><span class="sf-mail-arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="sf-address"><a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a><button type="button" class="share-btn" data-copy="say@hibhavishya.in" data-copied="Copied">Copy</button></p>
+      </div>
+      <div class="sf-grid">
+        <nav class="sf-col" aria-label="Projects">
+          <h2 class="pp-label">Projects</h2>
+          <ul>
+            <li><a href="/ringping">Ring Ping</a></li>
+            <li><a href="/rankkiwi">Rank Kiwi</a></li>
+            <li><a href="/linkedinrank">LinkedInRank</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="3D worlds">
+          <h2 class="pp-label">3D worlds</h2>
+          <ul>
+            <li><a href="/room/">My Room</a></li>
+            <li><a href="/world/">Infinite World</a></li>
+            <li><a href="/folio/">Playground</a></li>
+            <li><a href="/worlds/">About the worlds</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Writing">
+          <h2 class="pp-label">Writing</h2>
+          <ul>
+            <li><a href="/articles/">All articles</a></li>
+            <li><a href="/articles/?topic=AI%20Tools">AI Tools</a></li>
+            <li><a href="/articles/?topic=Claude">Claude</a></li>
+            <li><a href="/articles/?topic=Video">Video</a></li>
+            <li><a href="/articles/?topic=Projects">Projects</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="About this site">
+          <h2 class="pp-label">Bhavishya</h2>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-bottom">
+        <a href="/" class="brand">BHAVISHYA SINGLA</a>
+        <ul class="social-list">
+          <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+          <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+          <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+          <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
+        </ul>
+        <p class="pp-copy">&copy; 2026 &middot; Figuring things out.</p>
+      </div>
     </footer>
   </div>
 </body>

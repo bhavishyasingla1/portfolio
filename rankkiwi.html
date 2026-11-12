@@ -3,14 +3,6 @@
 <html lang="en" dir="ltr">
 <head>
   <script>(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V65GFWC76"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8V65GFWC76');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Rank Kiwi — Find viral outlier content | Bhavishya Singla</title>
@@ -45,18 +37,29 @@
   <link rel="alternate" type="application/rss+xml" title="Bhavishya Singla — Articles" href="/feed.xml" />
   <meta name="theme-color" content="#f2f2f4" />
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ym814ukuow");
-  </script>
-
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/styles/project-page.css" />
+  <link rel="stylesheet" href="/src/styles/enhance.css" />
   <script type="module" src="/src/page.js"></script>
+  <script src="/consent.js" defer></script>
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": "/" } },
+        { "not": { "href_matches": "/room/*" } },
+        { "not": { "href_matches": "/world/*" } },
+        { "not": { "href_matches": "/folio/*" } },
+        { "not": { "href_matches": "/*.xml" } },
+        { "not": { "selector_matches": "[data-lightbox], [target=_blank]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{ "where": { "href_matches": "/" }, "eagerness": "moderate" }]
+  }
+  </script>
 
   <script type="application/ld+json">
 {
@@ -67,10 +70,20 @@
       "@id": "https://bhavishyasingla.com/rankkiwi#app",
       "name": "Rank Kiwi",
       "url": "https://rankkiwi.com/",
+      "sameAs": "https://rankkiwi.com/",
       "description": "A Chrome extension that benchmarks every Instagram Reel and YouTube video against the creator's median views, so the posts that broke out stand out instantly.",
       "applicationCategory": "BrowserApplication",
       "operatingSystem": "Chrome",
       "image": "https://bhavishyasingla.com/projects/rankkiwi.png",
+      "screenshot": [
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-youtube-1600.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-instagram-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-score-1240.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-reel-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-filters-1096.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-transcription-1096.webp",
+        "https://bhavishyasingla.com/projects/shots/rankkiwi-video-1760.webp"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -97,18 +110,29 @@
       "name": "Rank Kiwi — Find viral outlier content | Bhavishya Singla",
       "description": "A Chrome extension that benchmarks every Instagram Reel and YouTube video against the creator's median views, so the posts that broke out stand out instantly.",
       "inLanguage": "en-US",
+      "dateModified": "2026-11-12T00:00:00+00:00",
       "about": {
         "@id": "https://bhavishyasingla.com/rankkiwi#app"
       },
       "isPartOf": {
         "@id": "https://bhavishyasingla.com/#website"
-      }
+      },
+      "primaryImageOfPage": "https://bhavishyasingla.com/projects/shots/rankkiwi-youtube-1600.webp"
     },
     {
       "@type": "Person",
       "@id": "https://bhavishyasingla.com/#person",
       "name": "Bhavishya Singla",
-      "url": "https://bhavishyasingla.com"
+      "url": "https://bhavishyasingla.com/",
+      "image": "https://bhavishyasingla.com/bhavishya.png",
+      "jobTitle": "AI Builder & Creative Technologist",
+      "sameAs": [
+        "https://github.com/bhavishyasingla1",
+        "https://www.linkedin.com/in/bhavishyasingla1/",
+        "https://www.youtube.com/@bhavishyasingla1",
+        "https://www.instagram.com/bhavishyasingla1/",
+        "https://x.com/Bhavishyas_1"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -143,11 +167,14 @@
 
   <div class="pp-container">
     <header class="pp-header">
-      <a href="/" class="brand">BHAVISHYA SINGLA</a>
+      <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="pp-crumbs" aria-label="Breadcrumb">
-        <a href="/#projects">Projects</a><span aria-hidden="true">/</span>
-        <span aria-current="page">02 of 04</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#projects" class="site-nav-link" aria-current="true">Projects</a>
+          <a href="/worlds/" class="site-nav-link">3D Worlds</a>
+          <a href="/articles/" class="site-nav-link">Articles</a>
+          <a href="/about" class="site-nav-link">About</a>
+          <a href="/contact" class="site-nav-link">Contact</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
       </div>
@@ -157,9 +184,8 @@
       <section class="pp-hero" aria-labelledby="pp-title">
         <div class="pp-hero-text">
           <p class="pp-eyebrow" data-enter="1"><span>02</span> &mdash; Chrome Extension · Creators</p>
-          <h1 class="pp-title" id="pp-title">
-            <span class="sr-only">Rank Kiwi</span>
-            <span aria-hidden="true"><span class="headline-line" data-enter="2">RANK</span><span class="headline-line" data-enter="3">KIWI.</span></span>
+          <h1 class="pp-title" id="pp-title" aria-label="Rank Kiwi">
+            <span class="headline-line" aria-hidden="true" data-enter="2">RANK</span> <span class="headline-line" aria-hidden="true" data-enter="3">KIWI.</span>
           </h1>
           <p class="pp-tagline" data-enter="4">Find viral outlier content.</p>
           <p class="pp-summary" data-enter="5">A Chrome extension that benchmarks every Instagram Reel and YouTube video against the creator's median views, so the posts that broke out stand out instantly.</p>
@@ -189,6 +215,47 @@
         <div class="pp-fact"><dt>Price</dt><dd>Free, no paid tiers</dd></div>
         <div class="pp-fact"><dt>Account</dt><dd>Not required</dd></div>
       </dl>
+
+      <section class="cs-lead" aria-label="Rank Kiwi screenshot" data-reveal>
+          <figure class="shot is-lead" style="--shot-bg:#030201">
+            <div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-url">rankkiwi.com</span></div>
+            <a class="shot-view" href="/projects/shots/rankkiwi-youtube-1600.webp" data-lightbox data-w="1600" data-h="1041" data-title="Rank Kiwi" data-caption="Rank Kiwi on a YouTube channel: 25 videos sorted by Outlier Score, ready to export." aria-label="Enlarge screenshot: Rank Kiwi">
+              <img src="/projects/shots/rankkiwi-youtube-1600.webp" srcset="/projects/shots/rankkiwi-youtube-1600.webp 1600w, /projects/shots/rankkiwi-youtube-880.webp 880w" sizes="(max-width: 768px) 100vw, 1088px" width="1600" height="1041" alt="Rank Kiwi panel over a YouTube channel listing videos sorted by Outlier Score, with a multiplier on each" fetchpriority="high" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Rank Kiwi</strong><span>Rank Kiwi on a YouTube channel: 25 videos sorted by Outlier Score, ready to export.</span></figcaption>
+          </figure>
+      </section>
+      <section class="cs-why" aria-labelledby="cs-why-title">
+        <p class="pp-label" data-reveal>Why it exists</p>
+        <div class="cs-why-body" data-reveal>
+          <h2 class="cs-h2" id="cs-why-title">A view count means nothing without the creator’s normal.</h2>
+          <p>Half a million views is a hit for one creator and a flop for another. The useful question is how a video did against what that creator usually gets.</p>
+          <p>Most tools that answer it charge $15 to $99 a month. I built Rank Kiwi for myself because I refused to pay a subscription just to see which videos beat a creator’s median. It scans the Reels or videos on the page, works out the median, and shows how many times each one beat it.</p>
+        </div>
+      </section>
+      <section class="cs-how" aria-labelledby="cs-how-title">
+        <div class="cs-how-main">
+          <h2 class="pp-label" id="cs-how-title" data-reveal>How it works</h2>
+          <ol class="cs-steps">
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">1</span>
+              <h3>Open any creator</h3>
+              <p>An Instagram Reels tab or a YouTube channel’s videos.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">2</span>
+              <h3>Scan what’s on the page</h3>
+              <p>Rank Kiwi gathers the view counts and works out the median.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">3</span>
+              <h3>Sort by outliers</h3>
+              <p>Spot the 3× to 10× spikes and export them to a spreadsheet.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
 
       <section class="pp-section" aria-labelledby="pp-features-title">
         <div class="pp-section-head" data-reveal>
@@ -224,6 +291,93 @@
         </ol>
       </section>
 
+      <section class="cs-gallery" aria-labelledby="cs-gallery-title">
+        <div class="pp-section-head" data-reveal>
+          <h2 class="pp-label" id="cs-gallery-title">Inside the product</h2>
+          <p class="pp-audience">Real screens from rankkiwi.com, captured 12 November 2026. Select any one to enlarge it.</p>
+        </div>
+        <div class="cs-shots">
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#000000">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-instagram-1760.webp" data-lightbox data-w="1760" data-h="1151" data-title="Starts from the toolbar" data-caption="Open a creator’s Reels tab and press Open Reels." aria-label="Enlarge screenshot: Starts from the toolbar">
+              <img src="/projects/shots/rankkiwi-instagram-1760.webp" srcset="/projects/shots/rankkiwi-instagram-1760.webp 1760w, /projects/shots/rankkiwi-instagram-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="1151" alt="Rank Kiwi popup open over an Instagram profile" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Starts from the toolbar</strong><span>Open a creator’s Reels tab and press Open Reels.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#ffffff">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-score-1240.webp" data-lightbox data-w="1240" data-h="974" data-title="The Outlier Score" data-caption="Views divided by the creator’s median. 1× is normal, 5× and up is a breakout." aria-label="Enlarge screenshot: The Outlier Score">
+              <img src="/projects/shots/rankkiwi-score-1240.webp" srcset="/projects/shots/rankkiwi-score-1240.webp 1240w, /projects/shots/rankkiwi-score-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1240" height="974" alt="Bar chart of five posts against a 1.0× median baseline, the fifth marked as a 5.8× outlier" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>The Outlier Score</strong><span>Views divided by the creator’s median. 1× is normal, 5× and up is a breakout.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#f5f8f5">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-reel-1760.webp" data-lightbox data-w="1760" data-h="1455" data-title="Reel details" data-caption="Views, likes, comments and the score for one Reel, with its caption." aria-label="Enlarge screenshot: Reel details">
+              <img src="/projects/shots/rankkiwi-reel-1760.webp" srcset="/projects/shots/rankkiwi-reel-1760.webp 1760w, /projects/shots/rankkiwi-reel-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="1455" alt="Reel detail card with 1.2M views, 88K likes, 152 comments and a 1.0× outlier score" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Reel details</strong><span>Views, likes, comments and the score for one Reel, with its caption.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#ffffff">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-filters-1096.webp" data-lightbox data-w="1096" data-h="1128" data-title="Filters and sorting" data-caption="Narrow by views, likes, comments or score." aria-label="Enlarge screenshot: Filters and sorting">
+              <img src="/projects/shots/rankkiwi-filters-1096.webp" srcset="/projects/shots/rankkiwi-filters-1096.webp 1096w, /projects/shots/rankkiwi-filters-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1096" height="1128" alt="Filter panel with a histogram and a min and max range" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Filters and sorting</strong><span>Narrow by views, likes, comments or score.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#ffffff">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-transcription-1096.webp" data-lightbox data-w="1096" data-h="1220" data-title="Reel transcripts" data-caption="Spoken audio as timestamped or plain text, using your own Groq key." aria-label="Enlarge screenshot: Reel transcripts">
+              <img src="/projects/shots/rankkiwi-transcription-1096.webp" srcset="/projects/shots/rankkiwi-transcription-1096.webp 1096w, /projects/shots/rankkiwi-transcription-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1096" height="1220" alt="Transcript panel listing timestamped lines from a Reel" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Reel transcripts</strong><span>Spoken audio as timestamped or plain text, using your own Groq key.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#f5f8f5">
+            
+            <a class="shot-view" href="/projects/shots/rankkiwi-video-1760.webp" data-lightbox data-w="1760" data-h="1455" data-title="YouTube video details" data-caption="The same breakdown for long-form videos and Shorts." aria-label="Enlarge screenshot: YouTube video details">
+              <img src="/projects/shots/rankkiwi-video-1760.webp" srcset="/projects/shots/rankkiwi-video-1760.webp 1760w, /projects/shots/rankkiwi-video-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="1455" alt="YouTube video detail card with views, likes, comments and outlier score" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>YouTube video details</strong><span>The same breakdown for long-form videos and Shorts.</span></figcaption>
+          </figure></div>
+        </div>
+      </section>
+      <section class="cs-decisions" aria-labelledby="cs-decisions-title">
+        <div class="cs-decisions-main">
+          <h2 class="pp-label" id="cs-decisions-title" data-reveal>Decisions that shaped it</h2>
+          <dl class="cs-dl">
+            <div class="cs-decision" data-reveal><dt>Median, not average</dt><dd>One viral post drags an average up and makes everything else look weak. The median is the creator’s real normal, so a score of 3× means the same thing on a small channel and a huge one.</dd></div>
+            <div class="cs-decision" data-reveal><dt>It runs in your browser</dt><dd>There is no login and no password to hand over. The extension reads what is already on the page you opened.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Free, with no paid tier</dt><dd>It was built to avoid a subscription, so it does not have one.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Export first</dt><dd>Research ends up in a spreadsheet anyway. One click gives Excel or CSV, or rows you can paste into Google Sheets, Notion or Airtable.</dd></div>
+          </dl>
+        </div>
+      </section>
+      <section class="cards" aria-labelledby="cs-related-title" data-reveal>
+        <h2 class="pp-label" id="cs-related-title">Writing about Rank Kiwi</h2>
+        <ul class="cards-grid">
+          <li>
+            <a class="card" href="/articles/brag-launch-videos">
+              <span class="card-thumb"><img src="/articles/images/cover-brag.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+              <span class="card-meta">Video &middot; 2 min read &middot; Video</span>
+              <span class="card-title">Brag: Turn Any Project Into a Launch Video With One Command</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="cs-cta" aria-label="Try Rank Kiwi" data-reveal>
+        <p class="cs-cta-line">Find viral outlier content.</p>
+        <a href="https://chromewebstore.google.com/detail/igeifablgmkaiagdbkkimjcnglpdnlbl" class="btn-explore pp-visit" target="_blank" rel="noopener">
+          <span class="btn-text">ADD TO CHROME</span>
+          <span class="btn-arrow" aria-hidden="true">&nearr;</span>
+        </a>
+      </section>
+
       <nav class="pp-next" aria-label="Next project" data-reveal>
         <a href="/linkedinrank" class="pp-next-link">
           <span class="pp-label">Next project</span>
@@ -232,15 +386,63 @@
         </a>
       </nav>
     </main>
-    <footer class="pp-footer">
-      <ul class="social-list">
-        <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
-        <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-        <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-        <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-        <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
-      </ul>
-      <p class="pp-copy"><a href="/articles/">Articles</a> &middot; <a href="/#projects">Projects</a> &middot; &copy; 2026 Bhavishya Singla</p>
+    <footer class="site-footer">
+      <div class="sf-cta">
+        <p class="sf-kicker">Got an idea, a question or a project?</p>
+        <a class="sf-mail" href="/contact"><span>Say hi</span><span class="sf-mail-arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="sf-address"><a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a><button type="button" class="share-btn" data-copy="say@hibhavishya.in" data-copied="Copied">Copy</button></p>
+      </div>
+      <div class="sf-grid">
+        <nav class="sf-col" aria-label="Projects">
+          <h2 class="pp-label">Projects</h2>
+          <ul>
+            <li><a href="/ringping">Ring Ping</a></li>
+            <li><a href="/rankkiwi">Rank Kiwi</a></li>
+            <li><a href="/linkedinrank">LinkedInRank</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="3D worlds">
+          <h2 class="pp-label">3D worlds</h2>
+          <ul>
+            <li><a href="/room/">My Room</a></li>
+            <li><a href="/world/">Infinite World</a></li>
+            <li><a href="/folio/">Playground</a></li>
+            <li><a href="/worlds/">About the worlds</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Writing">
+          <h2 class="pp-label">Writing</h2>
+          <ul>
+            <li><a href="/articles/">All articles</a></li>
+            <li><a href="/articles/?topic=AI%20Tools">AI Tools</a></li>
+            <li><a href="/articles/?topic=Claude">Claude</a></li>
+            <li><a href="/articles/?topic=Video">Video</a></li>
+            <li><a href="/articles/?topic=Projects">Projects</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="About this site">
+          <h2 class="pp-label">Bhavishya</h2>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-bottom">
+        <a href="/" class="brand">BHAVISHYA SINGLA</a>
+        <ul class="social-list">
+          <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+          <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+          <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+          <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
+        </ul>
+        <p class="pp-copy">&copy; 2026 &middot; Figuring things out.</p>
+      </div>
     </footer>
   </div>
 </body>

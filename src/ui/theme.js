@@ -20,8 +20,7 @@ function applyTheme(theme, { persist = true, animate = true } = {}) {
     applyTheme.timer = setTimeout(() => root.classList.remove('theme-transition'), 450);
   }
   root.dataset.theme = theme;
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', THEME_COLORS[theme]);
+  document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => meta.setAttribute('content', THEME_COLORS[theme]));
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     btn.setAttribute('aria-pressed', String(theme === 'dark'));
     btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');

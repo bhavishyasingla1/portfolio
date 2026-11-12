@@ -230,11 +230,26 @@ Extensions → Apps Script). The endpoint URL is `SIGNUP_ENDPOINT` in `scripts/b
 page build. If an article has `image:` in its frontmatter, the photo appears on the right of its card and at
 the top of the article. JPG, PNG or WebP all work.
 
+## Contact form, topics and analytics consent
+
+- **Contact form** (`/contact`): posts to the same Apps Script web app as the email sign-up. `handleContact_` in
+  `scripts/newsletter/Code.gs` stores each message in a "Messages" sheet and emails it to you with Reply-To set to
+  the sender. If the request fails, the page offers a ready-made email instead, so a message is never lost.
+- **Article topics**: every article has exactly one `topic` from `ARTICLE_TOPICS` in `scripts/build-pages.js`
+  (the filters on `/articles/`). `keywords` in the frontmatter are for search only and are never shown.
+- **Video articles**: `{{youtube id="…" title="…" date="…" duration="PT33S" vertical="true"}}` renders a click-to-play
+  card (9:16 for Shorts). Put the frame at `public/articles/images/yt-<id>.webp`. Covers for these articles are drawn by
+  `scripts/illustrations/covers.js` (`npm run covers`) with the official logos in `scripts/illustrations/logos/`.
+- **Analytics consent**: `public/consent.js` is the only place analytics loads from (home page, generated pages and
+  the 3D worlds). It respects Global Privacy Control, asks first in Europe and the UK, and remembers the answer.
+
 ## Hero video
 
 One transparent cut-out plays in both themes, so switching theme only changes the page behind it.
 `hero-alpha.webm` (VP9 with alpha) is used by Chrome, Firefox and Android; `hero-alpha.mov` (HEVC with alpha)
 by Safari and iPhone. A small inline script in `index.html` picks the right file before the page finishes loading.
+Desktop files are 1080×1920 and the `-mobile` ones 720×1280. They are cached for a year, so bump `ver` in that
+inline script (and the two poster preloads) whenever you replace them.
 
 ## Article illustrations
 

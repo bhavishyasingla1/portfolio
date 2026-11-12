@@ -3,14 +3,6 @@
 <html lang="en" dir="ltr">
 <head>
   <script>(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V65GFWC76"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8V65GFWC76');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Ring Ping — Reminders you can't ignore | Bhavishya Singla</title>
@@ -45,18 +37,29 @@
   <link rel="alternate" type="application/rss+xml" title="Bhavishya Singla — Articles" href="/feed.xml" />
   <meta name="theme-color" content="#f2f2f4" />
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ym814ukuow");
-  </script>
-
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/styles/project-page.css" />
+  <link rel="stylesheet" href="/src/styles/enhance.css" />
   <script type="module" src="/src/page.js"></script>
+  <script src="/consent.js" defer></script>
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": "/" } },
+        { "not": { "href_matches": "/room/*" } },
+        { "not": { "href_matches": "/world/*" } },
+        { "not": { "href_matches": "/folio/*" } },
+        { "not": { "href_matches": "/*.xml" } },
+        { "not": { "selector_matches": "[data-lightbox], [target=_blank]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{ "where": { "href_matches": "/" }, "eagerness": "moderate" }]
+  }
+  </script>
 
   <script type="application/ld+json">
 {
@@ -67,10 +70,20 @@
       "@id": "https://bhavishyasingla.com/ringping#app",
       "name": "Ring Ping",
       "url": "https://ringping.space/",
+      "sameAs": "https://ringping.space/",
       "description": "A reminder app that rings your Android phone like an incoming call. It goes full screen, even when the phone is locked, and calls back until you act.",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "Android, Web",
       "image": "https://bhavishyasingla.com/projects/ringping.png",
+      "screenshot": [
+        "https://bhavishyasingla.com/projects/shots/ringping-hero-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-callbacks-784.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-calendar-824.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-alarms-824.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-heycola-1032.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-askcola-824.webp",
+        "https://bhavishyasingla.com/projects/shots/ringping-languages-1152.webp"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -91,18 +104,29 @@
       "name": "Ring Ping — Reminders you can't ignore | Bhavishya Singla",
       "description": "A reminder app that rings your Android phone like an incoming call. It goes full screen, even when the phone is locked, and calls back until you act.",
       "inLanguage": "en-US",
+      "dateModified": "2026-11-12T00:00:00+00:00",
       "about": {
         "@id": "https://bhavishyasingla.com/ringping#app"
       },
       "isPartOf": {
         "@id": "https://bhavishyasingla.com/#website"
-      }
+      },
+      "primaryImageOfPage": "https://bhavishyasingla.com/projects/shots/ringping-hero-1760.webp"
     },
     {
       "@type": "Person",
       "@id": "https://bhavishyasingla.com/#person",
       "name": "Bhavishya Singla",
-      "url": "https://bhavishyasingla.com"
+      "url": "https://bhavishyasingla.com/",
+      "image": "https://bhavishyasingla.com/bhavishya.png",
+      "jobTitle": "AI Builder & Creative Technologist",
+      "sameAs": [
+        "https://github.com/bhavishyasingla1",
+        "https://www.linkedin.com/in/bhavishyasingla1/",
+        "https://www.youtube.com/@bhavishyasingla1",
+        "https://www.instagram.com/bhavishyasingla1/",
+        "https://x.com/Bhavishyas_1"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -137,11 +161,14 @@
 
   <div class="pp-container">
     <header class="pp-header">
-      <a href="/" class="brand">BHAVISHYA SINGLA</a>
+      <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="pp-crumbs" aria-label="Breadcrumb">
-        <a href="/#projects">Projects</a><span aria-hidden="true">/</span>
-        <span aria-current="page">01 of 04</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#projects" class="site-nav-link" aria-current="true">Projects</a>
+          <a href="/worlds/" class="site-nav-link">3D Worlds</a>
+          <a href="/articles/" class="site-nav-link">Articles</a>
+          <a href="/about" class="site-nav-link">About</a>
+          <a href="/contact" class="site-nav-link">Contact</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
       </div>
@@ -151,9 +178,8 @@
       <section class="pp-hero" aria-labelledby="pp-title">
         <div class="pp-hero-text">
           <p class="pp-eyebrow" data-enter="1"><span>01</span> &mdash; Android · Reminders</p>
-          <h1 class="pp-title" id="pp-title">
-            <span class="sr-only">Ring Ping</span>
-            <span aria-hidden="true"><span class="headline-line" data-enter="2">RING</span><span class="headline-line" data-enter="3">PING.</span></span>
+          <h1 class="pp-title" id="pp-title" aria-label="Ring Ping">
+            <span class="headline-line" aria-hidden="true" data-enter="2">RING</span> <span class="headline-line" aria-hidden="true" data-enter="3">PING.</span>
           </h1>
           <p class="pp-tagline" data-enter="4">Reminders you can't ignore.</p>
           <p class="pp-summary" data-enter="5">A reminder app that rings your Android phone like an incoming call. It goes full screen, even when the phone is locked, and calls back until you act.</p>
@@ -182,6 +208,52 @@
         <div class="pp-fact"><dt>Languages</dt><dd>15 voices</dd></div>
         <div class="pp-fact"><dt>Account</dt><dd>Optional</dd></div>
       </dl>
+
+      <section class="cs-lead" aria-label="Ring Ping screenshot" data-reveal>
+          <figure class="shot is-lead" style="--shot-bg:#0f0f1a">
+            <div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-url">ringping.space</span></div>
+            <a class="shot-view" href="/projects/shots/ringping-hero-1760.webp" data-lightbox data-w="1760" data-h="856" data-title="Ring Ping" data-caption="The home page. The phone on the right is a live demo of the call screen." aria-label="Enlarge screenshot: Ring Ping">
+              <img src="/projects/shots/ringping-hero-1760.webp" srcset="/projects/shots/ringping-hero-1760.webp 1760w, /projects/shots/ringping-hero-880.webp 880w" sizes="(max-width: 768px) 100vw, 1088px" width="1760" height="856" alt="Ring Ping home page: “Reminders you can’t ignore” beside a phone showing an incoming Ring Ping call" fetchpriority="high" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Ring Ping</strong><span>The home page. The phone on the right is a live demo of the call screen.</span></figcaption>
+          </figure>
+      </section>
+      <section class="cs-why" aria-labelledby="cs-why-title">
+        <p class="pp-label" data-reveal>Why it exists</p>
+        <div class="cs-why-body" data-reveal>
+          <h2 class="cs-h2" id="cs-why-title">A notification is easy to miss. A phone call is not.</h2>
+          <p>A reminder notification buzzes once, lands in a tray with forty others and is gone by the time it matters. A call is different. It takes over the screen, it makes noise and it keeps going until you deal with it.</p>
+          <p>Ring Ping turns a reminder into that call. At the set minute your Android phone rings full screen, even when it is locked, and Cola, the koala assistant, reads the reminder out loud. Miss it and she calls back.</p>
+        </div>
+      </section>
+      <section class="cs-how has-phone" aria-labelledby="cs-how-title">
+        <div class="cs-how-main">
+          <h2 class="pp-label" id="cs-how-title" data-reveal>How it works</h2>
+          <ol class="cs-steps">
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">1</span>
+              <h3>Add a reminder</h3>
+              <p>Tap + or just tell Cola: “wake me up at 6:30 on weekdays”.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">2</span>
+              <h3>Your phone rings</h3>
+              <p>At that minute the phone rings full screen, even when it is locked.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">3</span>
+              <h3>Answer and get it done</h3>
+              <p>Cola reads the reminder out loud. Missed it? She calls back.</p>
+            </li>
+          </ol>
+        </div>
+        <figure class="phone" data-reveal>
+          <a class="phone-screen" href="/projects/shots/ringping-mobile-780.webp" data-lightbox data-w="780" data-h="1688" data-title="Ring Ping on a phone" aria-label="Enlarge phone screenshot">
+            <img src="/projects/shots/ringping-mobile-780.webp" srcset="/projects/shots/ringping-mobile-780.webp 780w, /projects/shots/ringping-mobile-390.webp 390w" sizes="(max-width: 768px) 60vw, 256px" width="780" height="1688" alt="Ring Ping on a phone: the incoming call screen with Cola the koala" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+      </section>
 
       <section class="pp-section" aria-labelledby="pp-features-title">
         <div class="pp-section-head" data-reveal>
@@ -222,6 +294,93 @@
         </ol>
       </section>
 
+      <section class="cs-gallery" aria-labelledby="cs-gallery-title">
+        <div class="pp-section-head" data-reveal>
+          <h2 class="pp-label" id="cs-gallery-title">Inside the product</h2>
+          <p class="pp-audience">Real screens from ringping.space, captured 12 November 2026. Select any one to enlarge it.</p>
+        </div>
+        <div class="cs-shots">
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-callbacks-784.webp" data-lightbox data-w="784" data-h="668" data-title="Call-backs" data-caption="A missed call is tried again a few minutes later. One tap on “Don’t call back” ends it." aria-label="Enlarge screenshot: Call-backs">
+              <img src="/projects/shots/ringping-callbacks-784.webp" srcset="/projects/shots/ringping-callbacks-784.webp 784w" sizes="(max-width: 768px) 100vw, 512px" width="784" height="668" alt="Three calls in a row: two missed, the third answered, with a Don’t call back button" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Call-backs</strong><span>A missed call is tried again a few minutes later. One tap on “Don’t call back” ends it.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-calendar-824.webp" data-lightbox data-w="824" data-h="1178" data-title="A calendar you already know" data-caption="Month, week, day and schedule views, with repeats." aria-label="Enlarge screenshot: A calendar you already know">
+              <img src="/projects/shots/ringping-calendar-824.webp" srcset="/projects/shots/ringping-calendar-824.webp 824w" sizes="(max-width: 768px) 100vw, 512px" width="824" height="1178" alt="Ring Ping calendar for November with a reminder to call mom at 7 PM" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>A calendar you already know</strong><span>Month, week, day and schedule views, with repeats.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-alarms-824.webp" data-lightbox data-w="824" data-h="962" data-title="Alarms that call you" data-caption="Wake up, medicine, gym. Pick the days and a melody." aria-label="Enlarge screenshot: Alarms that call you">
+              <img src="/projects/shots/ringping-alarms-824.webp" srcset="/projects/shots/ringping-alarms-824.webp 824w" sizes="(max-width: 768px) 100vw, 512px" width="824" height="962" alt="Three alarm cards: 6:30 AM wake up, 8:00 PM medicine, 7:00 AM gym" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Alarms that call you</strong><span>Wake up, medicine, gym. Pick the days and a melody.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-heycola-1032.webp" data-lightbox data-w="1032" data-h="904" data-title="Hey Cola, hands-free" data-caption="Say her name and she listens, even on a locked phone." aria-label="Enlarge screenshot: Hey Cola, hands-free">
+              <img src="/projects/shots/ringping-heycola-1032.webp" srcset="/projects/shots/ringping-heycola-1032.webp 1032w, /projects/shots/ringping-heycola-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1032" height="904" alt="Locked phone at 7:02 answering “Hey Cola, what’s on today?”" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Hey Cola, hands-free</strong><span>Say her name and she listens, even on a locked phone.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-askcola-824.webp" data-lightbox data-w="824" data-h="646" data-title="Change plans in plain words" data-caption="Cola shows exactly what will change and waits for your OK." aria-label="Enlarge screenshot: Change plans in plain words">
+              <img src="/projects/shots/ringping-askcola-824.webp" srcset="/projects/shots/ringping-askcola-824.webp 824w" sizes="(max-width: 768px) 100vw, 512px" width="824" height="646" alt="Chat asking to move the dentist to Friday, with Change it and Keep it buttons" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Change plans in plain words</strong><span>Cola shows exactly what will change and waits for your OK.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#0f0f1a">
+            
+            <a class="shot-view" href="/projects/shots/ringping-languages-1152.webp" data-lightbox data-w="1152" data-h="788" data-title="15 languages" data-caption="Keep the app in English and let Cola speak Hindi, or any mix." aria-label="Enlarge screenshot: 15 languages">
+              <img src="/projects/shots/ringping-languages-1152.webp" srcset="/projects/shots/ringping-languages-1152.webp 1152w, /projects/shots/ringping-languages-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1152" height="788" alt="Language list: English, Chinese, Hindi, Spanish, Arabic, French, Bengali, Portuguese, Russian, Urdu" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>15 languages</strong><span>Keep the app in English and let Cola speak Hindi, or any mix.</span></figcaption>
+          </figure></div>
+        </div>
+      </section>
+      <section class="cs-decisions" aria-labelledby="cs-decisions-title">
+        <div class="cs-decisions-main">
+          <h2 class="pp-label" id="cs-decisions-title" data-reveal>Decisions that shaped it</h2>
+          <dl class="cs-dl">
+            <div class="cs-decision" data-reveal><dt>Call back, don’t nag</dt><dd>A second notification is as easy to ignore as the first. A second call is not. Three tries by default, and you can change that for each reminder.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Free, with no ads</dt><dd>No ads and no subscriptions. It runs fully offline on Android. An account is optional and only adds web sync and backup.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Words before forms</dt><dd>“Move my dentist to Friday” is faster than five taps. Cola shows the change before she makes it, and every change can be undone.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Easy to share</dt><dd>A reminder can be sent as a link on WhatsApp. The person taps Add and Cola calls them too, with no account needed to open it.</dd></div>
+          </dl>
+        </div>
+      </section>
+      <section class="cards" aria-labelledby="cs-related-title" data-reveal>
+        <h2 class="pp-label" id="cs-related-title">Writing about Ring Ping</h2>
+        <ul class="cards-grid">
+          <li>
+            <a class="card" href="/articles/brag-launch-videos">
+              <span class="card-thumb"><img src="/articles/images/cover-brag.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+              <span class="card-meta">Video &middot; 2 min read &middot; Video</span>
+              <span class="card-title">Brag: Turn Any Project Into a Launch Video With One Command</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="cs-cta" aria-label="Try Ring Ping" data-reveal>
+        <p class="cs-cta-line">Reminders you can't ignore.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.ringping.callreminder" class="btn-explore pp-visit" target="_blank" rel="noopener">
+          <span class="btn-text">GET IT ON GOOGLE PLAY</span>
+          <span class="btn-arrow" aria-hidden="true">&nearr;</span>
+        </a>
+      </section>
+
       <nav class="pp-next" aria-label="Next project" data-reveal>
         <a href="/rankkiwi" class="pp-next-link">
           <span class="pp-label">Next project</span>
@@ -230,15 +389,63 @@
         </a>
       </nav>
     </main>
-    <footer class="pp-footer">
-      <ul class="social-list">
-        <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
-        <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-        <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-        <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-        <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
-      </ul>
-      <p class="pp-copy"><a href="/articles/">Articles</a> &middot; <a href="/#projects">Projects</a> &middot; &copy; 2026 Bhavishya Singla</p>
+    <footer class="site-footer">
+      <div class="sf-cta">
+        <p class="sf-kicker">Got an idea, a question or a project?</p>
+        <a class="sf-mail" href="/contact"><span>Say hi</span><span class="sf-mail-arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="sf-address"><a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a><button type="button" class="share-btn" data-copy="say@hibhavishya.in" data-copied="Copied">Copy</button></p>
+      </div>
+      <div class="sf-grid">
+        <nav class="sf-col" aria-label="Projects">
+          <h2 class="pp-label">Projects</h2>
+          <ul>
+            <li><a href="/ringping">Ring Ping</a></li>
+            <li><a href="/rankkiwi">Rank Kiwi</a></li>
+            <li><a href="/linkedinrank">LinkedInRank</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="3D worlds">
+          <h2 class="pp-label">3D worlds</h2>
+          <ul>
+            <li><a href="/room/">My Room</a></li>
+            <li><a href="/world/">Infinite World</a></li>
+            <li><a href="/folio/">Playground</a></li>
+            <li><a href="/worlds/">About the worlds</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Writing">
+          <h2 class="pp-label">Writing</h2>
+          <ul>
+            <li><a href="/articles/">All articles</a></li>
+            <li><a href="/articles/?topic=AI%20Tools">AI Tools</a></li>
+            <li><a href="/articles/?topic=Claude">Claude</a></li>
+            <li><a href="/articles/?topic=Video">Video</a></li>
+            <li><a href="/articles/?topic=Projects">Projects</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="About this site">
+          <h2 class="pp-label">Bhavishya</h2>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-bottom">
+        <a href="/" class="brand">BHAVISHYA SINGLA</a>
+        <ul class="social-list">
+          <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+          <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+          <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+          <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
+        </ul>
+        <p class="pp-copy">&copy; 2026 &middot; Figuring things out.</p>
+      </div>
     </footer>
   </div>
 </body>

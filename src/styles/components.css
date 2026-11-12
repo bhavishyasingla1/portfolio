@@ -43,7 +43,7 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-accent-ink);
   opacity: 0;
   transform: scaleX(0);
   transform-origin: left;
@@ -52,7 +52,7 @@
 
 @media (hover: hover) {
   .social-link:hover {
-    color: var(--color-text-primary);
+    color: var(--color-accent-ink);
     transform: translateY(-1px);
   }
 
@@ -265,10 +265,10 @@
   }
 
   .experience-link:hover .exp-tag {
-    color: #000000;
-    background-color: var(--color-neon-green);
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
     padding: 4px 8px;
-    box-shadow: 0 0 12px var(--color-neon-glow);
+    box-shadow: 0 0 12px var(--color-accent-glow);
   }
 
   .experience-link:hover .exp-arrow {
@@ -305,17 +305,17 @@
 
 @media (hover: hover) {
   .btn-exit-stage:hover {
-    background-color: var(--color-neon-green);
-    border-color: var(--color-neon-green);
-    color: #000000;
-    box-shadow: 0 0 20px var(--color-neon-glow);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: 0 0 20px var(--color-accent-glow);
     transform: translateY(-1px);
   }
 }
 
 .btn-exit-stage:active {
   transform: scale(0.96);
-  background-color: var(--color-neon-green);
+  background-color: var(--color-accent);
 }
 
 .stage-meta {
@@ -445,7 +445,7 @@
 .btn-back:focus-visible,
 .experience-link:focus-visible,
 .social-link:focus-visible {
-  outline: 2px solid var(--color-neon-green);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 3px;
 }
 
@@ -469,7 +469,48 @@
 
 @media (hover: hover) {
   .header-link:hover {
-    color: var(--color-text-primary);
+    color: var(--color-accent-ink);
+  }
+}
+
+.header-link:focus-visible,
+.legal-edge:focus-visible {
+  outline: 2px solid var(--color-accent-ink);
+  outline-offset: 4px;
+}
+
+/* Small print on the home page: bottom centre on desktop, level with the corner links */
+.legal-edge {
+  position: fixed;
+  left: 50%;
+  bottom: var(--social-edge-bottom, 57px);
+  z-index: 10;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .legal-edge:hover {
+    color: var(--color-accent-ink);
+  }
+}
+
+body.mode-selector .legal-edge,
+body:has(.experience-stage.is-active) .legal-edge {
+  display: none;
+}
+
+@media (max-width: 1024px), (orientation: portrait) {
+  .legal-edge,
+  .site-header .header-contact {
+    display: none;
   }
 }
 
@@ -574,7 +615,7 @@
   left: -1px;
   width: 0;
   height: 3px;
-  background: var(--color-neon-green);
+  background: var(--color-accent);
   transition: width 450ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -650,7 +691,7 @@
 }
 
 .pj-tile:focus-visible {
-  outline: 2px solid var(--color-neon-green);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: -2px;
 }
 
@@ -855,10 +896,10 @@
 
 @media (hover: hover) {
   .btn-explore.pjd-primary:hover {
-    background: var(--color-neon-green);
-    border-color: var(--color-neon-green);
-    color: #000;
-    box-shadow: 0 0 22px var(--color-neon-glow);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: 0 0 22px var(--color-accent-glow);
   }
 }
 
@@ -915,7 +956,7 @@
 
 .pjd-dot[aria-selected="true"] {
   width: 28px;
-  background: var(--color-neon-green);
+  background: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1021,5 +1062,11 @@
     width: 100%;
     height: 48px;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 1024px), (orientation: portrait) {
+  .site-header .header-link {
+    padding: 12px 0;
   }
 }

@@ -3,7 +3,8 @@ title: How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With 
 seo_title: Bruno Simon's 3D Worlds, Remixed Into My Portfolio
 description: The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.
 date: 2026-11-10
-tags: [Three.js, Bruno Simon, AI, WebGL, Portfolio]
+topic: Projects
+keywords: [Three.js, Bruno Simon, AI, WebGL, Portfolio]
 image: /articles/images/cover-bruno-worlds.webp
 image_alt: Chibi Bhavishya driving a little red car through a playground of flying blocks
 ---

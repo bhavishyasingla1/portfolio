@@ -174,10 +174,10 @@ body.project-page {
 
 @media (hover: hover) {
   .btn-explore.pp-visit:hover {
-    background-color: var(--color-neon-green);
-    border-color: var(--color-neon-green);
-    color: #000000;
-    box-shadow: 0 0 24px var(--color-neon-glow);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: 0 0 24px var(--color-accent-glow);
   }
 
   .btn-explore.pp-visit:hover .btn-arrow {
@@ -730,13 +730,13 @@ body.project-page {
 .al-link:focus-visible,
 .pp-next-link:focus-visible,
 .prose a:focus-visible {
-  outline: 2px solid var(--color-neon-green);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 4px;
 }
 
 ::selection {
-  background: var(--color-neon-green);
-  color: #000;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .pp-copy a {
@@ -809,8 +809,8 @@ body.project-page {
 }
 
 .al-search:focus-within {
-  border-bottom-color: var(--color-neon-green);
-  box-shadow: 0 1px 0 0 var(--color-neon-green);
+  border-bottom-color: var(--color-accent);
+  box-shadow: 0 1px 0 0 var(--color-accent);
 }
 
 .al-kbd {
@@ -993,9 +993,9 @@ body.project-page {
 }
 
 .ar-tags a:hover {
-  border-color: var(--color-neon-green);
-  background: var(--color-neon-green);
-  color: #000;
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .ar-layout {
@@ -1132,7 +1132,7 @@ body.project-page {
 }
 
 .prose a:hover {
-  text-decoration-color: var(--color-neon-green);
+  text-decoration-color: var(--color-accent-ink);
   text-decoration-thickness: 2px;
 }
 
@@ -1156,7 +1156,7 @@ body.project-page {
 
 .prose blockquote {
   padding: 4px 0 4px 22px;
-  border-left: 3px solid var(--color-neon-green);
+  border-left: 3px solid var(--color-accent-ink);
   color: var(--color-text-primary);
   font-size: 1.08em;
 }
@@ -1435,7 +1435,7 @@ body.project-page {
   left: -1px;
   width: 64px;
   height: 3px;
-  background: var(--color-neon-green);
+  background: var(--color-accent);
 }
 
 .signup-text .pp-label {
@@ -1467,8 +1467,8 @@ body.project-page {
 }
 
 .signup-row:focus-within {
-  border-color: var(--color-neon-green);
-  box-shadow: 0 0 0 3px var(--color-neon-glow-soft);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .signup-input {
@@ -1513,8 +1513,8 @@ body.project-page {
 
 @media (hover: hover) {
   .btn-explore.signup-btn:hover {
-    background: var(--color-neon-green);
-    color: #000;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
   }
 }
 
@@ -1524,8 +1524,8 @@ body.project-page {
 }
 
 .signup-form[data-state="done"] .signup-btn {
-  background: var(--color-neon-green);
-  color: #000;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .signup-status {
@@ -1784,16 +1784,16 @@ body.project-page {
 
   .yt-play:hover .yt-icon {
     transform: scale(1.08);
-    background: var(--color-neon-green);
+    background: var(--color-accent);
   }
 
   .yt-play:hover .yt-icon::after {
-    border-left-color: #000;
+    border-left-color: #fff;
   }
 }
 
 .yt-play:focus-visible {
-  outline: 2px solid var(--color-neon-green);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 3px;
 }
 
@@ -1875,7 +1875,7 @@ body.project-page {
 }
 
 .chart-row:hover .chart-bar {
-  background: var(--color-neon-green);
+  background: var(--color-accent);
 }
 
 .chart-value {

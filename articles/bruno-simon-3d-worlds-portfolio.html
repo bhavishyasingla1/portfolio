@@ -3,14 +3,6 @@
 <html lang="en" dir="ltr">
 <head>
   <script>(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V65GFWC76"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8V65GFWC76');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Bruno Simon's 3D Worlds, Remixed Into My Portfolio</title>
@@ -39,12 +31,14 @@
   <meta name="twitter:image:alt" content="How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)" />
   <meta property="article:published_time" content="2026-11-10T00:00:00+00:00" />
   <meta property="article:modified_time" content="2026-11-10T00:00:00+00:00" />
-  <meta property="article:author" content="https://bhavishyasingla.com/" />
+  <meta property="article:author" content="https://bhavishyasingla.com/about" />
+  <meta property="article:section" content="Projects" />
   <meta property="article:tag" content="Three.js" />
   <meta property="article:tag" content="Bruno Simon" />
   <meta property="article:tag" content="AI" />
   <meta property="article:tag" content="WebGL" />
   <meta property="article:tag" content="Portfolio" />
+  <link rel="preload" as="image" href="/articles/images/cover-bruno-worlds.webp" fetchpriority="high" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -52,18 +46,29 @@
   <link rel="alternate" type="application/rss+xml" title="Bhavishya Singla — Articles" href="/feed.xml" />
   <meta name="theme-color" content="#f2f2f4" />
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ym814ukuow");
-  </script>
-
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/styles/project-page.css" />
+  <link rel="stylesheet" href="/src/styles/enhance.css" />
   <script type="module" src="/src/page.js"></script>
+  <script src="/consent.js" defer></script>
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": "/" } },
+        { "not": { "href_matches": "/room/*" } },
+        { "not": { "href_matches": "/world/*" } },
+        { "not": { "href_matches": "/folio/*" } },
+        { "not": { "href_matches": "/*.xml" } },
+        { "not": { "selector_matches": "[data-lightbox], [target=_blank]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{ "where": { "href_matches": "/" }, "eagerness": "moderate" }]
+  }
+  </script>
 
   <script type="application/ld+json">
 {
@@ -89,17 +94,32 @@
         "https://bhavishyasingla.com/articles/images/cover-bruno-worlds.webp"
       ],
       "keywords": "Three.js, Bruno Simon, AI, WebGL, Portfolio",
+      "articleSection": "Projects",
       "wordCount": 755,
       "inLanguage": "en-US",
       "isPartOf": {
         "@id": "https://bhavishyasingla.com/articles/#blog"
-      }
+      },
+      "mentions": [
+        {
+          "@id": "https://bhavishyasingla.com/aithisweek#app"
+        }
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://bhavishyasingla.com/#person",
       "name": "Bhavishya Singla",
-      "url": "https://bhavishyasingla.com"
+      "url": "https://bhavishyasingla.com/",
+      "image": "https://bhavishyasingla.com/bhavishya.png",
+      "jobTitle": "AI Builder & Creative Technologist",
+      "sameAs": [
+        "https://github.com/bhavishyasingla1",
+        "https://www.linkedin.com/in/bhavishyasingla1/",
+        "https://www.youtube.com/@bhavishyasingla1",
+        "https://www.instagram.com/bhavishyasingla1/",
+        "https://x.com/Bhavishyas_1"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -133,12 +153,16 @@
   <a class="skip-link" href="#content">Skip to content</a>
 
   <div class="pp-container">
+    <div class="read-progress" aria-hidden="true"><span></span></div>
     <header class="pp-header">
-      <a href="/" class="brand">BHAVISHYA SINGLA</a>
+      <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="pp-crumbs" aria-label="Breadcrumb">
-        <a href="/articles/">Articles</a><span aria-hidden="true">/</span>
-        <span aria-current="page">3 min read</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#projects" class="site-nav-link">Projects</a>
+          <a href="/worlds/" class="site-nav-link">3D Worlds</a>
+          <a href="/articles/" class="site-nav-link" aria-current="true">Articles</a>
+          <a href="/about" class="site-nav-link">About</a>
+          <a href="/contact" class="site-nav-link">Contact</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
       </div>
@@ -147,36 +171,44 @@
     <main id="content">
       <article class="ar" aria-labelledby="ar-title">
         <header class="ar-head">
-          <p class="pp-eyebrow" data-enter="1"><time datetime="2026-11-10">10 NOV 2026</time> &middot; 3 MIN READ</p>
           <h1 class="ar-title" id="ar-title" data-enter="2">How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)</h1>
           <p class="ar-lead" data-enter="3">The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.</p>
-          <ul class="ar-tags" data-enter="4" aria-label="Topics"><li><a href="/articles/?q=Three.js">Three.js</a></li><li><a href="/articles/?q=Bruno%20Simon">Bruno Simon</a></li><li><a href="/articles/?q=AI">AI</a></li><li><a href="/articles/?q=WebGL">WebGL</a></li><li><a href="/articles/?q=Portfolio">Portfolio</a></li></ul>
+          <div class="ar-byline" data-enter="4">
+            <img src="/bhavishya.webp" alt="" width="40" height="40" decoding="async" />
+            <p><a href="/about" rel="author">Bhavishya Singla</a><span><time datetime="2026-11-10">10 November 2026</time> &middot; 3 min read</span></p>
+            <div class="ar-share" aria-label="Share this article">
+              <button type="button" class="share-btn" data-copy="https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio" data-copied="Copied">Copy link</button>
+              <a class="share-btn" href="https://x.com/intent/post?text=How%20I%20Turned%20Bruno%20Simon's%20Open-Source%203D%20Worlds%20Into%20My%20Portfolio%20(With%20AI)&amp;url=https%3A%2F%2Fbhavishyasingla.com%2Farticles%2Fbruno-simon-3d-worlds-portfolio" target="_blank" rel="noopener">Share on X</a>
+              <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbhavishyasingla.com%2Farticles%2Fbruno-simon-3d-worlds-portfolio" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
         </header>
 
         <div class="ar-layout">
           <aside class="ar-rail">
-        <nav class="ar-toc" aria-label="On this page">
-          <p class="pp-label">On this page</p>
-          <ol>
-            <li><a href="#why-start-from-open-source">Why start from open source</a></li>
-            <li><a href="#my-room-in-3d">My Room in 3D</a></li>
-            <li><a href="#infinite-world">Infinite World</a></li>
-            <li><a href="#playground-folio-2019">Playground (Folio 2019)</a></li>
-            <li><a href="#how-ai-tools-helped">How AI tools helped</a></li>
-            <li><a href="#credit-where-it39s-due">Credit where it&#39;s due</a></li>
-          </ol>
-        </nav>
+            <nav class="ar-toc" aria-label="On this page">
+              <p class="pp-label">On this page</p>
+              <ol>
+                <li><a href="#why-start-from-open-source">Why start from open source</a></li>
+                <li><a href="#my-room-in-3d">My Room in 3D</a></li>
+                <li><a href="#infinite-world">Infinite World</a></li>
+                <li><a href="#playground-folio-2019">Playground (Folio 2019)</a></li>
+                <li><a href="#how-ai-tools-helped">How AI tools helped</a></li>
+                <li><a href="#credit-where-it39s-due">Credit where it&#39;s due</a></li>
+              </ol>
+            </nav>
+            <p class="ar-topic"><span class="pp-label">Topic</span><a href="/articles/?topic=Projects">Projects <span aria-hidden="true">&rarr;</span></a></p>
             <a class="pp-back" href="/articles/">&larr; ALL ARTICLES</a>
           </aside>
           <div class="prose" data-enter="5">
 <figure class="ar-cover"><img src="/articles/images/cover-bruno-worlds.webp" alt="Chibi Bhavishya driving a little red car through a playground of flying blocks" width="1600" height="840" fetchpriority="high" /><figcaption>Chibi Bhavishya driving a little red car through a playground of flying blocks</figcaption></figure>
 <p>If you&#39;ve clicked <strong>Explore World</strong> on this site, you&#39;ve walked through three 3D worlds: a cosy room, an endless landscape and a little car playground. I didn&#39;t build them from scratch. They started life as open-source projects by <strong><a href="https://bruno-simon.com/" target="_blank" rel="noopener">Bruno Simon</a></strong>, one of the best creative developers on the web and the teacher behind <a href="https://threejs-journey.com/" target="_blank" rel="noopener">Three.js Journey</a>.</p>
 <p>What I did was take his code and make it feel like <em>my</em> portfolio, mostly by working through it with AI tools. Here&#39;s each world, the original repository, and what I changed.</p>
-<h2 id="why-start-from-open-source"><a class="heading-anchor" href="#why-start-from-open-source" aria-hidden="true" tabindex="-1">#</a>Why start from open source</h2>
+<h2 id="why-start-from-open-source">Why start from open source<a class="heading-anchor" href="#why-start-from-open-source" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>A portfolio should show what you can do, but nobody said you have to start from an empty file. Bruno publishes the full source of several of his projects on GitHub. That&#39;s a gift: production-quality Three.js, real shaders, real physics, all readable.</p>
 <p>Reading and remixing great code is one of the fastest ways to learn. And with AI tools, a huge unfamiliar codebase stops being scary. You can ask &quot;where is the camera set up?&quot; or &quot;how is this model loaded?&quot; and get to work in minutes instead of days.</p>
-<h2 id="my-room-in-3d"><a class="heading-anchor" href="#my-room-in-3d" aria-hidden="true" tabindex="-1">#</a>My Room in 3D</h2>
-<p><figure><img src="/articles/images/bruno-simon-my-room.webp" alt="My Room in 3D, customised with my newsletter on the TV and my photos on the screens" width="1600" height="840" loading="lazy" decoding="async" /><figcaption>My Room in 3D on this site</figcaption></figure></p>
+<h2 id="my-room-in-3d">My Room in 3D<a class="heading-anchor" href="#my-room-in-3d" aria-hidden="true" tabindex="-1">#</a></h2>
+<p><figure><a class="prose-zoom" href="/articles/images/bruno-simon-my-room.webp" data-lightbox data-w="1600" data-h="840" data-title="My Room in 3D on this site" aria-label="Enlarge image: My Room in 3D, customised with my newsletter on the TV and my photos on the screens"><img src="/articles/images/bruno-simon-my-room.webp" alt="My Room in 3D, customised with my newsletter on the TV and my photos on the screens" width="1600" height="840" loading="lazy" decoding="async" /></a><figcaption>My Room in 3D on this site</figcaption></figure></p>
 <p><strong>Original:</strong> <a href="https://github.com/brunosimon/my-room-in-3d" target="_blank" rel="noopener">github.com/brunosimon/my-room-in-3d</a></p>
 <p>An isometric, beautifully lit bedroom-studio. The lighting is baked in Blender, so it looks rich but runs smoothly even on phones.</p>
 <p><strong>What I changed to make it mine:</strong></p>
@@ -187,8 +219,8 @@
 <li><strong>Less clutter.</strong> I removed a few of the original props and effects so the room feels like my space rather than a demo.</li>
 </ul>
 <p><a href="/room/">Step into the room →</a></p>
-<h2 id="infinite-world"><a class="heading-anchor" href="#infinite-world" aria-hidden="true" tabindex="-1">#</a>Infinite World</h2>
-<p><figure><img src="/articles/images/bruno-simon-infinite-world.webp" alt="My 3D character standing in Infinite World at dusk" width="1600" height="840" loading="lazy" decoding="async" /><figcaption>Infinite World on this site</figcaption></figure></p>
+<h2 id="infinite-world">Infinite World<a class="heading-anchor" href="#infinite-world" aria-hidden="true" tabindex="-1">#</a></h2>
+<p><figure><a class="prose-zoom" href="/articles/images/bruno-simon-infinite-world.webp" data-lightbox data-w="1600" data-h="840" data-title="Infinite World on this site" aria-label="Enlarge image: My 3D character standing in Infinite World at dusk"><img src="/articles/images/bruno-simon-infinite-world.webp" alt="My 3D character standing in Infinite World at dusk" width="1600" height="840" loading="lazy" decoding="async" /></a><figcaption>Infinite World on this site</figcaption></figure></p>
 <p><strong>Original:</strong> <a href="https://github.com/brunosimon/infinite-world" target="_blank" rel="noopener">github.com/brunosimon/infinite-world</a></p>
 <p>A procedurally generated landscape that goes on forever: rolling hills, swaying grass and a full day–night cycle, all generated on the fly with noise functions in Web Workers.</p>
 <p><strong>What I changed to make it mine:</strong></p>
@@ -198,8 +230,8 @@
 <li><strong>Speed.</strong> My first character file was 23 MB, way too big. I compressed it to about half a megabyte so it appears almost instantly.</li>
 </ul>
 <p><a href="/world/">Go for a walk →</a></p>
-<h2 id="playground-folio-2019"><a class="heading-anchor" href="#playground-folio-2019" aria-hidden="true" tabindex="-1">#</a>Playground (Folio 2019)</h2>
-<p><figure><img src="/articles/images/bruno-simon-playground.webp" alt="My name as 3D letters in the playground, next to the car" width="1600" height="840" loading="lazy" decoding="async" /><figcaption>The Playground on this site</figcaption></figure></p>
+<h2 id="playground-folio-2019">Playground (Folio 2019)<a class="heading-anchor" href="#playground-folio-2019" aria-hidden="true" tabindex="-1">#</a></h2>
+<p><figure><a class="prose-zoom" href="/articles/images/bruno-simon-playground.webp" data-lightbox data-w="1600" data-h="840" data-title="The Playground on this site" aria-label="Enlarge image: My name as 3D letters in the playground, next to the car"><img src="/articles/images/bruno-simon-playground.webp" alt="My name as 3D letters in the playground, next to the car" width="1600" height="840" loading="lazy" decoding="async" /></a><figcaption>The Playground on this site</figcaption></figure></p>
 <p><strong>Original:</strong> <a href="https://github.com/brunosimon/folio-2019" target="_blank" rel="noopener">github.com/brunosimon/folio-2019</a></p>
 <p>Bruno&#39;s famous 2019 portfolio: you drive a little car around a toy-like world with real physics, knocking things over as you go.</p>
 <p><strong>What I changed to make it mine:</strong></p>
@@ -210,7 +242,7 @@
 <li><strong>A simpler world.</strong> I removed sections I didn&#39;t need, like the original projects area.</li>
 </ul>
 <p><a href="/folio/">Take the car for a spin →</a></p>
-<h2 id="how-ai-tools-helped"><a class="heading-anchor" href="#how-ai-tools-helped" aria-hidden="true" tabindex="-1">#</a>How AI tools helped</h2>
+<h2 id="how-ai-tools-helped">How AI tools helped<a class="heading-anchor" href="#how-ai-tools-helped" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>I used AI coding tools for almost every step:</p>
 <ul>
 <li><strong>Understanding the code.</strong> Asking an AI to explain how each project is structured saved hours of digging.</li>
@@ -218,7 +250,7 @@
 <li><strong>Fixing problems.</strong> When the physics or the mobile layout broke, describing the problem and iterating with AI got me unstuck quickly.</li>
 </ul>
 <p>The AI didn&#39;t replace knowing what I wanted. It made the distance between an idea and a working version much shorter.</p>
-<h2 id="credit-where-it39s-due"><a class="heading-anchor" href="#credit-where-it39s-due" aria-hidden="true" tabindex="-1">#</a>Credit where it&#39;s due</h2>
+<h2 id="credit-where-it39s-due">Credit where it&#39;s due<a class="heading-anchor" href="#credit-where-it39s-due" aria-hidden="true" tabindex="-1">#</a></h2>
 <p>All three worlds are Bruno Simon&#39;s work at heart, and I&#39;m grateful he shares them openly. If you want to learn Three.js properly, his <a href="https://threejs-journey.com/" target="_blank" rel="noopener">Three.js Journey</a> course is the place to start, and his <a href="https://github.com/brunosimon" target="_blank" rel="noopener">GitHub</a> is full of gems.</p>
 <p>Then go explore my versions: <a href="/room/">My Room</a>, <a href="/world/">Infinite World</a> and the <a href="/folio/">Playground</a>.</p>
 
@@ -226,11 +258,27 @@
         </div>
       </article>
 
+        <aside class="ar-mentions" aria-label="Projects mentioned in this article" data-reveal>
+          <p class="pp-label">Mentioned in this article</p>
+          <ul>
+            <li><a class="mention" href="/aithisweek"><img src="/projects/aithisweek.webp" alt="" width="40" height="40" loading="lazy" decoding="async" /><span><strong>AI This Week</strong>Thrive in the AI era.</span><span class="exp-arrow" aria-hidden="true">&rarr;</span></a></li>
+          </ul>
+        </aside>
+      <aside class="author" aria-label="About the author" data-reveal>
+        <img class="author-photo" src="/bhavishya.webp" alt="Bhavishya Singla" width="96" height="96" loading="lazy" decoding="async" />
+        <div class="author-text">
+          <p class="pp-label">Written by</p>
+          <p class="author-name">Bhavishya Singla</p>
+          <p class="author-bio">I build AI products and write about what I learn on the way: <a href="/ringping">Ring Ping</a>, <a href="/rankkiwi">Rank Kiwi</a>, <a href="/linkedinrank">LinkedInRank</a> and the weekly newsletter <a href="/aithisweek">AI This Week</a>.</p>
+          <p class="author-links"><a href="/about">About me</a><a href="/contact">Get in touch</a><a href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener me">LinkedIn</a><a href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener me">X</a></p>
+        </div>
+      </aside>
+
       <section class="signup" aria-labelledby="signup-article-title" data-reveal>
         <div class="signup-text">
           <p class="pp-label">Newsletter</p>
           <h2 class="signup-title" id="signup-article-title">Stay in the loop.</h2>
-          <p class="signup-desc">Join the list for occasional, important updates only. No spam, ever, and you can opt out any time by replying.</p>
+          <p class="signup-desc">Join the list for occasional, important updates only. No spam, ever, and you can opt out any time by replying. <a href="/privacy">How your email is used</a>.</p>
         </div>
         <form class="signup-form" data-signup data-source="/articles/bruno-simon-3d-worlds-portfolio" action="https://script.google.com/macros/s/AKfycbwGv1Vq2Wi0bUmpwCdOrQcVWdPYd2tRq0pKvw7HiwLeBc44mbHoGf1x_ARYcBNIpk-4/exec" method="post" novalidate>
           <div class="signup-row">
@@ -243,20 +291,83 @@
         </form>
       </section>
 
-      <nav class="ar-pager" aria-label="More articles" data-reveal>
-        <span></span>
-        <a class="ar-pager-link is-next" href="/articles/brag-launch-videos"><span class="pp-label">Newer &rarr;</span><span class="ar-pager-title">Brag: Turn Any Project Into a Launch Video With One Command</span></a>
-      </nav>
+      <section class="cards" aria-labelledby="ar-more-title" data-reveal>
+        <h2 class="pp-label" id="ar-more-title">Keep reading</h2>
+        <ul class="cards-grid">
+          <li>
+            <a class="card" href="/articles/ai-for-everyone-millennium-fellowship">
+              <span class="card-thumb"><img src="/articles/images/cover-ai-for-everyone.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+              <span class="card-meta">Projects &middot; 3 min read &middot; Video</span>
+              <span class="card-title">AI For Everyone: My Millennium Fellowship Project on AI Literacy</span>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="/articles/haiku-vs-sonnet-vs-opus-music-videos">
+              <span class="card-thumb"><img src="/articles/images/cover-ai-models.webp" alt="" width="1600" height="840" loading="lazy" decoding="async" /></span>
+              <span class="card-meta">Claude &middot; 4 min read &middot; Video</span>
+              <span class="card-title">Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos</span>
+            </a>
+          </li>
+        </ul>
+      </section>
     </main>
-    <footer class="pp-footer">
-      <ul class="social-list">
-        <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
-        <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-        <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-        <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-        <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
-      </ul>
-      <p class="pp-copy"><a href="/articles/">Articles</a> &middot; <a href="/#projects">Projects</a> &middot; &copy; 2026 Bhavishya Singla</p>
+    <footer class="site-footer">
+      <div class="sf-cta">
+        <p class="sf-kicker">Got an idea, a question or a project?</p>
+        <a class="sf-mail" href="/contact"><span>Say hi</span><span class="sf-mail-arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="sf-address"><a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a><button type="button" class="share-btn" data-copy="say@hibhavishya.in" data-copied="Copied">Copy</button></p>
+      </div>
+      <div class="sf-grid">
+        <nav class="sf-col" aria-label="Projects">
+          <h2 class="pp-label">Projects</h2>
+          <ul>
+            <li><a href="/ringping">Ring Ping</a></li>
+            <li><a href="/rankkiwi">Rank Kiwi</a></li>
+            <li><a href="/linkedinrank">LinkedInRank</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="3D worlds">
+          <h2 class="pp-label">3D worlds</h2>
+          <ul>
+            <li><a href="/room/">My Room</a></li>
+            <li><a href="/world/">Infinite World</a></li>
+            <li><a href="/folio/">Playground</a></li>
+            <li><a href="/worlds/">About the worlds</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Writing">
+          <h2 class="pp-label">Writing</h2>
+          <ul>
+            <li><a href="/articles/">All articles</a></li>
+            <li><a href="/articles/?topic=AI%20Tools">AI Tools</a></li>
+            <li><a href="/articles/?topic=Claude">Claude</a></li>
+            <li><a href="/articles/?topic=Video">Video</a></li>
+            <li><a href="/articles/?topic=Projects">Projects</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="About this site">
+          <h2 class="pp-label">Bhavishya</h2>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-bottom">
+        <a href="/" class="brand">BHAVISHYA SINGLA</a>
+        <ul class="social-list">
+          <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+          <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+          <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+          <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
+        </ul>
+        <p class="pp-copy">&copy; 2026 &middot; Figuring things out.</p>
+      </div>
     </footer>
   </div>
 </body>

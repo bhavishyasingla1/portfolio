@@ -3,14 +3,6 @@
 <html lang="en" dir="ltr">
 <head>
   <script>(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8V65GFWC76"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8V65GFWC76');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>LinkedInRank — Recruiter-grade profile audit | Bhavishya Singla</title>
@@ -45,18 +37,29 @@
   <link rel="alternate" type="application/rss+xml" title="Bhavishya Singla — Articles" href="/feed.xml" />
   <meta name="theme-color" content="#f2f2f4" />
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ym814ukuow");
-  </script>
-
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/src/styles/project-page.css" />
+  <link rel="stylesheet" href="/src/styles/enhance.css" />
   <script type="module" src="/src/page.js"></script>
+  <script src="/consent.js" defer></script>
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": { "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": "/" } },
+        { "not": { "href_matches": "/room/*" } },
+        { "not": { "href_matches": "/world/*" } },
+        { "not": { "href_matches": "/folio/*" } },
+        { "not": { "href_matches": "/*.xml" } },
+        { "not": { "selector_matches": "[data-lightbox], [target=_blank]" } }
+      ] },
+      "eagerness": "moderate"
+    }],
+    "prefetch": [{ "where": { "href_matches": "/" }, "eagerness": "moderate" }]
+  }
+  </script>
 
   <script type="application/ld+json">
 {
@@ -67,10 +70,18 @@
       "@id": "https://bhavishyasingla.com/linkedinrank#app",
       "name": "LinkedInRank",
       "url": "https://linkedinrank.com/",
+      "sameAs": "https://linkedinrank.com/",
       "description": "Upload your LinkedIn profile as a PDF and get an instant audit across 30+ recruiter signals, plus the exact rewrites to fix what is holding it back.",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
       "image": "https://bhavishyasingla.com/projects/linkedinrank.png",
+      "screenshot": [
+        "https://bhavishyasingla.com/projects/shots/linkedinrank-hero-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/linkedinrank-benchmark-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/linkedinrank-beforeafter-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/linkedinrank-studio-1760.webp",
+        "https://bhavishyasingla.com/projects/shots/linkedinrank-tools-1760.webp"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -90,18 +101,29 @@
       "name": "LinkedInRank — Recruiter-grade profile audit | Bhavishya Singla",
       "description": "Upload your LinkedIn profile as a PDF and get an instant audit across 30+ recruiter signals, plus the exact rewrites to fix what is holding it back.",
       "inLanguage": "en-US",
+      "dateModified": "2026-11-12T00:00:00+00:00",
       "about": {
         "@id": "https://bhavishyasingla.com/linkedinrank#app"
       },
       "isPartOf": {
         "@id": "https://bhavishyasingla.com/#website"
-      }
+      },
+      "primaryImageOfPage": "https://bhavishyasingla.com/projects/shots/linkedinrank-hero-1760.webp"
     },
     {
       "@type": "Person",
       "@id": "https://bhavishyasingla.com/#person",
       "name": "Bhavishya Singla",
-      "url": "https://bhavishyasingla.com"
+      "url": "https://bhavishyasingla.com/",
+      "image": "https://bhavishyasingla.com/bhavishya.png",
+      "jobTitle": "AI Builder & Creative Technologist",
+      "sameAs": [
+        "https://github.com/bhavishyasingla1",
+        "https://www.linkedin.com/in/bhavishyasingla1/",
+        "https://www.youtube.com/@bhavishyasingla1",
+        "https://www.instagram.com/bhavishyasingla1/",
+        "https://x.com/Bhavishyas_1"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -136,11 +158,14 @@
 
   <div class="pp-container">
     <header class="pp-header">
-      <a href="/" class="brand">BHAVISHYA SINGLA</a>
+      <a href="/" class="brand" aria-label="Bhavishya Singla, home">BHAVISHYA SINGLA</a>
       <div class="header-actions">
-        <nav class="pp-crumbs" aria-label="Breadcrumb">
-        <a href="/#projects">Projects</a><span aria-hidden="true">/</span>
-        <span aria-current="page">03 of 04</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#projects" class="site-nav-link" aria-current="true">Projects</a>
+          <a href="/worlds/" class="site-nav-link">3D Worlds</a>
+          <a href="/articles/" class="site-nav-link">Articles</a>
+          <a href="/about" class="site-nav-link">About</a>
+          <a href="/contact" class="site-nav-link">Contact</a>
         </nav>
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
       </div>
@@ -150,9 +175,8 @@
       <section class="pp-hero" aria-labelledby="pp-title">
         <div class="pp-hero-text">
           <p class="pp-eyebrow" data-enter="1"><span>03</span> &mdash; Web App · Careers</p>
-          <h1 class="pp-title" id="pp-title">
-            <span class="sr-only">LinkedInRank</span>
-            <span aria-hidden="true"><span class="headline-line" data-enter="2">LINKEDIN</span><span class="headline-line" data-enter="3">RANK.</span></span>
+          <h1 class="pp-title" id="pp-title" aria-label="LinkedInRank">
+            <span class="headline-line" aria-hidden="true" data-enter="2">LINKEDIN</span> <span class="headline-line" aria-hidden="true" data-enter="3">RANK.</span>
           </h1>
           <p class="pp-tagline" data-enter="4">Recruiter-grade profile audit.</p>
           <p class="pp-summary" data-enter="5">Upload your LinkedIn profile as a PDF and get an instant audit across 30+ recruiter signals, plus the exact rewrites to fix what is holding it back.</p>
@@ -178,6 +202,52 @@
         <div class="pp-fact"><dt>Price</dt><dd>Free, no login</dd></div>
         <div class="pp-fact"><dt>Privacy</dt><dd>Files not stored</dd></div>
       </dl>
+
+      <section class="cs-lead" aria-label="LinkedInRank screenshot" data-reveal>
+          <figure class="shot is-lead" style="--shot-bg:#fbfbfe">
+            <div class="shot-bar" aria-hidden="true"><span class="shot-dots"><i></i><i></i><i></i></span><span class="shot-url">linkedinrank.com</span></div>
+            <a class="shot-view" href="/projects/shots/linkedinrank-hero-1760.webp" data-lightbox data-w="1760" data-h="1039" data-title="LinkedInRank" data-caption="The whole product starts here: drop the PDF export of your profile." aria-label="Enlarge screenshot: LinkedInRank">
+              <img src="/projects/shots/linkedinrank-hero-1760.webp" srcset="/projects/shots/linkedinrank-hero-1760.webp 1760w, /projects/shots/linkedinrank-hero-880.webp 880w" sizes="(max-width: 768px) 100vw, 1088px" width="1760" height="1039" alt="LinkedInRank home page with a box to drop your LinkedIn PDF and three steps below it" fetchpriority="high" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>LinkedInRank</strong><span>The whole product starts here: drop the PDF export of your profile.</span></figcaption>
+          </figure>
+      </section>
+      <section class="cs-why" aria-labelledby="cs-why-title">
+        <p class="pp-label" data-reveal>Why it exists</p>
+        <div class="cs-why-body" data-reveal>
+          <h2 class="cs-h2" id="cs-why-title">Most LinkedIn advice is too vague to act on.</h2>
+          <p>“Add keywords. Tell your story. Show your passion.” None of that says what a recruiter’s search actually matches, or what they see in the first line on a phone.</p>
+          <p>LinkedInRank reads the PDF export of a profile and checks it against 30+ signals recruiters filter by: the job title in the headline, the first 120 characters shown on mobile, numbers in experience bullets and the core skills. Then it writes the fixes.</p>
+        </div>
+      </section>
+      <section class="cs-how has-phone" aria-labelledby="cs-how-title">
+        <div class="cs-how-main">
+          <h2 class="pp-label" id="cs-how-title" data-reveal>How it works</h2>
+          <ol class="cs-steps">
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">1</span>
+              <h3>Export your profile</h3>
+              <p>LinkedIn can save any profile as a PDF.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">2</span>
+              <h3>Drop the file</h3>
+              <p>It is read in memory. Nothing is stored.</p>
+            </li>
+            <li class="cs-step" data-reveal>
+              <span class="cs-step-num" aria-hidden="true">3</span>
+              <h3>Get the audit</h3>
+              <p>A score for each signal, with rewrites for the weak parts.</p>
+            </li>
+          </ol>
+        </div>
+        <figure class="phone" data-reveal>
+          <a class="phone-screen" href="/projects/shots/linkedinrank-mobile-780.webp" data-lightbox data-w="780" data-h="1688" data-title="LinkedInRank on a phone" aria-label="Enlarge phone screenshot">
+            <img src="/projects/shots/linkedinrank-mobile-780.webp" srcset="/projects/shots/linkedinrank-mobile-780.webp 780w, /projects/shots/linkedinrank-mobile-390.webp 390w" sizes="(max-width: 768px) 60vw, 256px" width="780" height="1688" alt="LinkedInRank on a phone with the Upload LinkedIn PDF button" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+      </section>
 
       <section class="pp-section" aria-labelledby="pp-features-title">
         <div class="pp-section-head" data-reveal>
@@ -214,6 +284,66 @@
         <p class="pp-note">Independent tool. Not affiliated with or endorsed by LinkedIn Corporation.</p>
       </section>
 
+      <section class="cs-gallery" aria-labelledby="cs-gallery-title">
+        <div class="pp-section-head" data-reveal>
+          <h2 class="pp-label" id="cs-gallery-title">Inside the product</h2>
+          <p class="pp-audience">Real screens from linkedinrank.com, captured 12 November 2026. Select any one to enlarge it.</p>
+        </div>
+        <div class="cs-shots">
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#f5f5fe">
+            
+            <a class="shot-view" href="/projects/shots/linkedinrank-benchmark-1760.webp" data-lightbox data-w="1760" data-h="1157" data-title="Scored against a benchmark" data-caption="Each part of the profile is compared with a strong one." aria-label="Enlarge screenshot: Scored against a benchmark">
+              <img src="/projects/shots/linkedinrank-benchmark-1760.webp" srcset="/projects/shots/linkedinrank-benchmark-1760.webp 1760w, /projects/shots/linkedinrank-benchmark-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="1157" alt="Headline discoverability benchmark with three bars at 96%, 64% and 48%" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Scored against a benchmark</strong><span>Each part of the profile is compared with a strong one.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#fbfbfe">
+            
+            <a class="shot-view" href="/projects/shots/linkedinrank-beforeafter-1760.webp" data-lightbox data-w="1760" data-h="871" data-title="Before and after" data-caption="The weak headline, what is wrong with it, and the rewrite." aria-label="Enlarge screenshot: Before and after">
+              <img src="/projects/shots/linkedinrank-beforeafter-1760.webp" srcset="/projects/shots/linkedinrank-beforeafter-1760.webp 1760w, /projects/shots/linkedinrank-beforeafter-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="871" alt="A headline scored 58 out of 100 beside its rewritten version" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Before and after</strong><span>The weak headline, what is wrong with it, and the rewrite.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#fbfbfe">
+            
+            <a class="shot-view" href="/projects/shots/linkedinrank-studio-1760.webp" data-lightbox data-w="1760" data-h="804" data-title="Rewrites, not just scores" data-caption="Headline rewriter, experience metrics and a skill matcher." aria-label="Enlarge screenshot: Rewrites, not just scores">
+              <img src="/projects/shots/linkedinrank-studio-1760.webp" srcset="/projects/shots/linkedinrank-studio-1760.webp 1760w, /projects/shots/linkedinrank-studio-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="804" alt="Three cards: Headline Rewriter, Experience Metric Injection, ATS and Skill Matcher" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>Rewrites, not just scores</strong><span>Headline rewriter, experience metrics and a skill matcher.</span></figcaption>
+          </figure></div>
+          <div class="cs-shot" data-reveal><figure class="shot " style="--shot-bg:#fbfbfe">
+            
+            <a class="shot-view" href="/projects/shots/linkedinrank-tools-1760.webp" data-lightbox data-w="1760" data-h="1256" data-title="13 free tools" data-caption="Generators for headlines, About sections, posts, hooks and more." aria-label="Enlarge screenshot: 13 free tools">
+              <img src="/projects/shots/linkedinrank-tools-1760.webp" srcset="/projects/shots/linkedinrank-tools-1760.webp 1760w, /projects/shots/linkedinrank-tools-880.webp 880w" sizes="(max-width: 768px) 100vw, 512px" width="1760" height="1256" alt="Grid of thirteen LinkedIn tools" loading="lazy" decoding="async" />
+              <span class="shot-zoom" aria-hidden="true"></span>
+            </a>
+            <figcaption><strong>13 free tools</strong><span>Generators for headlines, About sections, posts, hooks and more.</span></figcaption>
+          </figure></div>
+        </div>
+      </section>
+      <section class="cs-decisions" aria-labelledby="cs-decisions-title">
+        <div class="cs-decisions-main">
+          <h2 class="pp-label" id="cs-decisions-title" data-reveal>Decisions that shaped it</h2>
+          <dl class="cs-dl">
+            <div class="cs-decision" data-reveal><dt>A PDF, not a login</dt><dd>The tool never asks for a LinkedIn password and does not scrape anything. The PDF you export is the only input.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Nothing is kept</dt><dd>Uploads are processed in temporary memory and never stored, so there is no account to make.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Fixes over grades</dt><dd>A score on its own is not useful. Every weak signal comes with a suggested rewrite you can paste in.</dd></div>
+            <div class="cs-decision" data-reveal><dt>Independent</dt><dd>LinkedInRank is not affiliated with or endorsed by LinkedIn Corporation, and the site says so.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="cs-cta" aria-label="Try LinkedInRank" data-reveal>
+        <p class="cs-cta-line">Recruiter-grade profile audit.</p>
+        <a href="https://linkedinrank.com/" class="btn-explore pp-visit" target="_blank" rel="noopener">
+          <span class="btn-text">VISIT LINKEDINRANK.COM</span>
+          <span class="btn-arrow" aria-hidden="true">&nearr;</span>
+        </a>
+      </section>
+
       <nav class="pp-next" aria-label="Next project" data-reveal>
         <a href="/aithisweek" class="pp-next-link">
           <span class="pp-label">Next project</span>
@@ -222,15 +352,63 @@
         </a>
       </nav>
     </main>
-    <footer class="pp-footer">
-      <ul class="social-list">
-        <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
-        <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
-        <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
-        <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
-        <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
-      </ul>
-      <p class="pp-copy"><a href="/articles/">Articles</a> &middot; <a href="/#projects">Projects</a> &middot; &copy; 2026 Bhavishya Singla</p>
+    <footer class="site-footer">
+      <div class="sf-cta">
+        <p class="sf-kicker">Got an idea, a question or a project?</p>
+        <a class="sf-mail" href="/contact"><span>Say hi</span><span class="sf-mail-arrow" aria-hidden="true">&rarr;</span></a>
+        <p class="sf-address"><a href="mailto:say@hibhavishya.in">say@hibhavishya.in</a><button type="button" class="share-btn" data-copy="say@hibhavishya.in" data-copied="Copied">Copy</button></p>
+      </div>
+      <div class="sf-grid">
+        <nav class="sf-col" aria-label="Projects">
+          <h2 class="pp-label">Projects</h2>
+          <ul>
+            <li><a href="/ringping">Ring Ping</a></li>
+            <li><a href="/rankkiwi">Rank Kiwi</a></li>
+            <li><a href="/linkedinrank">LinkedInRank</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="3D worlds">
+          <h2 class="pp-label">3D worlds</h2>
+          <ul>
+            <li><a href="/room/">My Room</a></li>
+            <li><a href="/world/">Infinite World</a></li>
+            <li><a href="/folio/">Playground</a></li>
+            <li><a href="/worlds/">About the worlds</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="Writing">
+          <h2 class="pp-label">Writing</h2>
+          <ul>
+            <li><a href="/articles/">All articles</a></li>
+            <li><a href="/articles/?topic=AI%20Tools">AI Tools</a></li>
+            <li><a href="/articles/?topic=Claude">Claude</a></li>
+            <li><a href="/articles/?topic=Video">Video</a></li>
+            <li><a href="/articles/?topic=Projects">Projects</a></li>
+            <li><a href="/aithisweek">AI This Week</a></li>
+          </ul>
+        </nav>
+        <nav class="sf-col" aria-label="About this site">
+          <h2 class="pp-label">Bhavishya</h2>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sf-bottom">
+        <a href="/" class="brand">BHAVISHYA SINGLA</a>
+        <ul class="social-list">
+          <li><a class="social-link" href="https://github.com/bhavishyasingla1" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          <li><a class="social-link" href="https://www.linkedin.com/in/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">LinkedIn</a></li>
+          <li><a class="social-link" href="https://www.youtube.com/@bhavishyasingla1" target="_blank" rel="noopener noreferrer me">YouTube</a></li>
+          <li><a class="social-link" href="https://www.instagram.com/bhavishyasingla1/" target="_blank" rel="noopener noreferrer me">Instagram</a></li>
+          <li><a class="social-link" href="https://x.com/Bhavishyas_1" target="_blank" rel="noopener noreferrer me">X</a></li>
+        </ul>
+        <p class="pp-copy">&copy; 2026 &middot; Figuring things out.</p>
+      </div>
     </footer>
   </div>
 </body>

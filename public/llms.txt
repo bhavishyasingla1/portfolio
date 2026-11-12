@@ -1,23 +1,41 @@
-# Bhavishya Singla — Figuring Things Out
+# Bhavishya Singla
 
-> Bhavishya Singla is a builder working across Artificial Intelligence, Technology, and Creative Engineering. The portfolio website serves as a minimalist portal and doorway into interactive 3D WebGL worlds and experiences.
+> Bhavishya Singla builds AI products and writes about building them. This site holds case studies of his projects, his articles, and three explorable 3D worlds.
 
 ## Projects
-- [Ring Ping](https://bhavishyasingla.com/ringping): Free Android reminder app that rings your phone like an incoming call until you act. Website: https://ringping.space/
-- [Rank Kiwi](https://bhavishyasingla.com/rankkiwi): Free Chrome extension that finds viral outlier Instagram Reels and YouTube videos by comparing each to the creator's median views. Website: https://rankkiwi.com/
-- [LinkedInRank](https://bhavishyasingla.com/linkedinrank): Free recruiter-grade LinkedIn profile audit across 30+ recruiter signals. Website: https://linkedinrank.com/
-- [AI This Week](https://bhavishyasingla.com/aithisweek): Weekly LinkedIn newsletter (6,528+ subscribers, 37+ editions) helping ambitious professionals thrive in the AI era.
+- [Ring Ping](https://bhavishyasingla.com/ringping): A reminder app that rings your Android phone like an incoming call. It goes full screen, even when the phone is locked, and calls back until you act. Product site: https://ringping.space/
+- [Rank Kiwi](https://bhavishyasingla.com/rankkiwi): A Chrome extension that benchmarks every Instagram Reel and YouTube video against the creator's median views, so the posts that broke out stand out instantly. Product site: https://rankkiwi.com/
+- [LinkedInRank](https://bhavishyasingla.com/linkedinrank): Upload your LinkedIn profile as a PDF and get an instant audit across 30+ recruiter signals, plus the exact rewrites to fix what is holding it back. Product site: https://linkedinrank.com/
+- [AI This Week](https://bhavishyasingla.com/aithisweek): A weekly LinkedIn newsletter helping ambitious professionals thrive in the AI era. Short, practical reads on building with AI, growing your career and actually finishing things.
 
 ## Articles
-- [All articles](https://bhavishyasingla.com/articles/): Guides, notes and favourite GitHub repositories on AI, building products and the web. RSS: https://bhavishyasingla.com/feed.xml
+- [All articles](https://bhavishyasingla.com/articles/): Guides and notes on AI, building products and the web. RSS: https://bhavishyasingla.com/feed.xml
+- [The Outlier Score: I'm Making a Billionaire Micro-Drama With My Products in the Plot](https://bhavishyasingla.com/articles/outlier-score-micro-drama-series): A billionaire CEO, an erased co-founder and a junior analyst with one strange number. My animated micro-drama, why Rank Kiwi is in the plot and what I'm testing.
+- [I Let AI Edit an Entire Reel for ₹50: ChatGPT vs Antigravity vs Claude](https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity): Motion graphics, sound effects and visuals, edited by AI for about ₹50 a reel. I tried ChatGPT, Google Antigravity and Claude. One was clearly ahead.
+- [The Canary Trick: Why I Make Claude Say My Name in Every Reply](https://bhavishyasingla.com/articles/claude-canary-trick): Add one line to CLAUDE.md telling Claude to start every reply with your name. The moment it stops, your session is degrading. Here is how the canary trick works.
+- [How to Claim Your Business on ChatGPT (and Get the Blue Tick)](https://bhavishyasingla.com/articles/claim-business-on-chatgpt): OpenAI now lets businesses claim their profile in ChatGPT. What you get, the three things you need, what Indian businesses should keep ready and what it does not do.
+- [Groq, Not Grok: The Free AI API I Build Everything On](https://bhavishyasingla.com/articles/groq-free-api): Groq (with a Q) has a free API tier that is fast enough to build real things on. Here is how to get a key, what the free limits are and when it stops being enough.
+- [ElevenLabs for ₹100: What the $1 Starter Month Actually Gets You](https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar): I paid about ₹100 for a month of ElevenLabs Starter. What 30,000 credits buy, the one catch with auto-renewal and how to try it without paying ₹600 next month.
+- [I Cloned My Voice With a Free Tool and With ElevenLabs. Then I Tried Hindi.](https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs): Two AI copies of my voice, one paid and one free from GitHub. In English you can barely tell them apart. In Hindi, one of them changed what I said.
+- [AI For Everyone: My Millennium Fellowship Project on AI Literacy](https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship): Anyone can get an answer from AI in seconds. Knowing when to question it is the skill. AI For Everyone is my Millennium Fellowship project for SDG 4, Quality Education.
+- [Haiku vs Sonnet vs Opus: I Paid ₹6, ₹28 and ₹92 for Three AI Music Videos](https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos): Three Claude models, one 30-second music video each. A boat, a tomato and a very relaxed sloth. Here's what Haiku, Sonnet and Opus cost me, with charts.
+- [Brag: Turn Any Project Into a Launch Video With One Command](https://bhavishyasingla.com/articles/brag-launch-videos): Brag is an open-source agent skill that turns the project you just built into a short launch video. I used it for Ring Ping and Rank Kiwi. Here's how it works.
+- [How I Turned Bruno Simon's Open-Source 3D Worlds Into My Portfolio (With AI)](https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio): The three 3D worlds on my site started as Bruno Simon's open-source Three.js projects. Here's what each one is and how I made them mine with AI.
 
-## Core Experiences
-- [My Room in 3D](https://bhavishyasingla.com/room/): Interactive isometric 3D room experience built with Three.js.
-- [Infinite World](https://bhavishyasingla.com/world/): Procedural infinite 3D terrain exploration in WebGL.
-- [Playground](https://bhavishyasingla.com/folio/): Interactive 3D physics playground featuring an interactive car and exploration landscape.
+## 3D worlds
+- [About the 3D worlds](https://bhavishyasingla.com/worlds/): What each world is, how to control it and what was changed. All three are built on open-source Three.js projects by Bruno Simon.
+- [My Room in 3D](https://bhavishyasingla.com/room/): A small, warmly lit bedroom studio you can spin around. The TV shows my newsletter, the laptop plays my photos and the monitor plays my videos.
+- [Infinite World](https://bhavishyasingla.com/world/): Rolling hills and swaying grass that never end, with a full day and night cycle. The land is generated as you walk.
+- [Playground](https://bhavishyasingla.com/folio/): Drive a little car around a toy world with real physics. My name is spelled in letters you can crash into.
 
-## Communities & Socials
+## About
+- [About Bhavishya Singla](https://bhavishyasingla.com/about): Who he is, what he builds and how he works.
+
+## Contact
+- Email: say@hibhavishya.in
+- [Contact page](https://bhavishyasingla.com/contact)
+- GitHub: https://github.com/bhavishyasingla1
 - LinkedIn: https://www.linkedin.com/in/bhavishyasingla1/
 - YouTube: https://www.youtube.com/@bhavishyasingla1
 - Instagram: https://www.instagram.com/bhavishyasingla1/
-- X (Twitter): https://x.com/Bhavishyas_1
+- X: https://x.com/Bhavishyas_1

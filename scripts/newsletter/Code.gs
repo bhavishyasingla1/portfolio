@@ -1,5 +1,5 @@
 /**
- * bhavishyasingla.com — Email sign-up backend (Google Apps Script)
+ * bhavishyasingla.com — Email sign-up and contact form backend (Google Apps Script)
  *
  * Lives in the "bhavishyasingla.com" Google Sheet (Extensions → Apps Script).
  * Deployed as a Web App: Execute as "Me", access "Anyone".
@@ -9,6 +9,12 @@
  *   2. adds a row to the sheet (or does nothing if they're already on the list)
  *   3. emails the subscriber a personal thank-you from Bhavishya
  *   4. emails Bhavishya a "new subscriber" notification
+ *
+ * When someone sends the contact form (/contact) it:
+ *   1. validates the message and ignores bots (same honeypot, its own rate limit)
+ *   2. adds a row to the "Messages" sheet (created the first time)
+ *   3. emails the message to Bhavishya, with Reply-To set to the sender
+ * A contact message never adds anyone to the subscriber list.
  *
  * To unsubscribe someone, set their Status cell to "Unsubscribed".
  * This file is a copy kept in the repo (scripts/newsletter/Code.gs); the live one is in Apps Script.
@@ -24,10 +30,14 @@ const CONFIG = {
   LINKEDIN_URL: 'https://www.linkedin.com/in/bhavishyasingla1/',
   X_URL: 'https://x.com/Bhavishyas_1',
   YOUTUBE_URL: 'https://www.youtube.com/@bhavishyasingla1',
-  MAX_SIGNUPS_PER_MINUTE: 20
+  MAX_SIGNUPS_PER_MINUTE: 20,
+  MESSAGES_SHEET_NAME: 'Messages',
+  MAX_MESSAGES_PER_MINUTE: 10,
+  CONTACT_TOPICS: ['Work together', 'Something I built', 'Writing or videos', 'Just saying hi']
 };
 
 const HEADERS = ['Subscribed at', 'Email', 'Signed up from', 'Status', 'Notes'];
+const MESSAGE_HEADERS = ['Received at', 'Name', 'Email', 'Topic', 'Message', 'Sent from'];
 
 /* ───────────────────────── web endpoints ───────────────────────── */
 
@@ -36,7 +46,9 @@ function doPost(e) {
     const data = parseBody_(e);
 
     // Bots fill every field; people never see this one
-    if (data.company) return json_({ ok: true });
+    if (data.company) return json_({ ok: true, status: data.type === 'contact' ? 'sent' : 'subscribed' });
+
+    if (data.type === 'contact') return handleContact_(data);
 
     const email = String(data.email || '').trim().toLowerCase();
     if (!isValidEmail_(email)) return json_({ ok: false, error: 'invalid_email' });
@@ -66,7 +78,99 @@ function doPost(e) {
 }
 
 function doGet() {
-  return json_({ ok: true, service: 'bhavishyasingla.com newsletter' });
+  return json_({ ok: true, service: 'bhavishyasingla.com newsletter', contact: true });
+}
+
+/* ───────────────────────── contact form ───────────────────────── */
+
+function handleContact_(data) {
+  const email = String(data.email || '').trim().toLowerCase();
+  if (!isValidEmail_(email)) return json_({ ok: false, error: 'invalid_email' });
+
+  const name = clean_(data.name, 100);
+  const message = String(data.message || '').replace(/\r\n/g, '\n').trim().slice(0, 4000);
+  if (!name || message.length < 10) return json_({ ok: false, error: 'invalid_message' });
+
+  const topic = CONFIG.CONTACT_TOPICS.indexOf(String(data.topic)) > -1 ? String(data.topic) : 'Just saying hi';
+  const source = sanitizeSource_(data.source);
+
+  if (isContactRateLimited_(email)) return json_({ ok: false, error: 'rate_limited' });
+
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    // A leading apostrophe stops Sheets from running a message that starts with "=" as a formula
+    getMessagesSheet_().appendRow([new Date(), safeCell_(name), email, topic, safeCell_(message), source]);
+  } finally {
+    lock.releaseLock();
+  }
+
+  const when = Utilities.formatDate(new Date(), 'Asia/Kolkata', 'd MMM yyyy, h:mm a') + ' IST';
+  MailApp.sendEmail({
+    to: CONFIG.OWNER_EMAIL,
+    replyTo: email,
+    subject: '[' + topic + '] ' + name + ' wrote to you',
+    body: [message, '', '— ' + name + ' <' + email + '>', 'Topic: ' + topic, 'Sent from: ' + source, 'When: ' + when, '', 'Reply to this email to answer them.'].join('\n'),
+    htmlBody: contactHtml_(name, email, topic, message, source, when),
+    name: name + ' via bhavishyasingla.com'
+  });
+
+  return json_({ ok: true, status: 'sent' });
+}
+
+function getMessagesSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(CONFIG.MESSAGES_SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(CONFIG.MESSAGES_SHEET_NAME);
+    sheet.appendRow(MESSAGE_HEADERS);
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
+
+function isContactRateLimited_(email) {
+  const cache = CacheService.getScriptCache();
+  const perEmail = 'c:' + email;
+  if (cache.get(perEmail)) return true;
+  cache.put(perEmail, '1', 60);
+
+  const minuteKey = 'cm:' + Math.floor(Date.now() / 60000);
+  const count = Number(cache.get(minuteKey) || 0) + 1;
+  cache.put(minuteKey, String(count), 120);
+  return count > CONFIG.MAX_MESSAGES_PER_MINUTE;
+}
+
+function clean_(value, max) {
+  return String(value || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, max);
+}
+
+function safeCell_(value) {
+  return /^[=+\-@]/.test(value) ? "'" + value : value;
+}
+
+function contactHtml_(name, email, topic, message, source, when) {
+  const row = function (label, value) {
+    return (
+      '<tr><td style="padding:12px 0;border-bottom:1px solid ' + LINE + ';font:600 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:' + MUTED + ';width:120px;">' + label + '</td>' +
+      '<td style="padding:12px 0;border-bottom:1px solid ' + LINE + ';font:500 15px/1.4 ' + FONT + ';color:' + INK + ';word-break:break-word;">' + value + '</td></tr>'
+    );
+  };
+  const inner =
+    '<tr><td style="padding:32px 36px 8px;">' +
+    '<div style="display:inline-block;padding:3px 7px;margin-bottom:16px;background:' + NEON + ';font:700 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:#fff;">' + escape_(topic) + '</div>' +
+    '<h1 style="margin:0 0 20px;font:800 26px/1.15 ' + FONT + ';letter-spacing:-0.02em;color:' + INK + ';">' + escape_(name) + ' wrote to you</h1>' +
+    '<div style="margin:0 0 24px;padding:18px 20px;border-left:3px solid ' + NEON + ';background:' + BG + ';font:400 16px/1.7 ' + FONT + ';color:#27272a;white-space:pre-wrap;word-break:break-word;">' + escape_(message) + '</div>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' +
+    row('From', escape_(name)) +
+    row('Email', '<a href="mailto:' + escape_(email) + '" style="color:' + INK + ';">' + escape_(email) + '</a>') +
+    row('Sent from', escape_(source)) +
+    row('When', escape_(when)) +
+    '</table></td></tr>' +
+    '<tr><td style="padding:20px 36px 32px;">' +
+    '<a href="mailto:' + escape_(email) + '?subject=' + encodeURIComponent('Re: ' + topic) + '" style="display:inline-block;padding:13px 18px;background:' + INK + ';color:#fff;font:600 12px/1 ' + FONT + ';letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">Reply to ' + escape_(name.split(' ')[0]) + ' &rarr;</a>' +
+    '</td></tr>';
+  return shell_(inner, message.slice(0, 120));
 }
 
 /* ───────────────────────── sheet ───────────────────────── */
@@ -173,7 +277,7 @@ const INK = '#0c0c0e';
 const MUTED = '#6b6b73';
 const LINE = '#e4e4e7';
 const BG = '#f2f2f4';
-const NEON = '#00ff66';
+const NEON = '#1f3dff'; // brand accent (electric blue), white text on top
 const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
 function shell_(inner, preheader) {
@@ -217,7 +321,7 @@ function thankYouHtml_() {
     '</tr></table></td></tr>' +
     // Headline
     '<tr><td style="padding:36px 36px 8px;">' +
-    '<div style="display:inline-block;padding:3px 7px;margin-bottom:16px;background:' + NEON + ';font:700 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:#000;">You&rsquo;re in</div>' +
+    '<div style="display:inline-block;padding:3px 7px;margin-bottom:16px;background:' + NEON + ';font:700 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:#fff;">You&rsquo;re in</div>' +
     '<h1 style="margin:0 0 24px;font:800 34px/1.05 ' + FONT + ';letter-spacing:-0.03em;color:' + INK + ';">Thank you so much.</h1>' +
     '<p style="' + p + '">Hi,</p>' +
     '<p style="' + p + '">Thank you for subscribing. It genuinely means a lot that you&rsquo;d let me into your inbox.</p>' +
@@ -251,7 +355,7 @@ function ownerHtml_(email, source, when, total, sheetUrl) {
   };
   const inner =
     '<tr><td style="padding:32px 36px 8px;">' +
-    '<div style="display:inline-block;padding:3px 7px;margin-bottom:16px;background:' + NEON + ';font:700 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:#000;">New subscriber</div>' +
+    '<div style="display:inline-block;padding:3px 7px;margin-bottom:16px;background:' + NEON + ';font:700 10px/1.4 ' + FONT + ';letter-spacing:0.16em;text-transform:uppercase;color:#fff;">New subscriber</div>' +
     '<h1 style="margin:0 0 8px;font:800 26px/1.15 ' + FONT + ';letter-spacing:-0.02em;color:' + INK + ';word-break:break-all;">' + escape_(email) + '</h1>' +
     '<p style="margin:0 0 20px;font:400 14px/1.6 ' + FONT + ';color:' + MUTED + ';">just joined your list. A thank-you email has been sent to them.</p>' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' +
@@ -318,8 +422,20 @@ function json_(obj) {
 
 /* ───────────────────────── manual tools (run from the editor) ───────────────────────── */
 
-/** Run once from the editor to grant permissions and preview both emails in your own inbox. */
+/** Run once from the editor to grant permissions and preview the emails in your own inbox. */
 function sendTestEmails() {
   sendThankYou_(CONFIG.OWNER_EMAIL);
   notifyOwner_('test-subscriber@example.com', CONFIG.SITE_URL + '/articles/ (test)');
+}
+
+/** Run from the editor to preview a contact-form message in your own inbox (also creates the Messages sheet). */
+function sendTestContact() {
+  handleContact_({
+    type: 'contact',
+    name: 'Test Visitor',
+    email: 'test-visitor@example.com',
+    topic: 'Work together',
+    message: 'This is a test message from the contact form on bhavishyasingla.com.\nSecond line, to check line breaks.',
+    source: CONFIG.SITE_URL + '/contact'
+  });
 }

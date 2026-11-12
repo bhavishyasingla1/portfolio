@@ -3,94 +3,215 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bhavishyasingla.com/</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-11-12</lastmod>
     <image:image>
       <image:loc>https://bhavishyasingla.com/og-image.png</image:loc>
-      <image:title>Bhavishya Singla — AI, Technology &amp; Interactive 3D Worlds</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/ringping</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-12</lastmod>
     <image:image>
       <image:loc>https://bhavishyasingla.com/projects/ringping.png</image:loc>
-      <image:title>Ring Ping logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-hero-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-callbacks-784.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-calendar-824.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-alarms-824.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-heycola-1032.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-askcola-824.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/ringping-languages-1152.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/rankkiwi</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-12</lastmod>
     <image:image>
       <image:loc>https://bhavishyasingla.com/projects/rankkiwi.png</image:loc>
-      <image:title>Rank Kiwi logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-youtube-1600.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-instagram-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-score-1240.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-reel-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-filters-1096.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-transcription-1096.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/rankkiwi-video-1760.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/linkedinrank</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-12</lastmod>
     <image:image>
       <image:loc>https://bhavishyasingla.com/projects/linkedinrank.png</image:loc>
-      <image:title>LinkedInRank logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/linkedinrank-hero-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/linkedinrank-benchmark-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/linkedinrank-beforeafter-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/linkedinrank-studio-1760.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/projects/shots/linkedinrank-tools-1760.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/aithisweek</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-12</lastmod>
     <image:image>
       <image:loc>https://bhavishyasingla.com/projects/aithisweek.png</image:loc>
-      <image:title>AI This Week logo</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/</loc>
-    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/outlier-score-micro-drama-series</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-outlier.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/ai-edited-my-reel-chatgpt-claude-antigravity</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-ai-edits-reel.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/claude-canary-trick</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-canary.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/claim-business-on-chatgpt</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-chatgpt-business.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/groq-free-api</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-groq.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/elevenlabs-starter-one-dollar</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-elevenlabs-offer.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/free-voice-cloning-vs-elevenlabs</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-voice-clone.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/articles/ai-for-everyone-millennium-fellowship</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-ai-for-everyone.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/haiku-vs-sonnet-vs-opus-music-videos</loc>
-    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-11</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-ai-models.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/brag-launch-videos</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-10</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-brag.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/articles/bruno-simon-3d-worlds-portfolio</loc>
-    <lastmod>2026-11-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-10</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/articles/images/cover-bruno-worlds.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/worlds/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/worlds/room.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/worlds/world.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/worlds/playground.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/room/</loc>
-    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-11-12</lastmod>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/world/</loc>
-    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-11-12</lastmod>
   </url>
   <url>
     <loc>https://bhavishyasingla.com/folio/</loc>
-    <lastmod>2026-09-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/about</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image>
+      <image:loc>https://bhavishyasingla.com/bhavishya.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/contact</loc>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://bhavishyasingla.com/privacy</loc>
+    <lastmod>2026-11-12</lastmod>
   </url>
 </urlset>

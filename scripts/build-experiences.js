@@ -65,4 +65,7 @@ for (const exp of EXPERIENCES) {
   }
 }
 
+// Re-apply the shared title/loading screen, credits and preload hints to the fresh builds
+execSync('node scripts/worlds/shell.js', { cwd: ROOT_DIR, stdio: 'inherit' });
+
 console.log('\n✓ All experiences built and synchronized to public/ successfully!\n');

@@ -10,7 +10,10 @@
     "build:experiences": "node scripts/build-experiences.js",
     "build:all": "node scripts/build-experiences.js && npm run build",
     "audit:seo": "./scripts/verify-seo.sh",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:worlds-shell": "node scripts/worlds/shell.js",
+    "shots": "node scripts/shots/process.js",
+    "covers": "node scripts/illustrations/covers.js"
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",

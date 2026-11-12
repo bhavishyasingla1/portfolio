@@ -1,7 +1,7 @@
 {
   "name": "Bhavishya Singla",
   "short_name": "Bhavishya",
-  "description": "AI, Technology & Interactive 3D Worlds",
+  "description": "AI products, articles and three explorable 3D worlds",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f2f2f4",
@@ -11,7 +11,7 @@
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/favicon-192x192.png",
@@ -23,7 +23,7 @@
       "src": "/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
