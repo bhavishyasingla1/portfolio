@@ -55,8 +55,8 @@
   <!-- 8. Typography Fonts & Critical Resource Preloads -->
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="image" href="/hero-poster-alpha.webp?v=2" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
-  <link rel="preload" as="image" href="/hero-poster-alpha-mobile.webp?v=2" type="image/webp" fetchpriority="high" media="(max-width: 768px)" />
+  <link rel="preload" as="image" href="/hero-poster-alpha.webp?v=3" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
+  <link rel="preload" as="image" href="/hero-poster-alpha-mobile.webp?v=3" type="image/webp" fetchpriority="high" media="(max-width: 768px)" />
   <link rel="stylesheet" href="/src/styles/index.css" />
 
   <!-- Critical Anti-FOUC Styles (Guarantees no raw text or offscreen UI flashes) -->
@@ -378,7 +378,7 @@
                 var ua = navigator.userAgent;
                 var webkit = /AppleWebKit/.test(ua) && !/Chrome\/|Chromium|Edg\/|OPR\/|Android|Firefox\//.test(ua);
                 var m = window.matchMedia('(max-width: 768px)').matches ? '-mobile' : '';
-                var ver = '?v=2'; // bump when the files change: they are cached for a year
+                var ver = '?v=3'; // bump when the files change: they are cached for a year
                 v.poster = '/hero-poster-alpha' + m + '.webp' + ver;
                 var s = document.createElement('source');
                 s.src = (webkit ? '/hero-alpha' + m + '.mov' : '/hero-alpha' + m + '.webm') + ver;
@@ -386,7 +386,7 @@
                 v.appendChild(s);
               })();
             </script>
-            <noscript><img class="hero-video" src="/hero-poster-alpha.webp?v=2" alt="" width="1080" height="1920" /></noscript>
+            <noscript><img class="hero-video" src="/hero-poster-alpha.webp?v=3" alt="" width="810" height="1440" /></noscript>
           </div>
         </div>
       </section>

@@ -1308,7 +1308,7 @@ function aboutPage(og, articles) {
           </div>
         </div>
         <figure class="ab-photo" data-enter="3">
-          <img src="/hero-poster-alpha.webp?v=2" alt="Bhavishya Singla, standing and smiling in a charcoal hoodie" width="1080" height="1920" fetchpriority="high" decoding="async" />
+          <img src="/hero-poster-alpha.webp?v=3" alt="Bhavishya Singla, standing and smiling in a charcoal hoodie" width="810" height="1440" fetchpriority="high" decoding="async" />
         </figure>
       </section>
 
