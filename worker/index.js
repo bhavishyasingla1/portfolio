@@ -10,6 +10,7 @@
  *   /index.html, /room/index.html, …        → the folder URL
  *   /ringping.html, /articles/foo.html      → the clean URL (/ringping, /articles/foo)
  *   retired URLs (see MOVED)                → their replacement
+ *   /world/favicon.ico and friends          → the site's own icons (no 404s while a world is open)
  */
 
 const CANONICAL_HOST = 'bhavishyasingla.com';
@@ -56,6 +57,14 @@ export default {
       return Response.redirect(`https://${CANONICAL_HOST}${target}${url.search}`, 301);
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+
+    // The home page opens a 3D world in a frame and puts /world/ in the address bar, so the browser
+    // re-requests the site icons relative to that folder. Answer those with the site's own icons.
+    const icon = url.pathname.match(/^\/(?:room|world|folio)\/(favicon[\w.-]*|apple-touch-icon\.png)$/);
+    if (response.status === 404 && icon) {
+      return env.ASSETS.fetch(new Request(new URL(`/${icon[1]}`, url), request));
+    }
+    return response;
   }
 };
